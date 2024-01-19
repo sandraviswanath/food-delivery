@@ -5,12 +5,20 @@ const productSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true
+        
     },
-    order: {
+    image: {
         type: Array,
         required: true,
     },
+    price:{
+        type:Number,
+        required: true,
+    },
+    description:{
+        type:String,
+        required: true,
+    }
 
 });
 const product=mongoose.model('product',productSchema)

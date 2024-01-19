@@ -3,6 +3,8 @@ import './delivery.css'
 import Filters from './common/Filters'
 import { CiSliderHorizontal } from "react-icons/ci";
 import DeliveryCollections from './DeliveryCollections';
+import ExploreSection from './ExploreSection';
+import restaurants from './Restaurants';
 function Delivery() {
   const deliveryFilters=[
     {
@@ -34,12 +36,16 @@ function Delivery() {
     },
 
   ]
+
+const restaurantList= restaurants;
+
   return (
     <div>
       <div className='max-width'>
         <Filters filterList={deliveryFilters}/>
       </div>
       <DeliveryCollections/>
+      <ExploreSection list={restaurantList} collectionName='Delivery restaurents in thrissur'/>
     </div>
   )
 }
