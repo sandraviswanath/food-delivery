@@ -5,7 +5,7 @@ import {Container, Nav, Navbar} from 'react-bootstrap'
 function NavBar() {
   return (
     <div>
-      <Navbar bg="white" data-bs-theme="light" className= 'shadow-lg p-3 mb-5 bg-white rounded'style={{height:'80px'}}>
+      <Navbar bg="white" data-bs-theme="light" className= 'shadow-lg p-3 mb-5 bg-white rounded'style={{height:'70px'}}>
         <Container>
           <Navbar.Brand className='food' href="#home"></Navbar.Brand>
           <img src={food} alt="" style={{width:'80px',height:'70px'}}/>

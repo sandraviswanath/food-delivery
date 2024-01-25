@@ -60,6 +60,7 @@ border: 1px solid transparent;
     font-weight: 500;
 }
 .gold-off{
+    position: absolute;
     left: 0px;
     bottom: 14px;
     background-color: #d92662;
@@ -72,4 +73,64 @@ border: 1px solid transparent;
     white-space: nowrap;
     line-height: 18px;
     font-weight: 500;
+}
+.res-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0px 6px;
+}
+.res-name{
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+.res-rating{
+    padding: 0px 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    background-color:#267e3e ;
+    border-radius: 6px;
+    height: 24px;
+}
+
+.re-cuisine{
+    max-width: 56%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+}
+.re-cuisine-tag{
+    margin-right: 4px;
+    color:gray ;
+}
+.res-price{
+    font-size: 14px;
+    color: gray;
+}
+.explore-bottom{
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+.res-bottom-text{
+    font-size: 12px;
+    color: gray;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 8px;
+}
+.card-seperator{
+    height: 1px;
+    margin: 10px 0px 5px;
+    background-color: #f8f8f8;
+}
+.explore-card:hover{
+    background-color: #f8f8f8;
+    border-radius: 1px solid #f8f8f8;
 }
