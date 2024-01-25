@@ -1,17 +1,21 @@
 .banner-image{
     background-image: url('banner.avif');
     width: 100%;
-    height: 100%;
+    height: 100vh;
     object-fit: cover;
     transform: none;
     
     
+}
+.banner-nav{
+    text-decoration: none;
 }
 .banner-nav-text{
     color: #f8f8f8;
     font-size: 18px;
     margin-left: 10px;
     margin-right: 10px;
+    text-decoration: none;
 }
 .banner-nav-text :hover{
     color: #f8f8f8;

@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import './Banner.css'
 import { Container, Modal, Nav, Navbar } from 'react-bootstrap'
-import Login from './Login'
-import Signup from './Signup'
+
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
-function Banner({value}) {
 
- 
+function Banner() {
 
   return (
     <div className='banner-image'>
@@ -16,9 +13,9 @@ function Banner({value}) {
         <Container>
     
           <Nav className="ms-auto banner-nav">
-            <Nav.Link className='banner-nav-text' href="#home">Add restaurant</Nav.Link>
-            <Nav.Link className='banner-nav-text' href="#features" ><Link to=""> Login</Link></Nav.Link>
-            <Nav.Link className='banner-nav-text' href="#pricing">Sign Up</Nav.Link>
+            <Nav.Link className='banner-nav-text' href="#home"><Link to="/addrestaurant">Add restaurant</Link></Nav.Link>
+            <Nav.Link className='banner-nav-text' href="#features" ><Link to="/login"> Login</Link></Nav.Link>
+            <Nav.Link className='banner-nav-text' href="#pricing"><Link to="/signup">Sign Up</Link></Nav.Link>
           </Nav>
         </Container>
       </Navbar>

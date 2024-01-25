@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoMdClose } from "react-icons/io";
 import './Login2.css'
 
-function Signup() {
+function Addsignup() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -98,4 +98,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Addsignup
