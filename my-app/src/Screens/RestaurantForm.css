@@ -1,0 +1,17 @@
+.add-form{
+        /* width: 65rem; */
+        width: 800px;
+       margin: 20px;
+       padding: 20px;
+      
+      background-color: #f8f8f8;
+}
+.add-form-title{
+    font-size: 24px;
+}
+/* .add-menu-item{
+
+} */
+.form-submit{
+    float: right;
+}

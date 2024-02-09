@@ -9,7 +9,7 @@ function Delivery() {
   const deliveryFilters=[
     {
       id:'1',
-      icon:<CiSliderHorizontal className=' absolute-center' />,
+      icon:<CiSliderHorizontal className='absolute-center' />,
       title:'Filters',
     },
     {

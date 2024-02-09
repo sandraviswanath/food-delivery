@@ -7,6 +7,7 @@ import { IoMdClose } from "react-icons/io";
 import './Login2.css'
 
 function Addsignup() {
+  const navigate=useNavigate()
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -28,6 +29,7 @@ function Addsignup() {
       event.preventDefault()
       const display =await axios.post('http://localhost:5000/signup',{name,email,password})
       console.log(display.data)
+      navigate('/addform')
   
     }
 
@@ -45,14 +47,14 @@ function Addsignup() {
    
     <div>
     
-    <div style={{backgroundImage: 'url("https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png")', height: '110vh', backgroundSize: 'cover' }}>
+    <div style={{backgroundImage: 'url("https://b.zmtcdn.com/mx-onboarding-hero87f77501659a5656cad54d98e72bf0d81627911821.webp")', height: '110vh', backgroundSize: 'cover' }}>
   <div>
   <Navbar>
     <Container>
 
       <Nav className="ms-auto banner-nav">
-        <Nav.Link className='banner-nav-text' href="#home">Add restaurant</Nav.Link>
-        <Nav.Link className='banner-nav-text' href="#features" ><Link to="login"> Login</Link></Nav.Link>
+        {/* <Nav.Link className='banner-nav-text' href="#home">Add restaurant</Nav.Link> */}
+        <Nav.Link className='banner-nav-text' href="#features" >Login</Nav.Link>
         <Nav.Link className='banner-nav-text' href="#pricing">Sign Up</Nav.Link>
       </Nav>
     </Container>
@@ -85,7 +87,7 @@ function Addsignup() {
       <button type="submit" className="m-3 mx-1 btn btn-danger"onClick={handleSubmit} style={{paddingLeft:'50px',paddingRight:'50px'}}>Create account</button>
       </div>
       <div className="m-3">
-      <a style={{}}>Already have an account?<span style={{color: 'red',textDecoration:'none'}}><Link to="/signup"style={{color: 'red',textDecoration:'none'}}> Log in</Link></span></a>
+      <a style={{}}>Already have an account?<span style={{color: 'red',textDecoration:'none'}}><Link to="/login"style={{color: 'red',textDecoration:'none'}}> Log in</Link></span></a>
       </div>
       
     </form>

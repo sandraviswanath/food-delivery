@@ -7,6 +7,7 @@ import { IoMdClose } from "react-icons/io";
 import './Login2.css'
 
 function Signup() {
+  const navigate=useNavigate()
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -24,10 +25,26 @@ function Signup() {
     const handlePassword =(event)=>{
       setpassword(event.target.value)
     }
+    const isPasswordValid = (event)=>{
+      return password.length >=6;
+    };
     const handleSubmit =async(event)=>{
+      const storename=name;
+      const storeemail=email;
       event.preventDefault()
-      const display =await axios.post('http://localhost:5000/signup',{name,email,password})
-      console.log(display.data)
+      
+     
+        try{
+          const display =await axios.post('http://localhost:5000/signup',{name,email,password})
+          console.log(display.data)
+                  
+        }
+        catch{
+          
+        }
+        
+        alert(` ${email} account created..!!!`)
+        navigate(`/home2/${storename}/${storeemail}`)
   
     }
 
@@ -52,7 +69,7 @@ function Signup() {
 
       <Nav className="ms-auto banner-nav">
         <Nav.Link className='banner-nav-text' href="#home">Add restaurant</Nav.Link>
-        <Nav.Link className='banner-nav-text' href="#features" ><Link to="login"> Login</Link></Nav.Link>
+        <Nav.Link className='banner-nav-text' href="#features" > Login</Nav.Link>
         <Nav.Link className='banner-nav-text' href="#pricing">Sign Up</Nav.Link>
       </Nav>
     </Container>
@@ -82,10 +99,10 @@ function Signup() {
         <input type="password" className="form-control" value={password} onChange={handlePassword} name='password' />
       </div>
       <div className="m-3">
-      <button type="submit" className="m-3 mx-1 btn btn-danger"onClick={handleSubmit} style={{paddingLeft:'50px',paddingRight:'50px'}}>Create account</button>
+      <button type="submit" className="m-3 mx-1 btn btn-danger" style={{paddingLeft:'50px',paddingRight:'50px'}}>Create account</button>
       </div>
       <div className="m-3">
-      <a style={{}}>Already have an account?<span style={{color: 'red',textDecoration:'none'}}><Link to="/signup"style={{color: 'red',textDecoration:'none'}}> Log in</Link></span></a>
+      <a style={{}}>Already have an account?<span style={{color: 'red',textDecoration:'none'}}><Link to="/login"style={{color: 'red',textDecoration:'none'}}> Log in</Link></span></a>
       </div>
       
     </form>

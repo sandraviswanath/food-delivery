@@ -1,6 +1,8 @@
 import React from 'react'
 import './Diningout.css'
 import Collection from './common/Collection'
+import CollectionCard from './common/CollectionCard'
+import DeliveryItem from './DeliveryItem'
 
 
 function DiningOut() {
@@ -8,6 +10,8 @@ function DiningOut() {
     <div>
       <Collection/>
      
+      
+     <CollectionCard/>
     </div>
   )
 }

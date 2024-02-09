@@ -7,6 +7,7 @@ import './Login2.css'
 
 
 function Login2() {
+  const navigate=useNavigate()
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -20,8 +21,15 @@ function Login2() {
   }
   const handleSubmit =async(event)=>{
     event.preventDefault()
+    try{
     const display =await axios.post('http://localhost:5000/login',{email,password})
     console.log(display.data)
+    }
+    catch{
+      
+    }
+    alert(` ${email} login successed..!!!`)
+    navigate('/home2')
 
   }
   const history=useNavigate()
@@ -43,7 +51,7 @@ previous(-1)
     
           <Nav className="ms-auto banner-nav">
             <Nav.Link className='banner-nav-text' href="#home">Add restaurant</Nav.Link>
-            <Nav.Link className='banner-nav-text' href="#features" ><Link to="login"> Login</Link></Nav.Link>
+            <Nav.Link className='banner-nav-text' href="#features" > Login</Nav.Link>
             <Nav.Link className='banner-nav-text' href="#pricing">Sign Up</Nav.Link>
           </Nav>
         </Container>
@@ -69,7 +77,7 @@ previous(-1)
             <input type="password" className="form-control" value={password} onChange={handlePassword} name='password' />
           </div>
           <div className="m-3">
-          <button type="submit" className="m-3 mx-1 btn btn-danger"onClick={handleSubmit} style={{paddingLeft:'50px',paddingRight:'50px'}}>Login</button>
+          <button type="submit" className="m-3 mx-1 btn btn-danger" style={{paddingLeft:'50px',paddingRight:'50px'}}>Login</button>
           </div>
           <div className="m-3">
           <a style={{}}>New to Zomato?<span style={{color: 'red',textDecoration:'none'}}><Link to="/signup"style={{color: 'red',textDecoration:'none'}}>Create account</Link></span></a>

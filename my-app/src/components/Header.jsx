@@ -13,13 +13,17 @@ function Header() {
                 <div className='location-icon-name'>
                 <IoLocationOutline className='absolute-center location-icon'/>
                 <div>malappuram</div>
+                {/* <select>
+                  <option value="palakad">Palakad</option>
+                  <option value="">thrissur</option>
+                </select> */}
                 </div>
                 <FaCaretDown className='absolute-center'/>
              </div>
              <div className='location-search-seperator'></div>
              <div className='header-searchbar'>
              <IoIosSearch className='absolute-center search-icon'/>
-             <input placeholder='Search for restaurant, cusine or a dish' className='search-input' />
+             <input placeholder='Search for restaurant or a dish' className='search-input' />
              </div>
          </div>
     </div>
