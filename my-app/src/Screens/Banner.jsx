@@ -13,7 +13,7 @@ function Banner() {
         <Container>
     
           <Nav className="ms-auto banner-nav">
-            <Nav.Link className='banner-nav-text' href="#home"><Link to="/addrestaurant"className='banner-nav-text'>Add restaurant</Link></Nav.Link>
+            {/* <Nav.Link className='banner-nav-text' href="#home"><Link to="/addrestaurant"className='banner-nav-text'>Add restaurant</Link></Nav.Link> */}
             <Nav.Link className='banner-nav-text' href="#features"><Link to="/login"className='banner-nav-text'> Login</Link></Nav.Link>
             <Nav.Link className='banner-nav-text' href="#pricing"><Link to="/signup"className='banner-nav-text'>Sign Up</Link></Nav.Link>
           </Nav>

@@ -10,6 +10,9 @@ const Login = require('../controller/login')
 const getonePlace = require('../controller/getplace')
 const GetOneproduct = require('../controller/GetoneProduct')
 const { CreateCart, getCart, updateCart, deleteCart, } = require('../controller/Cart')
+const { orderdata,myorderdata } = require('../controller/order')
+const { Createfooditems,getfooditems } = require('../controller/fooditem')
+
 
 
 
@@ -31,4 +34,11 @@ router.route('/createcart').post(CreateCart)
 router.route('/getcart').get(getCart)
 router.route('/updatecart/:id').patch(updateCart)
 router.route('/deletecart/:id').delete(deleteCart)
+router.route('/orderdata').post(orderdata)
+router.route('/myorderdata').post(myorderdata)
+router.route('/createfooditems').post(Createfooditems)
+router.route('/getfooditems').get(getfooditems)
+
+
+
 module.exports= router

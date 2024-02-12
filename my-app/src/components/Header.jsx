@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Header.css'
 import { IoLocationOutline } from "react-icons/io5";
 import { FaCaretDown } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
+import { Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 function Header() {
+
   return (
     <div className='header max-width'>
     <div className='header-right'>
@@ -12,7 +17,10 @@ function Header() {
              <div className='location-wrapper'>
                 <div className='location-icon-name'>
                 <IoLocationOutline className='absolute-center location-icon'/>
-                <div>malappuram</div>
+                <div>malappuram
+                  {/* <input type="text" placeholder='kochi,thrissur,plakad' value={searchQuery} onChange={handleinputchange}/> */}
+                </div>
+               
                 {/* <select>
                   <option value="palakad">Palakad</option>
                   <option value="">thrissur</option>

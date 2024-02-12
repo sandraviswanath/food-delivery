@@ -45,7 +45,7 @@ const restaurantList= restaurants;
         <Filters filterList={deliveryFilters}/>
       </div>
       <DeliveryCollections/>
-      <ExploreSection list={restaurantList} collectionName='Delivery restaurents in thrissur'/>
+      <ExploreSection list={restaurantList} collectionName=''/>
     </div>
   )
 }

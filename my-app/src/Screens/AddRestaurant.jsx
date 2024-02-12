@@ -1,9 +1,12 @@
 import React from 'react'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import './AddRestaurant.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function AddRestaurant() {
+  const{email}=useParams();
+  const eemail=email;
+  console.log(eemail)
   return (
     <div className='add-restaurant'>
       <Navbar>
@@ -18,10 +21,10 @@ function AddRestaurant() {
       </Navbar>
       <div className='secion-2'>
         <div className='btn-div1'>
-            <Button className='butn'><Link to="/addsignup" style={{textDecoration:'none',backgroundColor:'black'}}className='banner-nav-text'>Register your restaurant</Link></Button>
+            <Button className='butn'><Link to="/restuarantform" style={{textDecoration:'none',backgroundColor:'black'}}className='banner-nav-text'>Register your restaurant</Link></Button>
         </div>
         <div className='btn-div2'>
-            <Button className='butn'><Link to="/addlogin" style={{textDecoration:'none',backgroundColor:'black'}}className='banner-nav-text'>Login to view your existing restaurants</Link> </Button>
+            <Button className='butn'><Link to={`/restaurantdetails/${email}`} style={{textDecoration:'none',backgroundColor:'black'}}className='banner-nav-text'>view your existing restaurants</Link> </Button>
         </div>
         </div>
     </div>

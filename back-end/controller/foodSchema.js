@@ -44,19 +44,19 @@ fooditems: [
     {
     foodname:{
     type:String,
-    required: true,
+    
 },
   foodimage:{
     type:Array,
-    required: true,
+   
   },
   price:{
     type:String,
-    required: true,
+   
 },
 itemrating:{
     type:String,
-    required: true,
+   
 },
 }
 ]

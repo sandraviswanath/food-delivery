@@ -68,7 +68,7 @@ function Signup() {
     <Container>
 
       <Nav className="ms-auto banner-nav">
-        <Nav.Link className='banner-nav-text' href="#home">Add restaurant</Nav.Link>
+        {/* <Nav.Link className='banner-nav-text' href="#home">Add restaurant</Nav.Link> */}
         <Nav.Link className='banner-nav-text' href="#features" > Login</Nav.Link>
         <Nav.Link className='banner-nav-text' href="#pricing">Sign Up</Nav.Link>
       </Nav>

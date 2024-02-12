@@ -13,29 +13,36 @@ function Login2() {
     const handleClose = () => setShow(false);
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
+  const[name, setname]=useState('')
+
   const handleEmail=(event)=>{
     setemail(event.target.value)
   }
   const handlePassword =(event)=>{
     setpassword(event.target.value)
   }
+  const handleName =(event)=>{
+    setname(event.target.value)
+  }
   const handleSubmit =async(event)=>{
+    const storename=name;
+      const storeemail=email;
     event.preventDefault()
     try{
-    const display =await axios.post('http://localhost:5000/login',{email,password})
+    const display =await axios.post('http://localhost:5000/login',{email,password,name})
     console.log(display.data)
     }
     catch{
       
     }
     alert(` ${email} login successed..!!!`)
-    navigate('/home2')
+    navigate(`/home2/${storename}/${storeemail}`)
 
   }
   const history=useNavigate()
   const previous=useNavigate()
 const sample=()=>{
-history('/banner')
+  history('/banner')
 
 }
 const back=()=>{
@@ -50,7 +57,7 @@ previous(-1)
         <Container>
     
           <Nav className="ms-auto banner-nav">
-            <Nav.Link className='banner-nav-text' href="#home">Add restaurant</Nav.Link>
+            {/* <Nav.Link className='banner-nav-text' href="#home">Add restaurant</Nav.Link> */}
             <Nav.Link className='banner-nav-text' href="#features" > Login</Nav.Link>
             <Nav.Link className='banner-nav-text' href="#pricing">Sign Up</Nav.Link>
           </Nav>
@@ -67,6 +74,10 @@ previous(-1)
             
             </div>
             </div> 
+            <div className="m-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">Name</label>
+            <input type="text" className="form-control" value={name} onChange={handleName} name='name' />
+          </div>
           <div className="m-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
             <input type="email" className="form-control" name='email' value={email} onChange={handleEmail} aria-describedby="emailHelp" />

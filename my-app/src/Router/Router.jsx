@@ -19,7 +19,12 @@ import DetailedCard from '../components/common/Detailedpages/DetailedCard'
 import GetPlace from '../components/common/Detailedpages/GetPlace'
 import CartPage from '../components/cart/CartPage'
 
-import Product from '../components/Card/Product'
+
+import Crudadd from '../components/cart/Crudadd'
+import Mainpage from '../components/cart/Mainpage'
+import Crudpage from '../components/cart/Crudpage'
+import Order from '../components/order/Order'
+import Restaurantdetails from '../Screens/Restaurantdetails'
 
 
 
@@ -34,15 +39,27 @@ function Router() {
         <Route path='/home2/:storename/:storeemail' element={<><NavBar2/>,<Home2/></>}></Route>
         <Route path='/login' element={<><Login2/></>}></Route>
         <Route path='/signup' element={<><Signup/></>}></Route>
-        <Route path='/addrestaurant' element={<><AddRestaurant/></>}></Route>
+        <Route path='/addrestaurant/:email' element={<><AddRestaurant/></>}></Route>
         <Route path='/addsignup' element={<><Addsignup/></>}></Route>
         <Route path='/addlogin' element={<><Addlogin/></>}></Route>
-        <Route path='/cart' element={<><CartPage/></>}></Route>
+        <Route path='/cart/:_id' element={<><CartPage/></>}></Route>
+        <Route path='/crud' element={<><Crudadd/></>}></Route>
+        <Route path='/crudpage' element={<><Crudpage/></>}></Route>
         <Route path='/addform' element={<><AddForm/></>}></Route>
         <Route path='/restuarantform' element={<><RestaurantForm/></>}></Route>
-        <Route path='/detailed/:name' element={<><DetailedCard/></>}></Route>
+        <Route path='/restaurantdetails/:email' element={<><Restaurantdetails/></>}></Route>
+        
+        <Route path='/detailed/:email' element={<><DetailedCard/></>}></Route>
         <Route path='place' element={<><GetPlace/></>}></Route>
-        <Route path='card' element={<><Product/></>}></Route>
+        
+        <Route path='order' element={<><Order/></>}></Route>
+
+
+
+
+     
+
+
       </Routes>
       </BrowserRouter>
     </div>

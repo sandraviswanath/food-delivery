@@ -1,8 +1,8 @@
 import React from 'react'
 import './NavBar.css'
 import food from './food.jpg'
-import {Container, Nav, Navbar} from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
+import {Container, Nav, NavDropdown, Navbar} from 'react-bootstrap'
+import { Link, useParams } from 'react-router-dom'
 function NavBar2() {
     const{storename,storeemail}=useParams();
   return (
@@ -13,8 +13,20 @@ function NavBar2() {
           <img src={food} alt="" style={{width:'80px',height:'70px'}}/>
          
           <Nav className="ms-auto">
-            <Nav.Link href="#home" className='nav-link'>{storename}</Nav.Link>
-            <Nav.Link href="#features" className='nav-link'>Cart</Nav.Link>
+            {/* <Nav.Link href="#home" className='nav-link'>{storename} */}
+            <NavDropdown title={storename}  id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Cart</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3"><Link to={`/addrestaurant/${storeemail}`}style={{textDecoration:'none'}}> Add Restaurants</Link></NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Log Out
+              </NavDropdown.Item>
+            </NavDropdown>
+            {/* </Nav.Link> */}
+            {/* <Nav.Link href="#features" className='nav-link'>Cart</Nav.Link> */}
             
             
           </Nav>

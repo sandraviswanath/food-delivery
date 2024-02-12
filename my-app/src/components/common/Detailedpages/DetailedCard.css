@@ -34,12 +34,14 @@
 }
 #prodetails .single-pro-details{
     width: 50%;
-    padding-top: 30px;
+    /* padding-top: 30px; */
+    padding-top: 5px;
 
 }
 
 #prodetails .single-pro-details h4{
-   padding: 40px 0 20px 0;
+   /* padding: 40px 0 20px 0; */
+   padding: 10px 0 5px 0;
 }
 #prodetails .single-pro-details h2{
    font-size: 26px;
@@ -61,12 +63,219 @@
     outline: none;
 
  }
- #prodetails .single-pro-details button{
+ /* #prodetails .single-pro-details button{
     background: #088178;
     color: #fff;
 
- }
+ } */
+
  #prodetails .single-pro-details span{
     line-height: 25px;
  }
- 
+
+
+ /* card of food  productss */
+
+ .explore-card{
+    margin: 12px 0px 24px 0px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid transparent;
+    margin-bottom: 20px;
+    }
+    .explore-card-cover{
+        height: 248px;
+        width: 328px;
+        border-radius: 15px;
+        position: relative;
+    }
+    .explore-card-image{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+    .delivery-time{
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        opacity: 0.8;
+        background-color: white;
+        backdrop-filter: blur(4px);
+        font-weight: 600;
+        font-size: 12px;
+        padding: 2px 5px 3px;
+        border-radius: 4px;
+    
+    }
+  
+    .res-row{
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0px 6px;
+    }
+    .res-name{
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 15px;
+        font-weight: 600;
+        color: black;
+    }
+    .res-rating{
+        padding: 0px 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: white;
+        background-color:#267e3e ;
+        border-radius: 6px;
+        height: 24px;
+    }
+    
+    .re-cuisine{
+        max-width: 56%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 14px;
+    }
+    .re-cuisine-tag{
+        margin-right: 4px;
+        color:gray ;
+    }
+    .res-price{
+        font-size: 14px;
+        color: gray;
+    }
+    .explore-bottom{
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+    }
+    .res-bottom-text{
+        font-size: 12px;
+        color: gray;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 8px;
+    }
+    .card-seperator{
+        height: 1px;
+        margin: 10px 0px 5px;
+        background-color: #f8f8f8;
+    }
+    .explore-card:hover{
+        background-color: #f8f8f8;
+        border-radius: 1px solid #f8f8f8;
+    }
+
+
+
+
+
+
+    .section-p1 {
+        padding: 40px 80px;
+        
+      }
+
+    #product1{
+        text-align: center;
+       
+        
+
+    }
+    #product1 .pro-container{
+        
+        display: flex !important; 
+        justify-content: space-between;
+        padding-top: 10px;
+        flex-wrap: wrap;
+     }
+
+    #product1 .pro{
+        width: 23%;
+        min-width: 250px;
+        
+        padding: 10px 12px;
+        border: 1px solid #cce7d0;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+        margin: 15px 0;
+        transition: 0.2s ease;
+        position: relative;
+    }
+    #product1 .pro:hover{
+        box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+        border-radius: 5%;
+    }
+    #product1 .pro img{
+        width: 100%;
+        border-radius: 20px;
+        object-fit: cover;
+        height: 100%;
+       
+    }
+    #product1 .pro .des{
+        text-align: start;
+        padding: 10px 0;
+
+    }
+    #product1 .pro .des span{
+        color: #606063;
+        font-size:12px;
+    }
+    #product1 .pro .des h5{
+        padding-top: 7px;
+        color-scheme: #1a1a1a;
+        font-size: 14px;
+    }
+    /* #product1 .pro .des i{
+        font-size: 12px;
+        color: rgb(243, 181, 25);
+    } */
+    .star{
+        font-size: 12px;
+        color: rgb(243, 181, 25);
+    }
+    #product1 .pro .des h4{
+        padding-top: 7px;
+        font-size: 14px;
+        font-weight: 700;
+        /* color: #267e3e; */
+        color: #dc3545;
+    }
+    #product1 .pro .cart{
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 50px;
+        background-color: #e8f6ea;
+        font-weight: 500;
+        /* color: #088178; */
+        color: #267e3e ;
+        border: 1px solid #cce7d0;
+        position: absolute;
+        bottom: 20px;
+        right: 10px;
+    }
+
+    .normal{
+        background: #088178;
+        color: #fff;
+    }
+    .order{
+        /* background-color: #ff7e8b; */
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+    .direcion{
+        text-decoration:none;
+        border:1px solid rgb(105, 105, 105);
+        border-radius:5px;
+        color:rgb(105, 105, 105);
+        width:500px ;
+    }

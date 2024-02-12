@@ -214,7 +214,7 @@ const RestaurantForm = () => {
         </div>
         
 
-        {formData.fooditems.map((display, index) => (
+        {/* {formData.fooditems.map((display, index) => (
           <div key={index}>
             <Form.Group className="mb-3">
               <Form.Label className="add-form-title">Food items</Form.Label>
@@ -270,7 +270,7 @@ const RestaurantForm = () => {
           <Button type="button" onClick={handleAddMenu}>
             Add Menu Item
           </Button>
-        </div>
+        </div> */}
         <div className="form-submit">
           <Button type="submit">Submit</Button>
         </div>

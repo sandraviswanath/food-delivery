@@ -38,11 +38,11 @@ const settings = {
         <div className='collection-title'>Collections</div>
         <div className='collection-subtitle-row'>
          <div className='collection-subtitle-text'>
-           Explore curated lists of top restaurants, cafes, pubs, and bars in Kochi, based on trends
+           {/* Explore curated lists of top restaurants, cafes, pubs, and bars in Kochi, based on trends */}
          </div>
         
 <div className='collection-location'>
-<div>all collections in cochi</div>
+{/* <div>all collections in cochi</div> */}
 <FaCaretRight className='absolute-center'/>
 </div>
       </div>

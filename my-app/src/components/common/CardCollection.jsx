@@ -37,7 +37,7 @@ function CardCollection({display}) {
 {/* <h2>featured products</h2>
 <p>Summer Collection New Modern Design</p> */}
 <div className=" pro-container" >
-   <Link to={`/detailed/${display.title}`} style={{textDecoration:'none'}}>
+   <Link to={`/detailed/${display.email}`} style={{textDecoration:'none'}}>
     <div className="pro"style={{height:'310px'}}>
         <img src={display.cover} alt={display.title} style={{height:'150px',width:'220px'}}/>
         <div className='res-row'>
