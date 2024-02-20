@@ -153,7 +153,7 @@ const RestaurantForm = () => {
           <Form.Label className="add-form-title">Restaurant owner details</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Restaurant owner full name"
+            placeholder="Restaurant owner full name(same name as you logined in)"
             name="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -163,7 +163,7 @@ const RestaurantForm = () => {
         <Form.Group className="mb-3">
           <Form.Control
             type="text"
-            placeholder="Restaurant owner email"
+            placeholder="Restaurant owner email(same email as you logined in)"
             name="email"
             value={formData.email}
             onChange={(e) =>

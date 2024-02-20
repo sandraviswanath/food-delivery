@@ -3,115 +3,170 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Button, Table } from 'react-bootstrap';
+import { IoMdArrowDropdown, IoMdArrowDropup, IoMdClose } from 'react-icons/io';
 
 const CartPage = () => {
   const [first, setfirst] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [error, setError] = useState(null);
-  const [cartItems, setCartItems] = useState([]);
+  const [second, setsecond] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  // const [cart, setCart] = useState([])
+  // const [total, settotal] = useState(0)
+  // const [drop, setdrop] = useState('');
+  // const [search, setsearch] = useState('')
+  // const [wish, setwish] = useState([])
+  const {id,mail}=useParams();
+
 
   useEffect(()=>{
-    const handleitems =async()=>{
+    const fooditems =async()=>{
+     
      try{
-       const response = await axios.get('http://localhost:5000/getfooditems')
-                setfirst(response.data)
-    //  console.log(first);
+       const foodresponse = await axios.get('http://localhost:5000/getfooditems')
+               
+     setsecond(foodresponse.data)
+    //  console.log(second);
      }
-     catch{ 
+     catch (error){
+      console.error('Error fetching food items:', error)
+       
      }
+   
    };
-   handleitems();
+   fooditems();
+  },[]);
+
+
+
+
+useEffect(()=>{
+  const fooditem =async()=>{
+   
+   try{
+     const foodresponse = await axios.get('http://localhost:5000/getcart')
+             
+   setfirst(foodresponse.data)
+   console.log(first);
+   }
+   catch{
+     
+   }
+ 
+ };
+ fooditem();
 },[]);
  
-const {_id}= useParams();
-const newid= parseInt(_id, 10);
-const details = first.find((item)=> item._id===newid);
-console.log(details);
+const newname=mail;
+
+console.log(newname);
+// const newid= id;
+// console.log(newid);
+// const prodetails=first.filter((item)=>item.email===newname)
+//     console.log(prodetails)
 
 
+const filteredFoodItem=first.filter(item =>item.email===mail && item.first && item.first.some(menu => menu && menu._id === id))
 
-  const calculateTotalPrice = (items) => {
-    const total = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    setTotalPrice(total);
-
-  };
-
-  // const handleQuantityChange = async (itemId, newQuantity) => {
-  //   // Validate newQuantity
-  //   if (!Number.isInteger(parseInt(newQuantity)) || parseInt(newQuantity) <= 0) {
-  //     setError('Quantity must be a positive integer.');
-  //     return;
-  //   }
-  //   try {
-  //     await axios.patch(`http://localhost:5000/updatecart/${itemId}`, { quantity: newQuantity });
-  //     fetchCartItems(); // Refresh cart items after update
-  //   } catch (error) {
-  //     console.error('Error updating quantity:', error);
-  //     setError('Error updating quantity. Please try again later.');
-  //   }
-  // };
-  const handleQuantityChange = async (itemId, newQuantity) => {
-    // Validate newQuantity
-    if (!Number.isInteger(parseInt(newQuantity)) || parseInt(newQuantity) <= 0) {
-      setError('Quantity must be a positive integer.');
-      return;
-    }
-    try {
-      // Update the quantity of the item in the cartItems state
-      const updatedCartItems = cartItems.map(item => {
-        if (item._id === itemId) {
-          return { ...item, quantity: parseInt(newQuantity) };
-        }
-        return item;
-      });
-      setCartItems(updatedCartItems);
-      
-      // Call the calculateTotalPrice function to recalculate the total price
-      calculateTotalPrice(updatedCartItems);
-      
-      // Send request to update quantity in the backend
-      await axios.patch(`http://localhost:5000/updatecart/${itemId}`, { quantity: newQuantity });
-    } catch (error) {
-      console.error('Error updating quantity:', error);
-      setError('Error updating quantity. Please try again later.');
-    }
-  };
-  
-
-  // const handleRemoveItem = async (itemId) => {
-  //   try {
-  //     await axios.delete(`http://localhost:5000/deletecart/${itemId}`);
-  //     fetchCartItems(); // Refresh cart items after deletion
-  //   } catch (error) {
-  //     console.error('Error removing item:', error);
-  //     setError('Error removing item. Please try again later.');
-  //   }
-  // };
-
-
- 
 
 
   return (
     <div>
-    <h1> Cart</h1>
+    <h3 className="head">Your Cart</h3>
    
     <div>
-      {details && (
-        <div key={details._id}>
-          <p>{details.foodname} - ${details.price}</p>
-          <input
-            type="number"
-            value={details.quantity}
-            onChange={(e) => handleQuantityChange(details._id, e.target.value)}
-          />
-          <button>Remove</button>
-          <h1>{details.price}</h1>
-        </div>
-      )}
-    </div>
-    <h2>Total Price: ${totalPrice}</h2>
+    
+{/* {prodetails.length > 0 && prodetails.map((data) => (
+  <div key={data?._id} style={{ display: 'flex', flexWrap: 'wrap' }}>
+    {data.fooditems && data.fooditems.map((menu) => {
+      if (menu && menu._id === newid) { // Add null check for menu
+        return (
+          <section id="product1" class="section-p1" style={{ width: '23%', marginTop: '-100px' }} key={menu._id}>
+            <div className="pro-container" style={{ display: 'flex' }}>
+              <div className="pro" style={{ height: '310px' }}>
+                {menu.foodimage && <img src={menu.foodimage} alt={menu.foodname} style={{ height: '150px', width: '220px' }} />}
+                <div className='res-row'>
+                  <div className='res-name'>{menu.foodname}</div>
+                </div>
+                <div className="des">
+                  <span></span>
+                  <h4>{menu.price}</h4>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+        );
+      }
+      return null; // Return null if menu._id !== newid
+    })}
   </div>
+))}  */}
+
+ {/* {filteredFoodItem.length > 0 && filteredFoodItem.map((data) => (
+        <div key={data?._id} style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {data.fooditems.map((menu) => {
+          
+            if (menu && menu._id === id) {
+              return (
+                <section id="product1" className="section-p1" style={{ width: '23%', marginTop: '-100px' }} key={menu._id}>
+                  <div className="pro-container" style={{ display: 'flex' }}>
+                    <div className="pro" style={{ height: '310px' }}>
+                      {menu.foodimage && <img src={menu.foodimage} alt={menu.foodname} style={{ height: '150px', width: '220px' }} />}
+                      <div className='res-row'>
+                        <div className='res-name'>{menu.foodname}</div>
+                      </div>
+                      <div className="des">
+                        <span></span>
+                        <h4>{menu.price}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              );
+            }
+            return null;
+          })}
+        </div>
+      ))}  */}
+
+
+
+
+
+{filteredFoodItem.length > 0 && filteredFoodItem.map((data) => (
+    <div key={data._id} style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {data.first && data.first.map((menu) => {
+            return (
+                <section id="product1" className="section-p1" style={{ width: '23%', marginTop: '-100px' }} key={menu._id}>
+                    <div className="pro-container" style={{ display: 'flex' }}>
+                        <div className="pro" style={{ height: '310px' }}>
+                            {menu.foodimage && <img src={menu.foodimage} alt={menu.foodname} style={{ height: '150px', width: '220px' }} />}
+                            <div className='res-row'>
+                                <div className='res-name'>{menu.foodname}</div>
+                            </div>
+                            <div className="des">
+                                <span></span>
+                                <h4>{menu.price}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        })}
+    </div>
+))}
+
+
+<input type="number" name="quantity" min="1" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+
+
+
+    </div>
+    {/* <h2>Total Price: ${totalPrice}</h2> */}
+  </div>
+
   );
 };
 

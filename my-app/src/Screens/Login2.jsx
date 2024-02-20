@@ -35,8 +35,8 @@ function Login2() {
     catch{
       
     }
-    alert(` ${email} login successed..!!!`)
-    navigate(`/home2/${storename}/${storeemail}`)
+    // alert(` ${email} login successed..!!!`)
+    navigate(`/home2/${storeemail}`)
 
   }
   const history=useNavigate()
@@ -74,10 +74,7 @@ previous(-1)
             
             </div>
             </div> 
-            <div className="m-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">Name</label>
-            <input type="text" className="form-control" value={name} onChange={handleName} name='name' />
-          </div>
+           
           <div className="m-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
             <input type="email" className="form-control" name='email' value={email} onChange={handleEmail} aria-describedby="emailHelp" />
@@ -91,7 +88,7 @@ previous(-1)
           <button type="submit" className="m-3 mx-1 btn btn-danger" style={{paddingLeft:'50px',paddingRight:'50px'}}>Login</button>
           </div>
           <div className="m-3">
-          <a style={{}}>New to Zomato?<span style={{color: 'red',textDecoration:'none'}}><Link to="/signup"style={{color: 'red',textDecoration:'none'}}>Create account</Link></span></a>
+          <a style={{}}>New to here?<span style={{color: 'red',textDecoration:'none'}}><Link to="/signup"style={{color: 'red',textDecoration:'none'}}>Create account</Link></span></a>
           </div>
           
         </form>

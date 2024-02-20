@@ -6,6 +6,7 @@ import { BsFillCartFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
 function CardCollection({display}) {
+  
  
   return (
     // <div>

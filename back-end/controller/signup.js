@@ -18,4 +18,10 @@ if(existinguser){
 })
 res.json(userdetails)
 }
-module.exports=signup
+
+
+const getsignup=async(req,res)=>{
+    const signupdetails = await fooduser.find()
+    res.json(signupdetails)
+}
+module.exports={signup,getsignup}

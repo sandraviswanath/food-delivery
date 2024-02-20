@@ -1,15 +1,16 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
-import './DetailedCard.css'
+// import './DetailedCard.css'
 import { CiStar } from 'react-icons/ci'
 import { BsFillCartFill } from 'react-icons/bs'
 import { Col, Container, Row } from 'react-bootstrap'
 // import '../CardCollection.css'
 
-function DetailedCard() {
+function HomeDetailCard() {
  const Navigate=useNavigate()
     const {email}=useParams()
+    const {_id}=useParams()
     const [first, setfirst] = useState([]);
     const [second, setsecond] = useState([]);
     const [cart, setCart] = useState([])
@@ -73,10 +74,13 @@ useEffect(()=>{
 
 
     const newname=email;
+   
     // console.log(newname)
     const namedetails=first.filter((item)=>item.email===newname)
+   
     // console.log(namedetails)
     const prodetails=second.filter((item)=>item.email===newname)
+    
     // console.log(prodetails)
 
    
@@ -216,7 +220,7 @@ return (
                 <h4>{menu.price}</h4>
               </div>
               {/* {!addedToCart && <i class="fal fa-shopping-cart cart" onClick={() => addToCart(menu)}></i>} */}
-              {!addedToCart && <Link to={`/cart/${menu._id}/${details.email}`}><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>}
+              {!addedToCart && <Link to='/signup'><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>}
               {addedToCart && <p>Item added to cart!</p>}
               <button class="order">Order now!!</button>
             </div>
@@ -273,4 +277,4 @@ return (
 
 }
 
-export default DetailedCard
+export default HomeDetailCard

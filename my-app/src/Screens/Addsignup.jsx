@@ -29,7 +29,7 @@ function Addsignup() {
       event.preventDefault()
       const display =await axios.post('http://localhost:5000/signup',{name,email,password})
       console.log(display.data)
-      navigate('/addform')
+      navigate('/restaurantform')
   
     }
 

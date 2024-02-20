@@ -43,7 +43,7 @@ function Signup() {
           
         }
         
-        alert(` ${email} account created..!!!`)
+        // alert(` ${email} account created..!!!`)
         navigate(`/home2/${storename}/${storeemail}`)
   
     }

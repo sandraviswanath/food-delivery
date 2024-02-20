@@ -25,6 +25,12 @@ import Mainpage from '../components/cart/Mainpage'
 import Crudpage from '../components/cart/Crudpage'
 import Order from '../components/order/Order'
 import Restaurantdetails from '../Screens/Restaurantdetails'
+import Addcart from '../components/cart/Addcart'
+import Cart2details from '../components/cart/Cart2details'
+import Cart2 from '../components/cart/Cart2'
+import Chat from '../chat/Chat'
+import HomeCollections from '../components/Card/HomeCollections'
+import HomeDetailCard from '../components/Card/HomeDetailCard'
 
 
 
@@ -34,25 +40,31 @@ function Router() {
     <div>
       <BrowserRouter>
       <Routes>
-        <Route path='/' element={<><Banner/></>}></Route>
+        <Route path='/' element={<><Banner/><HomeCollections/></>}></Route>
+        <Route path='homedetails/:email' element={<><HomeDetailCard/></>}></Route>
         <Route path='/home' element={<><Home/></>}></Route>
-        <Route path='/home2/:storename/:storeemail' element={<><NavBar2/>,<Home2/></>}></Route>
+        <Route path='/home2/:storeemail' element={<><NavBar2/>,<Home2/></>}></Route>
         <Route path='/login' element={<><Login2/></>}></Route>
         <Route path='/signup' element={<><Signup/></>}></Route>
         <Route path='/addrestaurant/:email' element={<><AddRestaurant/></>}></Route>
         <Route path='/addsignup' element={<><Addsignup/></>}></Route>
         <Route path='/addlogin' element={<><Addlogin/></>}></Route>
-        <Route path='/cart/:_id' element={<><CartPage/></>}></Route>
+        <Route path='/cart/:id/:mail' element={<><CartPage/></>}></Route>
         <Route path='/crud' element={<><Crudadd/></>}></Route>
         <Route path='/crudpage' element={<><Crudpage/></>}></Route>
         <Route path='/addform' element={<><AddForm/></>}></Route>
-        <Route path='/restuarantform' element={<><RestaurantForm/></>}></Route>
+        <Route path='/restaurantform' element={<><RestaurantForm/></>}></Route>
         <Route path='/restaurantdetails/:email' element={<><Restaurantdetails/></>}></Route>
         
         <Route path='/detailed/:email' element={<><DetailedCard/></>}></Route>
         <Route path='place' element={<><GetPlace/></>}></Route>
         
         <Route path='order' element={<><Order/></>}></Route>
+        <Route path='addcart' element={<><Addcart/></>}></Route>
+        <Route path='cart2details' element={<><Cart2details/></>}></Route>
+        <Route path='cart2' element={<><Cart2/></>}></Route>
+        <Route path='chat' element={<><Chat/></>}></Route>
+
 
 
 

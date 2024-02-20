@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Fredoka:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 .banner-image{
-    background-image: url('banner.avif');
-    width: 100%;
+    /* background-image: url('banner.avif'); */
+   
+    /* width: 100%;
     height: 100vh;
+    object-fit: cover;
+    transform: none; */
+    background-image: url('addbanner.webp');
+    background-size: cover;
+    width: 100%;
+    height: 92vh;
     object-fit: cover;
     transform: none;
     
@@ -22,16 +32,36 @@
     text-transform: none;
 }
 .banner-title{
-        width: 60rem;
+        /* width: 60rem;
         color: #f8f8f8;
         margin: auto;
         text-align: center;
         font-size: 3.6rem;
         font-weight: 600;
       display: flex;
-      justify-content: center;
-      padding-top: 10%;
+      justify-content: center; */
+      padding-top: 15%;
       padding-bottom: 10%;
+}
+
+/* search container */
+
+.header-location-search-container-banner{
+    height:54px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    width: 70%;
+}
+
+.food-title{
+    
+    /* color: 	#FF7F50; */
+    color: #dc3545;
+    font-size: 28px;
+    font-weight: 500;
+    font-family: "Fredoka", sans-serif;
+   
 }
 
 

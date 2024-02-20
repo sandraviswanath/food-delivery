@@ -72,7 +72,7 @@ return (
 <Form.Group className="mb-3">
               <Form.Control
                 type="text"
-                placeholder=" name"
+                placeholder=" name(same name as you logined in)"
                 name="name"
                 value={formData.name}
                 onChange={(e) =>
@@ -83,7 +83,7 @@ return (
             <Form.Group className="mb-3">
               <Form.Control
                 type="text"
-                placeholder=" email"
+                placeholder=" email(same email as you logined in)"
                 name="email"
                 value={formData.email}
                 onChange={(e) =>

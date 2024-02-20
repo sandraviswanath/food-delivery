@@ -11,8 +11,8 @@
 }
 .openbut{
     background-color: #dc3545;
-   margin-top: 25%;
-   width: 20%;
+   margin-top: 10px;
+   /* width: 20%; */
    height: 12%;
    font-size: 19px;
    font-family:"Lucida Console", "Courier New", monospace;
