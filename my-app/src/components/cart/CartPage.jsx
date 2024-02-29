@@ -5,6 +5,9 @@ import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button, Table } from 'react-bootstrap';
 import { IoMdArrowDropdown, IoMdArrowDropup, IoMdClose } from 'react-icons/io';
+import { userData } from '../../App';
+import CartContext from '../../Context/CartContext';
+
 
 const CartPage = () => {
   const [first, setfirst] = useState([]);
@@ -16,7 +19,8 @@ const CartPage = () => {
   // const [search, setsearch] = useState('')
   // const [wish, setwish] = useState([])
   const {id,mail}=useParams();
-
+const {user}=useContext(userData);
+const{cart}=useContext(CartContext);
 
   useEffect(()=>{
     const fooditems =async()=>{
@@ -43,7 +47,7 @@ useEffect(()=>{
   const fooditem =async()=>{
    
    try{
-     const foodresponse = await axios.get('http://localhost:5000/getcart')
+     const foodresponse = await axios.get(`http://localhost:5000/getcart/${user._id}`)
              
    setfirst(foodresponse.data)
    console.log(first);
@@ -54,7 +58,7 @@ useEffect(()=>{
  
  };
  fooditem();
-},[]);
+},[user._id]);
  
 const newname=mail;
 

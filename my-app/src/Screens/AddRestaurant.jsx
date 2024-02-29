@@ -21,10 +21,10 @@ function AddRestaurant() {
       </Navbar>
       <div className='secion-2'>
         <div className='btn-div1'>
-            <Button className='butn'><Link to="/Addsignup" style={{textDecoration:'none',backgroundColor:'black'}}className='banner-nav-text'>Register your restaurant</Link></Button>
+            <Button className='butn'><Link to="/Addsignup" style={{textDecoration:'none',backgroundColor:'black'}}className='nav-text'>Register your restaurant</Link></Button>
         </div>
         <div className='btn-div2'>
-            <Button className='butn'><Link to={`/restaurantdetails/${email}`} style={{textDecoration:'none',backgroundColor:'black'}}className='banner-nav-text'>view your existing restaurants</Link> </Button>
+            <Button className='butn'><Link to={`/restaurantdetails/${email}`} style={{textDecoration:'none',backgroundColor:'black'}}className='nav-text'>view your existing restaurants</Link> </Button>
         </div>
         </div>
     </div>

@@ -20,7 +20,7 @@ function Banner() {
           <Nav className="ms-auto banner-nav">
           
             <Nav.Link className='banner-nav-text' href="#home"><Link to={`/addrestaurant/${storeemail}`} style={{textDecoration:'none'}} className='banner-nav-text'> Add Restaurants</Link></Nav.Link>
-            <Nav.Link className='banner-nav-text' href="#features"><Link to="/login"className='banner-nav-text'> Login</Link></Nav.Link>
+            <Nav.Link className='banner-nav-text' href="#features"><Link to="/log"className='banner-nav-text'> Login</Link></Nav.Link>
             <Nav.Link className='banner-nav-text' href="#pricing"><Link to="/signup"className='banner-nav-text'>Sign Up</Link></Nav.Link>
           </Nav>
         </Container>
@@ -29,9 +29,9 @@ function Banner() {
         
         
        
-        <div className='header max-width'>
+        <div className='header-banner max-width'>
     <div className='header-right'>
-       <div className='header-location-search-container-banner shadow-lg p-3 mb-5 bg-white rounded'>
+       <div className='header-location-search-container-banner shadow-lg p-3 mb-5  rounded'>
              <div className='location-wrapper'>
                 <div className='location-icon-name'>
                 <IoLocationOutline className='absolute-center location-icon'/>
@@ -46,10 +46,10 @@ function Banner() {
                 </div>
                 <FaCaretDown className='absolute-center'/>
              </div>
-             <div className='location-search-seperator'></div>
-             <div className='header-searchbar'>
+             <div className='location-search-seperator-banner'></div>
+             <div className='header-searchbar-banner'>
              <IoIosSearch className='absolute-center search-icon'/>
-             <input placeholder='Search for restaurant or a dish' className='search-input' />
+             <input placeholder='Search for restaurant or a dish' className='search-input-banner' />
              </div>
          </div>
     </div>

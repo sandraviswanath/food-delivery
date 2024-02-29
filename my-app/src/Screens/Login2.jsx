@@ -1,15 +1,15 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Container, Modal, Nav, Navbar } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoMdClose } from "react-icons/io";
 import './Login2.css'
-
+import {userData} from '../App'
 
 function Login2() {
   const navigate=useNavigate()
     const [show, setShow] = useState(false);
-
+const {setUser}=useContext(userData);
     const handleClose = () => setShow(false);
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
@@ -29,8 +29,9 @@ function Login2() {
       const storeemail=email;
     event.preventDefault()
     try{
-    const display =await axios.post('http://localhost:5000/login',{email,password,name})
-    console.log(display.data)
+    const {data} =await axios.post('http://localhost:5000/login',{email,password,name})
+    console.log(data.user)
+    setUser(data.user)
     }
     catch{
       
@@ -51,7 +52,7 @@ previous(-1)
   return (
     <div>
     
-        <div style={{backgroundImage: 'url("https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png")', height: '100vh', backgroundSize: 'cover' }}>
+        <div style={{backgroundImage: 'url("https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png")', height: '100vh', backgroundSize: 'cover'}}>
       <div>
       <Navbar>
         <Container>
@@ -64,25 +65,27 @@ previous(-1)
         </Container>
       </Navbar>
       </div>
-      <div className='container'>
-        <form className='w-50 m-auto mt-5 border bg-white border-success rounded' onSubmit={handleSubmit}>
+      <center>
+      <div className='con'>
+        <form className='w-50 m-auto mt-5 border   rounded login-form' onSubmit={handleSubmit}>
        
         <div className="m-3 login-close"style={{display:'flex'}}>
-            <div style={{textAlign:'center',fontSize:'30px'}}>Login</div>
+            <div style={{textAlign:'center',fontSize:'30px'}} className='login-form-title'>Login</div>
             <div className='cur-po closeicon'>
             <IoMdClose onClick={back}/>
             
             </div>
             </div> 
            
-          <div className="m-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-            <input type="email" className="form-control" name='email' value={email} onChange={handleEmail} aria-describedby="emailHelp" />
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone.</div>
+          <div className="m-3 wrap-input">
+            {/* <label htmlFor="exampleInputEmail1" className="form-label">Email address</label> */}
+            <input type="email" className="place" name='email' placeholder="Email" value={email} onChange={handleEmail} aria-describedby="emailHelp" style={{color:'white'}}/>
+            {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone.</div> */}
+            {/* <span class="focus-input100"></span> */}
           </div>
-          <div className="m-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-            <input type="password" className="form-control" value={password} onChange={handlePassword} name='password' />
+          <div className="m-3 wrap-input">
+            {/* <label htmlFor="exampleInputPassword1" className="form-label">Password</label> */}
+            <input type="password" className="place" value={password} placeholder="Password" onChange={handlePassword} name='password' style={{color:'white'}}/>
           </div>
           <div className="m-3">
           <button type="submit" className="m-3 mx-1 btn btn-danger" style={{paddingLeft:'50px',paddingRight:'50px'}}>Login</button>
@@ -94,7 +97,7 @@ previous(-1)
         </form>
       
       </div>
-      
+      </center>
     </div>
     </div>
   )

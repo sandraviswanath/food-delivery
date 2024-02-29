@@ -58,3 +58,15 @@
    
    
 }
+.nav-text{
+    color: #f8f8f8;
+    /* color: black; */
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+.banner-nav-text :hover{
+    color: #f8f8f8;
+    text-transform: none;
+}

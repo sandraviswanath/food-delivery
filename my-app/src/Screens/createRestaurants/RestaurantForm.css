@@ -1,0 +1,36 @@
+
+.head-title{
+    color:#dc3545 ;
+    /* color: #f8f8f8; */
+   font-size: 28px;
+   margin-top: 20px;
+}
+.add-form{
+        /* width: 65rem; */
+        width: 800px;
+       margin: 20px;
+       padding: 20px;
+     
+      background-color: #f8f8f8;
+}
+.add-form-title{
+    font-size: 24px;
+}
+/* .add-menu-item{
+
+} */
+.form-submit{
+    /* float: right; */
+   
+}
+.form-submit-butn{
+    background-color: #dc3545;
+    border: none;
+}
+.reg-frm-cntrlr{
+    border-radius: 20px;
+    background-color: #666666;
+}
+#formFile{
+    border-radius: 25px;
+}

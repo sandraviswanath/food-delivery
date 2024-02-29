@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import SearchContext from './Context/SearchContext';
+import CartContext from './Context/CartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <SearchContext>
+      <CartContext> */}
     <App />
+    {/* </CartContext>
+    </SearchContext> */}
   </React.StrictMode>
 );
 

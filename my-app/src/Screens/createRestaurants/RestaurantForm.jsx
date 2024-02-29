@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./RestaurantForm.css";
+import { Link } from "react-router-dom";
 
 const RestaurantForm = () => {
   const [formData, setFormData] = useState({
@@ -58,6 +59,7 @@ const RestaurantForm = () => {
         phone: "",
         name: "",
         email: "",
+        password: "",
         time: "",
         title: "",
         cover: "",
@@ -75,12 +77,16 @@ const RestaurantForm = () => {
   };
 
   return (
+    <div>
+      
     <div className="max-width">
+    <h1 className="head-title">Create Restaurants</h1>
       <Form onSubmit={handleSubmit} className="add-form ">
         <Form.Group className="mb-3">
           <Form.Label className="add-form-title">Restaurant details</Form.Label>
           <p>Name, address and location</p>
           <Form.Control
+          className="reg-frm-cntrlr"
             type="text"
             placeholder="Restaurant name"
             name="title"
@@ -93,6 +99,7 @@ const RestaurantForm = () => {
 
         <Form.Group className="mb-3">
           <Form.Control
+          className="reg-frm-cntrlr"
             type="text"
             placeholder="subtitle"
             name="subtitle"
@@ -105,6 +112,7 @@ const RestaurantForm = () => {
 
         <Form.Group className="mb-3">
           <Form.Control
+          className="reg-frm-cntrlr"
             type="text"
             placeholder="place"
             name="place"
@@ -116,6 +124,7 @@ const RestaurantForm = () => {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Control
+          className="reg-frm-cntrlr"
             type="text"
             placeholder="location"
             name="location"
@@ -127,6 +136,7 @@ const RestaurantForm = () => {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Control
+          className="reg-frm-cntrlr"
             type="text"
             placeholder="Restaurant address"
             name="address"
@@ -139,6 +149,7 @@ const RestaurantForm = () => {
 
         <Form.Group className="mb-3">
           <Form.Control
+          className="reg-frm-cntrlr"
             type="text"
             placeholder="phone number"
             name="phone"
@@ -152,6 +163,7 @@ const RestaurantForm = () => {
         <Form.Group className="mb-3">
           <Form.Label className="add-form-title">Restaurant owner details</Form.Label>
           <Form.Control
+          className="reg-frm-cntrlr"
             type="text"
             placeholder="Restaurant owner full name(same name as you logined in)"
             name="name"
@@ -162,6 +174,7 @@ const RestaurantForm = () => {
 
         <Form.Group className="mb-3">
           <Form.Control
+          className="reg-frm-cntrlr"
             type="text"
             placeholder="Restaurant owner email(same email as you logined in)"
             name="email"
@@ -172,9 +185,13 @@ const RestaurantForm = () => {
           />
         </Form.Group>
 
+
+<div style={{display:'flex'}}>
+  <div>
         <Form.Group className="mb-3">
-          <Form.Label className="add-form-title">Restaurant rating& timings</Form.Label>
-          <Form.Control
+          <Form.Label className="add-form-title">Restaurant timings</Form.Label>
+          <Form.Control style={{width:'300px'}}
+          className="reg-frm-cntrlr"
             type="text"
             placeholder="opening hours"
             name="time"
@@ -182,8 +199,8 @@ const RestaurantForm = () => {
             onChange={(e) => setFormData({ ...formData, time: e.target.value })}
           />
         </Form.Group>
-
-        <Form.Group className="mb-3">
+        </div>
+        {/* <Form.Group className="mb-3">
           <Form.Control
             type="text"
             placeholder="rating"
@@ -193,8 +210,8 @@ const RestaurantForm = () => {
               setFormData({ ...formData, rating: e.target.value })
             }
           />
-        </Form.Group>
-        <div className="mb-3 w-96">
+        </Form.Group> */}
+        <div className="mb-3 w-96" style={{paddingTop:'50px',marginLeft:'20px'}}>
           <label
             htmlFor="formFile"
             className="mb-2 inline-block text-neutral-700 dark:text-neutral-200"
@@ -212,69 +229,13 @@ const RestaurantForm = () => {
             }
           />
         </div>
-        
+        </div>
 
-        {/* {formData.fooditems.map((display, index) => (
-          <div key={index}>
-            <Form.Group className="mb-3">
-              <Form.Label className="add-form-title">Food items</Form.Label>
-
-              <Form.Control
-                type="text"
-                placeholder="food name"
-                name="foodname"
-                value={display.foodname}
-                onChange={(e) => handleInputChange(e, index)}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Control
-                type="text"
-                placeholder=" price"
-                name="price"
-                value={display.price}
-                onChange={(e) => handleInputChange(e, index)}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Control
-                type="text"
-                placeholder="food rating"
-                name="itemrating"
-                value={display.itemrating}
-                onChange={(e) => handleInputChange(e, index)}
-              />
-            </Form.Group>
-
-            <div className="mb-3 w-96">
-              <label
-                htmlFor="formFile"
-                className="mb-2 inline-block text-neutral-700 dark:text-neutral-200"
-              >
-                food images
-              </label>
-              <input
-                className="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
-                type="text"
-                id="formFile"
-                name="foodimage"
-                value={display.foodimage}
-                onChange={(e) => handleInputChange(e, index)}
-              />
-            </div>
-          </div>
-        ))}
-        
-        <div className="add-menu-item">
-          <Button type="button" onClick={handleAddMenu}>
-            Add Menu Item
-          </Button>
-        </div> */}
         <div className="form-submit">
-          <Button type="submit">Submit</Button>
+          <Button type="submit"style={{backgroundColor:'#dc3545'}} className="form-submit-butn"><Link to="/form1"style={{color: 'red',textDecoration:'none'}}>submit</Link></Button>
         </div>
       </Form>
+    </div>
     </div>
   );
 };

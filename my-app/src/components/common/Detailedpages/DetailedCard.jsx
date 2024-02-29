@@ -1,18 +1,24 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import './DetailedCard.css'
 import { CiStar } from 'react-icons/ci'
 import { BsFillCartFill } from 'react-icons/bs'
 import { Col, Container, Row } from 'react-bootstrap'
+import { userData } from '../../../App'
+import CartContext from '../../../Context/CartContext'
+
 // import '../CardCollection.css'
 
 function DetailedCard() {
+  const {user}=useContext(userData);
+const{cart,setCart}=useContext(CartContext);
  const Navigate=useNavigate()
     const {email}=useParams()
     const [first, setfirst] = useState([]);
     const [second, setsecond] = useState([]);
-    const [cart, setCart] = useState([])
+    // const [cart, setCart] = useState([])
+    // const [cart, setCart] = useCart()
   // const [total, settotal] = useState(0)
     const [order, setOrder] = useState([]);
     const [addedToCart, setAddedToCart] = useState(false);
@@ -173,6 +179,7 @@ return (
               <h6 style={{color:'rgb(105, 105, 105)'}}>{details.place}</h6>
               <p style={{color:'rgb(105, 105, 105)'}}>{details.time}</p>
               <a href={details.location} className='direcion'>Directions</a>
+              <a href={details.phone} className='phone'>Call</a>
               <h2>{details.price}</h2>
               </div>
               )}
@@ -213,10 +220,11 @@ return (
               </div>
               <div className="des">
                 <span></span>
-                <h4>{menu.price}</h4>
+                <h4>₹{menu.price} for one</h4>
               </div>
               {/* {!addedToCart && <i class="fal fa-shopping-cart cart" onClick={() => addToCart(menu)}></i>} */}
-              {!addedToCart && <Link to={`/cart/${menu._id}/${details.email}`}><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>}
+              {/* {!addedToCart && <Link to={`/cart/${menu._id}/${details.email}`}><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>} */}
+              {!addedToCart && <button onClick={()=>setCart([...cart,menu])} class="normal">Add To Cart</button>}
               {addedToCart && <p>Item added to cart!</p>}
               <button class="order">Order now!!</button>
             </div>

@@ -9,8 +9,8 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 function HomeDetailCard() {
  const Navigate=useNavigate()
-    const {email}=useParams()
-    const {_id}=useParams()
+    // const {email}=useParams()
+    const {id}=useParams()
     const [first, setfirst] = useState([]);
     const [second, setsecond] = useState([]);
     const [cart, setCart] = useState([])
@@ -73,13 +73,13 @@ useEffect(()=>{
 
 
 
-    const newname=email;
+    const newid=id;
    
     // console.log(newname)
-    const namedetails=first.filter((item)=>item.email===newname)
+    const namedetails=first.filter((item)=>item._id===newid)
    
     // console.log(namedetails)
-    const prodetails=second.filter((item)=>item.email===newname)
+    const prodetails=second.filter((item)=>item._id===newid)
     
     // console.log(prodetails)
 
@@ -95,7 +95,7 @@ useEffect(()=>{
       try {
         const response = await axios.post('http://localhost:5000/createcart', {
           productId: menu._id, // Assuming menu._id is the productId
-          email: email, // Pass the email obtained from useParams
+          // email: email, // Pass the email obtained from useParams
         });
         console.log('Item added to cart:', response.data);
         setAddedToCart(true);
@@ -177,6 +177,7 @@ return (
               <h6 style={{color:'rgb(105, 105, 105)'}}>{details.place}</h6>
               <p style={{color:'rgb(105, 105, 105)'}}>{details.time}</p>
               <a href={details.location} className='direcion'>Directions</a>
+              <a href={details.phone} className='phone'>Call</a>
               <h2>{details.price}</h2>
               </div>
               )}

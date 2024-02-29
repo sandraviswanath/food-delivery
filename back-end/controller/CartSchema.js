@@ -35,25 +35,25 @@ const mongoose = require('mongoose');
 
 const cartItemSchema = new mongoose.Schema({
     productId: {
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: 'fooditem',
+       type: Array,
+    },
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'fooditem',
+      
        
+    },
+    products: {
+       type: Array
     },
     quantity: {
         type: Number,
         default: 1
     },
-    name:{
-        type:Array,
-    },
-    email:{
-        type:String,
-    },
+   
     price:{
         type:Number,
-    },
-    image:{
-        type:String,
     }
 });
 
