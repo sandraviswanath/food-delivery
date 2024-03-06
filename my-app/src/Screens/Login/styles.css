@@ -42,6 +42,7 @@ img {
 
 /*=============== LOGIN ===============*/
 .login {
+  
   position: relative;
   height: 100vh;
   display: grid;
@@ -57,14 +58,16 @@ img {
 }
 
 .login__form {
+  
   position: relative;
   margin-inline: 1.5rem;
   background-color: hsla(0, 0%, 100%, .01);
-  border: 2px solid hsla(0, 0%, 100%, .7);
+  border: 1px solid hsla(0, 0%, 100%, .7);
   padding: 2.5rem 1rem;
   color: var(--white-color);
   border-radius: 1rem;
   backdrop-filter: blur(16px);
+  
 }
 
 .login__title {
@@ -80,6 +83,7 @@ img {
 
 .login__inputs {
   row-gap: 1.25rem;
+ 
   margin-bottom: 1rem;
 }
 
@@ -87,7 +91,7 @@ img {
   grid-template-columns: 1fr max-content;
   column-gap: .75rem;
   align-items: center;
-  border: 2px solid hsla(0, 0%, 100%, .7);
+  border: 1px solid hsla(0, 0%, 100%, .7);
   padding-inline: 1.25rem;
   border-radius: 4rem;
 }

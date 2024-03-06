@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import add from './addbanner.webp'
+// import add from './addbanner.webp'
+import image from './img-12.avif'
 import './Login3.css'
 import './styles.css'
 import { userData } from '../../App';
@@ -68,7 +69,7 @@ function Signup2() {
   return (
     <div>
     <div className="login">
-     <img src={add} alt="image" className="login__bg"/>
+     <img src={image} alt="image" className="login__bg"/>
 
      <form action="" className="login__form" onSubmit={handleSubmit}>
         <h1 className="login__title">Sign Up</h1>

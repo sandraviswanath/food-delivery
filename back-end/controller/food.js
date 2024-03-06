@@ -81,16 +81,17 @@ const updatefood = async (req, res) => {
 };
 
 const deletefood = async (req, res) => {
+    const id = req.params.id;
     try {
-        const _id = req.params.id;
-        const deletedItem = await food.findByIdAndDelete(_id);
+        
+        const deletedItem = await food.findByIdAndDelete(id);
         if (!deletedItem) {
-            return res.status(404).send('Item not found');
+            return res.status(404).json({message:'Item not found'});
         }
-        res.status(200).send('Item removed');
+        res.json({message:'Item removed'});
     } catch (error) {
         console.error('Error removing item:', error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).json({message: error.message});
     }
 };
 

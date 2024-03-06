@@ -4,10 +4,12 @@ import { Button, Container, Modal, Nav, Navbar } from 'react-bootstrap';
 import Banner from '../Banner';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoMdClose } from "react-icons/io";
+
 // import './Login2.css'
 import './Login3.css'
 import './styles.css'
 import add from './addbanner.webp'
+import image from './img-12.avif'
 import { userData } from '../../App';
 
 function Addsignup() {
@@ -57,7 +59,7 @@ function Addsignup() {
    
     <div>
     <div className="login">
-     <img src={add} alt="image" className="login__bg"/>
+     <img src={image} alt="image" className="login__bg"/>
 
      <form action="" className="login__form" onSubmit={handleSubmit}>
         <h1 className="login__title">Sign Up</h1>
@@ -95,7 +97,7 @@ function Addsignup() {
         <button type="submit" class="login__button">Create</button>
 
         <div className="login__register">
-        Already have an account? <Link to="/signup"style={{color: 'red',textDecoration:'none'}}>Log in</Link>
+        Already have an account? <Link to="/addlogin"style={{color: 'red',textDecoration:'none'}}>Log in</Link>
         </div>
      </form>
   </div>

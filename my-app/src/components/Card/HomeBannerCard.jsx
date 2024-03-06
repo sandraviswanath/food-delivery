@@ -10,6 +10,7 @@ import axios from 'axios';
 function HomeBannerCard() {
   
   const [first, setFirst] = useState([])
+ 
 
   useEffect(() => {
       const handleItems = async () => {
@@ -23,6 +24,8 @@ function HomeBannerCard() {
   
       handleItems();
     }, []);
+
+   
   return (
     
     
@@ -61,8 +64,14 @@ function HomeBannerCard() {
 <div className="gallery" style={{marginTop:'2%',marginLeft:'2%',marginRight:'2%'}}>
 
  {first.map(display => (
+  
   <div>
+    
+    
+
    <Link to={`/homedetails/${display._id}`} style={{textDecoration:'none'}}>
+  
+
   <div key={display.id} className="image-item">
    
     <img src={display.cover} alt={display.title}/>
@@ -78,6 +87,7 @@ function HomeBannerCard() {
 
   </div>
   </Link>
+  
   </div>
 ))} 
 

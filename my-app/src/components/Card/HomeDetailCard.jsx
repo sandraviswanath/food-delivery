@@ -11,6 +11,7 @@ function HomeDetailCard() {
  const Navigate=useNavigate()
     // const {email}=useParams()
     const {id}=useParams()
+    const{ids}=useParams()
     const [first, setfirst] = useState([]);
     const [second, setsecond] = useState([]);
     const [cart, setCart] = useState([])

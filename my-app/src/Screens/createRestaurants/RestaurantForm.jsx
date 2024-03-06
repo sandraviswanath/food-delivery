@@ -80,7 +80,7 @@ const RestaurantForm = () => {
     <div>
       
     <div className="max-width">
-    <h1 className="head-title">Create Restaurants</h1>
+    <h1 className="head-title">Create Your Restaurants</h1>
       <Form onSubmit={handleSubmit} className="add-form ">
         <Form.Group className="mb-3">
           <Form.Label className="add-form-title">Restaurant details</Form.Label>
@@ -232,7 +232,7 @@ const RestaurantForm = () => {
         </div>
 
         <div className="form-submit">
-          <Button type="submit"style={{backgroundColor:'#dc3545'}} className="form-submit-butn"><Link to="/form1"style={{color: 'red',textDecoration:'none'}}>submit</Link></Button>
+          <Button type="submit"style={{backgroundColor:'#dc3545'}} className="form-submit-butn"><Link to=""style={{color: 'white',textDecoration:'none'}}>submit</Link></Button>
         </div>
       </Form>
     </div>

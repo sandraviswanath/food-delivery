@@ -25,11 +25,12 @@
 }
 .form-submit-butn{
     background-color: #dc3545;
+    color: #f8f8f8;
     border: none;
 }
 .reg-frm-cntrlr{
     border-radius: 20px;
-    background-color: #666666;
+    background-color: #bbb8b8;
 }
 #formFile{
     border-radius: 25px;

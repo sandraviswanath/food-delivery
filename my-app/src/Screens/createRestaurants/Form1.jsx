@@ -1,137 +1,176 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 
 function Form1() {
 
-    const [formData, setFormData] = useState({
-        address: "",
-        phone: "",
-        name: "",
-        email: "",
-        time: "",
-        title: "",
-        cover: "",
-        subtitle: "",
-        place: "",
-        location:"",
-        rating: "",
-        fooditems: [{ foodname: "", foodimage: "", price: "", itemrating: "" }],
+  const [formData, setFormData] = useState({
+    email: '',
+    name: '',
+    phone: '',
+    address: '',
+    time: '',
+    location: '',
+    title: '',
+    cover: '',
+    place: '',
+    rating: '',
+    subtitle: '',
+    foodname: '',
+    foodimage: '',
+    price: '',
+    itemrating: ''
+  });
+
+  const [foodList, setFoodList] = useState([]);
+
+  useEffect(() => {
+    loadFoodList();
+  }, []);
+
+  const loadFoodList = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/foodlist');
+      setFoodList(response.data);
+    } catch (error) {
+      console.error('Error fetching food list:', error);
+    }
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/food', formData);
+      // Optionally, you might want to reset the form after submission
+      setFormData({
+        email: '',
+        name: '',
+        phone: '',
+        address: '',
+        time: '',
+        location: '',
+        title: '',
+        cover: '',
+        place: '',
+        rating: '',
+        subtitle: '',
+        foodname: '',
+        foodimage: '',
+        price: '',
+        itemrating: ''
       });
-    
-      const handleInputChange = (e, index) => {
-        const { name, value } = e.target;
-        const updatedMenus = [...formData.fooditems];
-        updatedMenus[index][name] = value;
-        setFormData({ ...formData, fooditems: updatedMenus });
-      };
-    
-      const handleAddMenu = () => {
-        setFormData({
-          ...formData,
-          fooditems: [
-            ...formData.fooditems,
-            { foodname: "", foodimage: "", price: "", itemrating: "" },
-          ],
-        });
-      };
-    
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        try {
-          // const response =await axios.post('http://localhost:5000/food')
-          
-          const response = await fetch("http://localhost:5000/food", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          });
-    
-          const result = await response.json();
-          console.log(result);
-          // Reset the form after successful submission
-          setFormData({
-            address: "",
-            phone: "",
-            name: "",
-            email: "",
-            time: "",
-            title: "",
-            cover: "",
-            subtitle: "",
-            place: "",
-            location:"",
-            rating: "",
-            fooditems: [{ foodname: "", foodimage: "", price: "", itemrating: "" }],
-          });
-          alert(` ${formData} updated..!!!`);
-          
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      };
-    
+      loadFoodList();
+      // Refresh food list after adding new item
+      // const response = await axios.get('http://localhost:5000/getfood');
+      // setFoodList(response.data);
+    } catch (error) {
+      console.error('Error creating food:', error);
+    }
+  };
 
+
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/deletefood/${id}`);
+      // loadFoodList(); // Refresh food list after deleting item
+      setFoodList(foodList.filter(list => list._id !== id));
+    } catch (error) {
+      console.error('Error deleting food:', error);
+    }
+  };
+
+  const handleUpdate = async (id) => {
+    try {
+
+      const requestBody = {
+        email: formData.email,
+        name: formData.name,
+        phone: formData.phone,
+        address: formData.address,
+        time: formData.time,
+        location: formData.location,
+        title: formData.title,
+        cover: formData.cover,
+        place: formData.place,
+        rating: formData.rating,
+        subtitle: formData.subtitle,
+        fooditems: [
+          formData.foodname,
+          formData.foodimage,
+          formData.price,
+          formData.itemrating
+        ]
+      };
+  
+      
+
+
+
+
+      await axios.put(`http://localhost:5000/updatefood/${id}`, formData);
+      setFormData({  // Reset form after successful update
+        email: '',
+        name: '',
+        phone: '',
+        address: '',
+        time: '',
+        location: '',
+        title: '',
+        cover: '',
+        place: '',
+        rating: '',
+        subtitle: '',
+        foodname: '',
+        foodimage: '',
+        price: '',
+        itemrating: ''
+      });
+      loadFoodList(); // Refresh food list after updating item
+    } catch (error) {
+      console.error('Error updating food:', error);
+    }
+  };
+
+    
   return (
-    <div>
-      
-    <div className="max-width">
-    <h1 className="head-title">Create Restaurants</h1>
-      <Form onSubmit={handleSubmit} className="add-form ">
-      
 
-        <Form.Group className="mb-3">
-          <Form.Label className="add-form-title">Restaurant owner details</Form.Label>
-          <Form.Control
-          className="reg-frm-cntrlr"
-            type="text"
-            placeholder="Restaurant owner full name(same name as you logined in)"
-            name="name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          />
-        </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Control
-          className="reg-frm-cntrlr"
-            type="text"
-            placeholder="Restaurant owner email(same email as you logined in)"
-            name="email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-          />
-        </Form.Group>
-<div style={{display:'flex'}}>
-  <div>
-        <Form.Group className="mb-3">
-          <Form.Label className="add-form-title">Restaurant timings</Form.Label>
-          <Form.Control style={{width:'300px'}}
-          className="reg-frm-cntrlr"
-            type="text"
-            placeholder="opening hours"
-            name="time"
-            value={formData.time}
-            onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-          />
-        </Form.Group>
-        </div>
-        {/* <Form.Group className="mb-3">
-          <Form.Control
-            type="text"
-            placeholder="rating"
-            name="rating"
-            value={formData.rating}
-            onChange={(e) =>
-              setFormData({ ...formData, rating: e.target.value })
-            }
-          />
-        </Form.Group> */}
+
+
+
+<div>
+      <h1>Food Management</h1>
+
+      {/* Form for creating a new food item */}
+      <h2>Create Food</h2>
+      <form onSubmit={handleSubmit}>
+        
+        <label>Restaurant name:</label>
+        <input type="text" name="title" value={formData.title} onChange={handleChange} required /><br /><br />
+        <label>subtitle:</label>
+        <input type="text" name="subtitle" value={formData.subtitle} onChange={handleChange} required /><br /><br />
+        <label>place:</label>
+        <input type="text" name="place" value={formData.place} onChange={handleChange} required /><br /><br />
+        <label>location:</label>
+        <input type="text" name="location" value={formData.location} onChange={handleChange} required /><br /><br />
+        <label>address:</label>
+        <input type="text" name="address" value={formData.address} onChange={handleChange} required /><br /><br />
+        <label>phone:</label>
+        <input type="number" name="phone" value={formData.phone} onChange={handleChange} required /><br /><br />
+        <h2>restaurant owner details</h2>
+        <label>name:</label>
+        <input type="text" name="name" value={formData.name} onChange={handleChange} required /><br /><br />
+        <label>Email:</label>
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required /><br /><br />
+        <h2>restaurant timings</h2>
+        <label>time:</label>
+        <input type="text" name="time" value={formData.time} onChange={handleChange} required /><br /><br />
         <div className="mb-3 w-96" style={{paddingTop:'50px',marginLeft:'20px'}}>
           <label
             htmlFor="formFile"
@@ -145,19 +184,34 @@ function Form1() {
             id="formFile"
             name="cover"
             value={formData.cover}
-            onChange={(e) =>
-              setFormData({ ...formData, cover: e.target.value })
-            }
+            onChange={handleChange}
           />
         </div>
-        </div>
+        {/* Add other input fields for creating a food item */}
 
-        <div className="form-submit">
-          <Button type="submit"style={{backgroundColor:'#dc3545'}} className="form-submit-butn">Submit</Button>
-        </div>
-      </Form>
+        <button type="submit">Create Food</button>
+      </form>
+
+      {/* Food List */}
+      <h2>Food List</h2>
+      <ul>
+        {foodList.map(food => (
+          <li key={food._id}>
+          {food.title} 
+          <button onClick={() => handleDelete(food._id)}>Delete</button>
+          {/* Update functionality can be implemented similarly */}
+          <button onClick={() => handleUpdate(food._id)}>Update</button>
+        </li>
+          
+        ))}
+      </ul>
     </div>
-    </div>
+
+
+
+
+
+
   )
 }
 

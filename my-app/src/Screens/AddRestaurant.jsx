@@ -24,7 +24,8 @@ function AddRestaurant() {
             <Button className='butn'><Link to="/Addsignup" style={{textDecoration:'none',backgroundColor:'black'}}className='nav-text'>Register your restaurant</Link></Button>
         </div>
         <div className='btn-div2'>
-            <Button className='butn'><Link to={`/restaurantdetails/${email}`} style={{textDecoration:'none',backgroundColor:'black'}}className='nav-text'>view your existing restaurants</Link> </Button>
+            {/* <Button className='butn'><Link to={`/restaurantdetails/${email}`} style={{textDecoration:'none',backgroundColor:'black'}}className='nav-text'>view your existing restaurants</Link> </Button> */}
+            <Button className='butn'><Link to='/addlogin' style={{textDecoration:'none',backgroundColor:'black'}}className='nav-text'>view your existing restaurants</Link> </Button>
         </div>
         </div>
     </div>
