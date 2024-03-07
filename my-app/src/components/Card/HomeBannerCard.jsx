@@ -10,7 +10,7 @@ import axios from 'axios';
 function HomeBannerCard() {
   
   const [first, setFirst] = useState([])
- 
+ const [second, setsecond] = useState([])
 
   useEffect(() => {
       const handleItems = async () => {
@@ -25,7 +25,23 @@ function HomeBannerCard() {
       handleItems();
     }, []);
 
-   
+    useEffect(()=>{
+      const fooditems =async()=>{
+       
+       try{
+         const foodresponse = await axios.get('http://localhost:5000/getfooditems')
+                 
+       setsecond(foodresponse.data)
+      //  console.log(second);
+       }
+       catch (error){
+        console.error('Error fetching food items:', error)
+         
+       }
+     
+     };
+     fooditems();
+    },[]);
   return (
     
     
@@ -66,7 +82,7 @@ function HomeBannerCard() {
  {first.map(display => (
   
   <div>
-    
+   
     
 
    <Link to={`/homedetails/${display._id}`} style={{textDecoration:'none'}}>
@@ -84,6 +100,7 @@ function HomeBannerCard() {
 </p>
 
 <p  style={{color:'#707070'}}><CiLocationOn />{display.place}</p>
+
 
   </div>
   </Link>

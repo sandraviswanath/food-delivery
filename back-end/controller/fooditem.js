@@ -1,6 +1,8 @@
-// const FoodItem = require("./fooditemSchema");
 
 
+
+
+const fooditem = require("./fooditemSchema");
 
 // const Createfooditems = async (req, res) => {
 //     if (!req.body || !req.body.email || !req.body.name || !req.body.fooditems) {
@@ -12,7 +14,7 @@
 //         fooditems: [foodname, foodimage, price, itemrating]
 //     } = req.body
 
-//     const fooditemdetails = await FoodItem.create({
+//     const fooditemdetails = await fooditem.create({
 //         email,
 //         name,
 //         fooditems: [foodname, foodimage, price, itemrating]
@@ -21,38 +23,23 @@
 //     res.json(fooditemdetails);
 // };
 
-
-
-// const getfooditems=async(req,res)=>{
-//     const fooditemList = await foodItem.find()
-//     res.json(fooditemList)
-// }
-// module.exports={getfooditems,Createfooditems }
-
-
-
-const fooditem = require("./fooditemSchema");
-
 const Createfooditems = async (req, res) => {
-    if (!req.body || !req.body.email || !req.body.name || !req.body.fooditems) {
-        return res.status(400).json({ message: "Invalid request body" });
-    }
     const {
         email,
         name,
+        restaurantId,
         fooditems: [foodname, foodimage, price, itemrating]
     } = req.body
 
-    const fooditemdetails = await fooditem.create({
+    const fooddetails = await food.create({
         email,
         name,
+        restaurantId,
         fooditems: [foodname, foodimage, price, itemrating]
     });
 
-    res.json(fooditemdetails);
+    res.json(fooddetails);
 };
-
-
 
 const getfooditems=async(req,res)=>{
     const fooditemList = await fooditem.find()

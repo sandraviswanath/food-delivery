@@ -183,17 +183,7 @@ return (
               </div>
               )}
                
-               
              
-              {/* <select>
-                <option>Select Size</option>
-                {[...Array(10).keys()].map((x, i) => {
-                  return <option value={i+1} key={i}>{i+1}</option>
-                })}
-              </select> */}
-              {/* <input type="number" value="1"/> */}
-              {/* {!addedToCart && <button onClick={handleAddToCart} class="normal">Add To Cart</button>}
-              {addedToCart && <p>Item added to cart!</p>} */}
               
               
          
@@ -221,7 +211,7 @@ return (
                 <span></span>
                 <h4>{menu.price}</h4>
               </div>
-              {/* {!addedToCart && <i class="fal fa-shopping-cart cart" onClick={() => addToCart(menu)}></i>} */}
+              
               {!addedToCart && <Link to='/signup'><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>}
               {addedToCart && <p>Item added to cart!</p>}
               <button class="order">Order now!!</button>
@@ -232,42 +222,17 @@ return (
     ))}
   </div>
 ))}
+{/* {second.filter(helo=> helo.email === details.email)
+.map(hai => (
+  <div>
+    <p>{hai.foodname}</p>
+    </div>
+))
+} */}
 </div>
    ))}
   </div>
-  {/* <h4 class="section-p1">Product </h4>
-  {prodetails.length > 0 && prodetails.map((data) => (
- <div>
-    {data && data.fooditems && data.fooditems.map((menu) => (
-    <section id="product1" class="section-p1" style={{ width: '23%' }}>
-     
-        <div className=" pro-container" style={{ display: 'flex' }} >
-            <div className="pro" style={{ height: '310px' }}>
-            
-                <img key={menu?._id} src={menu && menu.foodimage} alt={menu && menu.foodname} style={{ height: '150px', width: '220px' }} />
-                <div className='res-row'>
-                    <div className='res-name'>{menu && menu.foodname}</div>
-                    {menu && menu.itemrating && (
-                        <div className='res-rating absolute-center'>{menu && menu.itemrating} <CiStar className='absolute-center' style={{ fontSize: '10px', marginLeft: '2px' }} />
-                        </div>)}
-                </div>
-                <div className="des">
-                    <span></span>
-                    <h4>{menu && menu.price}</h4>
-                </div>
-                {!addedToCart && <Link to={`/cart/${menu && menu._id}`}><i class="fal fa-shopping-cart cart"></i></Link>}
-                {addedToCart && <p>Item added to cart!</p>}
-                <button onClick={handlePlaceOrder} class="order">Order now!!</button>
-            </div>
-        </div>
-    </section>
-))}
- </div>
-  ))} */}
-
-
-
-
+  
 
 
 
