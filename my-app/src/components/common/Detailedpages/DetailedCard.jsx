@@ -12,7 +12,7 @@ import CartContext from '../../../Context/CartContext'
 
 function DetailedCard() {
   const {user}=useContext(userData);
-const{cart,setCart}=useContext(CartContext);
+// const{cart,setCart}=useContext(CartContext);
  const Navigate=useNavigate()
     const {email}=useParams()
     const [first, setfirst] = useState([]);
@@ -59,22 +59,22 @@ useEffect(()=>{
 },[]);
 
 
-useEffect(()=>{
-  const cartitems =async()=>{
+// useEffect(()=>{
+//   const cartitems =async()=>{
    
-   try{
-     const cartresponse = await axios.post('http://localhost:5000/createcart')
+//    try{
+//      const cartresponse = await axios.post('http://localhost:5000/createcart')
              
-   setCart(cartresponse.data)
-   console.log(cart);
-   }
-   catch{
+//    setCart(cartresponse.data)
+//    console.log(cart);
+//    }
+//    catch{
      
-   }
+//    }
  
- };
- cartitems();
-},[]);
+//  };
+//  cartitems();
+// },[]);
 
 
 
@@ -222,9 +222,9 @@ return (
                 <span></span>
                 <h4>₹{menu.price} for one</h4>
               </div>
-              {/* {!addedToCart && <i class="fal fa-shopping-cart cart" onClick={() => addToCart(menu)}></i>} */}
-              {/* {!addedToCart && <Link to={`/cart/${menu._id}/${details.email}`}><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>} */}
-              {!addedToCart && <button onClick={()=>setCart([...cart,menu])} class="normal">Add To Cart</button>}
+              {/* {!addedToCart && <i class="fal fa-shopping-cart cart" onClick={() => addToCart(menu)}></i>}  */}
+               {!addedToCart && <Link to={`/cart/${menu._id}/${details.email}`}><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>}
+              {/* {!addedToCart && <button onClick={()=>setCart([...cart,menu])} class="normal">Add To Cart</button>} */}
               {addedToCart && <p>Item added to cart!</p>}
               <button class="order">Order now!!</button>
             </div>

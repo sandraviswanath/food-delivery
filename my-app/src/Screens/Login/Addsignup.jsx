@@ -39,8 +39,12 @@ function Addsignup() {
   };
     const handleSubmit =async(event)=>{
       event.preventDefault()
-      const display =await axios.post('http://localhost:5000/ownersignup',{name,email,password})
+      try{
+      const display =await axios.post('http://localhost:5000/signup',{name,email,password,phone})
       console.log(display.data)
+      }catch{
+        
+      }
       navigate('/restaurantform')
   
     }

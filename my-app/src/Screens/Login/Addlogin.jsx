@@ -23,10 +23,15 @@ function Addlogin() {
     setpassword(event.target.value)
   }
   const handleSubmit =async(event)=>{
+    const storeemail=email;
     event.preventDefault()
-    const display =await axios.post('http://localhost:5000/ownersignup',{email,password})
+    try{
+    const display =await axios.post('http://localhost:5000/login',{email,password})
     console.log(display.data)
-    navigate('/addform')
+    }catch{
+      
+    }
+    navigate(`/restaurantdetails/${storeemail}`)
 
   }
   const history=useNavigate()

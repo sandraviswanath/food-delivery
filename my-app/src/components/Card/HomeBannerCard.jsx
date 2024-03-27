@@ -85,7 +85,7 @@ function HomeBannerCard() {
    
     
 
-   <Link to={`/homedetails/${display._id}`} style={{textDecoration:'none'}}>
+   <Link to={`/homedetails/${display.email}`} style={{textDecoration:'none'}}>
   
 
   <div key={display.id} className="image-item">

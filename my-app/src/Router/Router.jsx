@@ -46,7 +46,7 @@ function Router() {
       <Routes>
       <Route path='/' element={<><Banner/><HomeBannerCard/></>}></Route>
         {/* <Route path='/' element={<><Banner/><HomeCollections/></>}></Route> */}
-        <Route path='homedetails/:id' element={<><HomeDetailCard/></>}></Route>
+        <Route path='homedetails/:email' element={<><HomeDetailCard/></>}></Route>
         <Route path='/home' element={<><Home/></>}></Route>
         <Route path='/home2/:storeemail' element={<><NavBar2/>,<Home2/></>}></Route>
         <Route path='/login' element={<><Login2/></>}></Route>

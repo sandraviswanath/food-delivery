@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./RestaurantForm.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const RestaurantForm = () => {
   const [formData, setFormData] = useState({
@@ -38,8 +38,9 @@ const RestaurantForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    const storeemail=formData.email;
     e.preventDefault();
-
+   
     try {
       // const response =await axios.post('http://localhost:5000/food')
       
@@ -74,6 +75,8 @@ const RestaurantForm = () => {
     } catch (error) {
       console.error("Error:", error);
     }
+
+    Navigate(`/restaurantdetails/${storeemail}`)
   };
 
   return (

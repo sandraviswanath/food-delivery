@@ -9,7 +9,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 function HomeDetailCard() {
  const Navigate=useNavigate()
-    // const {email}=useParams()
+    const {email}=useParams()
     const {id}=useParams()
     const{ids}=useParams()
     const [first, setfirst] = useState([]);
@@ -73,14 +73,16 @@ useEffect(()=>{
 },[]);
 
 
+const newname=email;
 
     const newid=id;
    
     // console.log(newname)
-    const namedetails=first.filter((item)=>item._id===newid)
-   
+    // const namedetails=first.filter((item)=>item._id===newid)
+    const namedetails=first.filter((item)=>item.email===newname)
     // console.log(namedetails)
-    const prodetails=second.filter((item)=>item._id===newid)
+    // const prodetails=second.filter((item)=>item._id===newid)
+    const prodetails=second.filter((item)=>item.email===newname)
     
     // console.log(prodetails)
 
@@ -96,7 +98,7 @@ useEffect(()=>{
       try {
         const response = await axios.post('http://localhost:5000/createcart', {
           productId: menu._id, // Assuming menu._id is the productId
-          // email: email, // Pass the email obtained from useParams
+          email: email, // Pass the email obtained from useParams
         });
         console.log('Item added to cart:', response.data);
         setAddedToCart(true);

@@ -31,6 +31,7 @@ const AddForm = () => {
 
 
 const handleSubmit = async (e) => {
+  
   e.preventDefault();
 
 try {
@@ -60,7 +61,7 @@ catch (error) {
 console.error("Error:", error);
 }
 alert(` ${formData} updated..!!!`);
-Navigate('/restaurantdetails/:email')
+Navigate(-1)
 };
 
 return (
