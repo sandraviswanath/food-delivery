@@ -1,10 +1,11 @@
 const bcrypt = require('bcrypt');
 
-const owner = require('./OwnerSchema');
 
-const OwnerLogin=async(req,res) => {
+const Customer = require('./CustomerSchema');
+
+const CustomerLogin=async(req,res) => {
     const {email,password}=req.body;
-    const dbemail=await owner.findOne({email})
+    const dbemail=await Customer.findOne({email})
     if (dbemail){
 if(dbemail.email=== email && (await bcrypt.compare(password,dbemail.password))){
     console.log('login success')
@@ -24,4 +25,4 @@ else{
     // const userdetail=await User.create({Name,Email,Password:hashedPassword})
     // res.json(userdetail)
 }
-module.exports =OwnerLogin
+module.exports =CustomerLogin

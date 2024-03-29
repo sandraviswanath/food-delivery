@@ -18,27 +18,28 @@ const CartPage = () => {
   // const [drop, setdrop] = useState('');
   // const [search, setsearch] = useState('')
   // const [wish, setwish] = useState([])
-  const {id,mail}=useParams();
+  const {email}=useParams();
+  console.log(email);
 const {user}=useContext(userData);
-const{cart}=useContext(CartContext);
+// const{cart}=useContext(CartContext);
 
-  useEffect(()=>{
-    const fooditems =async()=>{
+  // useEffect(()=>{
+  //   const fooditems =async()=>{
      
-     try{
-       const foodresponse = await axios.get('http://localhost:5000/getfooditems')
+  //    try{
+  //      const foodresponse = await axios.get('http://localhost:5000/getfooditems')
                
-     setsecond(foodresponse.data)
-    //  console.log(second);
-     }
-     catch (error){
-      console.error('Error fetching food items:', error)
+  //    setsecond(foodresponse.data)
+  //   //  console.log(second);
+  //    }
+  //    catch (error){
+  //     console.error('Error fetching food items:', error)
        
-     }
+  //    }
    
-   };
-   fooditems();
-  },[]);
+  //  };
+  //  fooditems();
+  // },[]);
 
 
 
@@ -47,10 +48,11 @@ useEffect(()=>{
   const fooditem =async()=>{
    
    try{
-     const foodresponse = await axios.get(`http://localhost:5000/getcart/${user._id}`)
+     const foodresponse = await axios.get(`http://localhost:5000/getcart/${email}`)
+    // const foodresponse = await axios.get('http://localhost:5000/getcart')
              
    setfirst(foodresponse.data)
-   console.log(first);
+  //  console.log(first);
    }
    catch{
      
@@ -58,21 +60,21 @@ useEffect(()=>{
  
  };
  fooditem();
-},[user._id]);
- 
-const newname=mail;
-
-console.log(newname);
+},[email]);
+console.log(first);
+const newname=email;
+// const prodetails=first.filter((item)=>item.email===newname)
+// console.log(prodetails);
+// console.log(newname);
 // const newid= id;
 // console.log(newid);
 // const prodetails=first.filter((item)=>item.email===newname)
 //     console.log(prodetails)
 
 
-const filteredFoodItem=first.filter(item =>item.email===mail && item.first && item.first.some(menu => menu && menu._id === id))
+const filteredFoodItem=first.filter(item =>item.email===email )
 
-
-
+console.log(filteredFoodItem)
   return (
     <div>
     <h3 className="head">Your Cart</h3>

@@ -1,10 +1,10 @@
 const mongoose=require('mongoose')
-const ownerSchema =mongoose.Schema({
+const CustomerSchema =mongoose.Schema({
     name:{type:String},
     email:{type:String},
     password:{type:String},
     phone:{type:Number}
 });
-const owner = mongoose.model('owner',ownerSchema);
+const Customer = mongoose.model('Customer',CustomerSchema);
 
-module.exports=owner;
+module.exports=Customer;

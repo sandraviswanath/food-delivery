@@ -20,8 +20,8 @@ function Banner() {
           <Nav className="ms-auto banner-nav">
           
             <Nav.Link className='banner-nav-text' href="#home"><Link to={`/addrestaurant/${storeemail}`} style={{textDecoration:'none'}} className='banner-nav-text'> Add Restaurants</Link></Nav.Link>
-            <Nav.Link className='banner-nav-text' href="#features"><Link to="/log"className='banner-nav-text'> Login</Link></Nav.Link>
-            <Nav.Link className='banner-nav-text' href="#pricing"><Link to="/signup"className='banner-nav-text'>Sign Up</Link></Nav.Link>
+            <Nav.Link className='banner-nav-text' href="#features"><Link to="/userlogin"className='banner-nav-text'> Login</Link></Nav.Link>
+            <Nav.Link className='banner-nav-text' href="#pricing"><Link to="/usersignup"className='banner-nav-text'>Sign Up</Link></Nav.Link>
           </Nav>
         </Container>
       </Navbar>

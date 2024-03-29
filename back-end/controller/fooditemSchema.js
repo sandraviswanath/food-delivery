@@ -1,45 +1,36 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
+const fooditemSchema = mongoose.Schema({
+  email: {
+    type: String,
+  },
 
-const fooditemSchema= mongoose.Schema({
-    email:{
-        type:String,
-    },
-   
-    name:{
-        type:String,
-    },
-    restaurantId: {
-        type: mongoose.Schema.Types.ObjectId,
-      
-       
-    },
-    
-    fooditems: [
-        {
-        foodname:{
-        type:String,
-        
-    },
-      foodimage:{
-        type:Array,
-       
+  name: {
+    type: String,
+  },
+  restaurantId: {
+    type: mongoose.Schema.Types.ObjectId,
+  },
+
+  fooditems: [
+    {
+      foodname: {
+        type: String,
       },
-      price:{
-        type:String,
-       
+      foodimage: {
+        type: Array,
+      },
+      price: {
+        type: String,
+      },
+      itemrating: {
+        type: String,
+      },
     },
-    itemrating:{
-        type:String,
-       
-    }
-    },
-    ]
-
+  ],
 });
-const fooditem=mongoose.model('fooditem',fooditemSchema )
-module.exports=fooditem;
-
+const fooditem = mongoose.model("fooditem", fooditemSchema);
+module.exports = fooditem;
 
 // const mongoose = require('mongoose');
 

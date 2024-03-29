@@ -34,27 +34,16 @@
 const mongoose = require('mongoose');
 
 const cartItemSchema = new mongoose.Schema({
-    productId: {
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref: 'fooditem',
-       type: Array,
-    },
+   
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-      
+        type: Object
        
     },
     products: {
        type: Array
     },
-    quantity: {
-        type: Number,
-        default: 1
-    },
+  
    
-    price:{
-        type:Number,
-    }
 });
 
 const CartItem = mongoose.model('CartItem', cartItemSchema);

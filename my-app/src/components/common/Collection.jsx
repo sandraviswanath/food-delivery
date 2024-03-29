@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Collection.css'
 import axios from 'axios'
 import { FaCaretRight } from "react-icons/fa";
@@ -9,6 +9,7 @@ import Nextarrow from './carousel/Nextarrow';
 function Collection() {
   
 const [first, setfirst] = useState([])
+useEffect(()=>{
 const handleitems =async()=>{
  
  try{
@@ -22,8 +23,8 @@ const handleitems =async()=>{
  }
 
 }
-handleitems()
-
+handleitems();
+},[]);
 const settings = {
   
   infinite: false,

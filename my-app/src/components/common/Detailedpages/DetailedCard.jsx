@@ -16,7 +16,7 @@ function DetailedCard() {
  const Navigate=useNavigate()
     const {email}=useParams()
     const [first, setfirst] = useState([]);
-    const [second, setsecond] = useState([]);
+    const [product, setProduct] = useState([]);
     // const [cart, setCart] = useState([])
     // const [cart, setCart] = useCart()
   // const [total, settotal] = useState(0)
@@ -46,8 +46,8 @@ useEffect(()=>{
    try{
      const foodresponse = await axios.get('http://localhost:5000/getfooditems')
              
-   setsecond(foodresponse.data)
-  //  console.log(second);
+   setProduct(foodresponse.data)
+  //  console.log(product);
    }
    catch (error){
     console.error('Error fetching food items:', error)
@@ -58,7 +58,7 @@ useEffect(()=>{
  fooditems();
 },[]);
 
-
+// console.log(product);
 // useEffect(()=>{
 //   const cartitems =async()=>{
    
@@ -82,7 +82,7 @@ useEffect(()=>{
     // console.log(newname)
     const namedetails=first.filter((item)=>item.email===newname)
     // console.log(namedetails)
-    const prodetails=second.filter((item)=>item.email===newname)
+    const prodetails=product.filter((item)=>item.email===newname)
     // console.log(prodetails)
 
    
@@ -93,17 +93,18 @@ useEffect(()=>{
     // };
 
 
-    const handleAddToCart = async (menu) => {
+    const handleAddToCart = async (product) => {
       try {
         const response = await axios.post('http://localhost:5000/createcart', {
-          productId: menu._id, // Assuming menu._id is the productId
-          email: email, // Pass the email obtained from useParams
+          product, 
+          email, 
         });
         console.log('Item added to cart:', response.data);
         setAddedToCart(true);
       } catch (error) {
         console.error('Error adding item to cart:', error);
       }
+      Navigate(`/cart2/${email}`);
     };
     
     
@@ -223,9 +224,10 @@ return (
                 <h4>₹{menu.price} for one</h4>
               </div>
               {/* {!addedToCart && <i class="fal fa-shopping-cart cart" onClick={() => addToCart(menu)}></i>}  */}
-               {!addedToCart && <Link to={`/cart/${menu._id}/${details.email}`}><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>}
+               {/* {!addedToCart && <Link to={`/cart/${details.email}`}><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>} */}
+               {!addedToCart && <i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i>}
               {/* {!addedToCart && <button onClick={()=>setCart([...cart,menu])} class="normal">Add To Cart</button>} */}
-              {addedToCart && <p>Item added to cart!</p>}
+              {/* {addedToCart && <p>Item added to cart!</p>} */}
               <button class="order">Order now!!</button>
             </div>
           </div>
