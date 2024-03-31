@@ -42,16 +42,17 @@ function Signup2() {
         try{
           const {data} =await axios.post('http://localhost:5000/signup',{name,email,phone,password})
         
-          console.log(data.user)
-          setUser(data.user)
-                  
+          console.log(data)
+          setUser(data)
+          navigate(`/home2/${storeemail}`)    
         }
-        catch{
+        catch(error){
           
         }
         
         
-        navigate(`/home2/${storename}/${storeemail}`)
+        // navigate(`/home2/${storename}/${storeemail}`)
+      
   
     }
 

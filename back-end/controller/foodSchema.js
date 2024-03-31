@@ -11,6 +11,7 @@ const foodSchema = mongoose.Schema({
     name:{
         type:String,
     },
+   
     address:{
         type:String,
     },

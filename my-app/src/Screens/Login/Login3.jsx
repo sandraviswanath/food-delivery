@@ -13,8 +13,8 @@ function Login3() {
 
    const navigate=useNavigate()
    const [show, setShow] = useState(false);
-const {setUser}=useContext(userData);
-  
+const {setUser} = useContext(userData);
+ 
  const [email, setemail] = useState('')
  const [password, setpassword] = useState('')
  const[name, setname]=useState('')
@@ -28,31 +28,66 @@ const {setUser}=useContext(userData);
  const handleName =(event)=>{
    setname(event.target.value)
  }
- const handleSubmit =async(event)=>{
-   const storename=name;
-     const storeemail=email;
-   event.preventDefault()
-   try{
-   const {data} =await axios.post('http://localhost:5000/login',{email,password,name})
-   console.log(data.user)
-   setUser(data.user)
-   }
-   catch{
+
+
+// const handleSubmit =async(event)=>{
+//    const storename=name;
+//      const storeemail=email;
+//    event.preventDefault()
+//    try{
+//    const {data} =await axios.post('http://localhost:5000/login',{email,password,name});
+   
+//    console.log(data.user);
+//    setUser(data.user);
+//    navigate(`/home2/${data.user.email}`)
+//    }
+//    catch(error){
+//      console.log(error)
+//    }
+//    // alert(` ${email} login successed..!!!`)
+ 
+
+//  }
+//  const history=useNavigate()
+//  const previous=useNavigate()
+// const sample=()=>{
+//  history('/banner')
+
+// }
+// const back=()=>{
+// previous(-1)
+// }
+
+
+
+
+const handleSubmit = async (event) => {
+   event.preventDefault();
+ 
+   try {
+     const response = await axios.post('http://localhost:5000/login', { email, password, name });
      
+     // Log the response data using console.dir()
+     console.dir(response.data);
+ 
+     // Check if the response contains user data
+     if (response.data.user) {
+       setUser(response.data.user);
+       console.log('User data in useContext:', response.data.user);
+       navigate(`/home2/${response.data.user.email}`);
+     } else {
+       console.log('Login failed:', response.data);
+       // Handle login failure here, such as displaying an error message to the user
+     }
+   } catch (error) {
+     console.log('Login error:', error);
+     // Handle network errors or other exceptions here
    }
-   // alert(` ${email} login successed..!!!`)
-   navigate(`/home2/${storeemail}`)
-
- }
- const history=useNavigate()
- const previous=useNavigate()
-const sample=()=>{
- history('/banner')
-
-}
-const back=()=>{
-previous(-1)
-}
+ };
+ 
+ 
+ 
+ 
 
   return (
     <div>

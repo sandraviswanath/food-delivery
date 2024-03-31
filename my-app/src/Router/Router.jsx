@@ -45,16 +45,15 @@ function Router() {
       <Routes>
       <Route path='/' element={<><Banner/><HomeBannerCard/></>}></Route>
         {/* <Route path='/' element={<><Banner/><HomeCollections/></>}></Route> */}
-        <Route path='homedetails/:email' element={<><HomeDetailCard/></>}></Route>
+        <Route path='/homedetails/:email' element={<><HomeDetailCard/></>}></Route>
         <Route path='/home' element={<><Home/></>}></Route>
-        <Route path='/home2/:storeemail' element={<><NavBar2/>,<Home2/></>}></Route>
+        <Route path='/home2/:storeemail' element={<><NavBar2/><Home2/></>}></Route>
         <Route path='/login' element={<><Login2/></>}></Route>
         <Route path='/signup' element={<><Signup2/></>}></Route>
         <Route path='/addrestaurant/:email' element={<><AddRestaurant/></>}></Route>
         <Route path='/addsignup' element={<><Addsignup/></>}></Route>
         <Route path='/addlogin' element={<><Addlogin/></>}></Route>
-        <Route path='/customerlogin' element={<><Customerlogin/></>}></Route>
-        <Route path='/customersignup' element={<><Customersignup/></>}></Route>
+        
         <Route path='/cart/:email' element={<><CartPage/></>}></Route>
         
         
@@ -63,15 +62,15 @@ function Router() {
         <Route path='/restaurantdetails/:email' element={<><Restaurantdetails/></>}></Route>
         
         <Route path='/detailed/:email' element={<><DetailedCard/></>}></Route>
-        <Route path='place' element={<><GetPlace/></>}></Route>
+        <Route path='/place' element={<><GetPlace/></>}></Route>
         
-        <Route path='order' element={<><Order/></>}></Route>
-        <Route path='addcart' element={<><Addcart/></>}></Route>
+        <Route path='/order' element={<><Order/></>}></Route>
+        <Route path='/addcart' element={<><Addcart/></>}></Route>
       
-        <Route path='cart2/:email' element={<><Cart2/></>}></Route>
-        <Route path='chat' element={<><Chat/></>}></Route>
-        <Route path='log' element={<Login3/>}></Route>
-        <Route path='form1' element={<Form1/>}></Route>
+        <Route path='/cart2/:email' element={<><Cart2/></>}></Route>
+        <Route path='/chat' element={<><Chat/></>}></Route>
+        <Route path='/log' element={<Login3/>}></Route>
+        <Route path='/form1' element={<Form1/>}></Route>
 
 
 

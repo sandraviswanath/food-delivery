@@ -6,11 +6,11 @@ import { createContext, useState} from 'react';
 
 
 
-export const userData=createContext({})
+export const userData=createContext(null);
 
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null);
   return (
     <userData.Provider value={{user,setUser}}>
     <div className="App">

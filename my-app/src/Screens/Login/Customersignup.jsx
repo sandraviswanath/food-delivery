@@ -51,7 +51,8 @@ function Customersignup() {
         }
         
         
-        navigate(`/home2/${storename}/${storeemail}`)
+        // navigate(`/home2/${storename}/${storeemail}`)
+        navigate(`/home2/${storeemail}`)
   
     }
 

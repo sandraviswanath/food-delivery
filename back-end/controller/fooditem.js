@@ -27,14 +27,12 @@ const Createfooditems = async (req, res) => {
     const {
         email,
         name,
-        restaurantId,
         fooditems: [foodname, foodimage, price, itemrating]
     } = req.body
 
-    const fooddetails = await food.create({
+    const fooddetails = await fooditem.create({
         email,
         name,
-        restaurantId,
         fooditems: [foodname, foodimage, price, itemrating]
     });
 

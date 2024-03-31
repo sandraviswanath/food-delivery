@@ -10,6 +10,7 @@ const RestaurantForm = () => {
     phone: "",
     name: "",
     email: "",
+    password: "",
     time: "",
     title: "",
     cover: "",
@@ -179,7 +180,7 @@ const RestaurantForm = () => {
           <Form.Control
           className="reg-frm-cntrlr"
             type="text"
-            placeholder="Restaurant owner email(same email as you logined in)"
+            placeholder="Restaurant owner email(same name as you logined in)"
             name="email"
             value={formData.email}
             onChange={(e) =>
@@ -187,6 +188,8 @@ const RestaurantForm = () => {
             }
           />
         </Form.Group>
+
+  
 
 
 <div style={{display:'flex'}}>

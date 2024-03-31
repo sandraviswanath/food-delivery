@@ -2,13 +2,15 @@ const express = require("express");
 const CartItem = require("./CartSchema");
 
 const FoodItem = require("./fooditemSchema");
-const Customer = require("./CustomerSchema");
+
+const customer = require("./userSchema");
+
 const router = express.Router();
 
 const CreateCart = async (req, res) => {
   try {
     const { email, product } = req.body;
-    const user = await Customer.findOne({ email: email });
+    const user = await customer.findOne({ email: email });
     let cart = await CartItem.findOne({ user: user });
     if (cart) {
       cart = await CartItem.updateOne(
@@ -16,7 +18,7 @@ const CreateCart = async (req, res) => {
         {
           $push: {
             products: product,
-            
+
           },
         }
       );
@@ -35,7 +37,8 @@ const CreateCart = async (req, res) => {
 
 const getCart = async (req, res) => {
   try {
-    const cartItems = await CartItem.findOne({ user: req.params.email });
+    const user = await customer.findOne({ email: req.params.email  });
+    const cartItems = await CartItem.findOne({ user:user });
     res.status(200).send(cartItems);
   } catch (error) {
     console.error("Error fetching cart items:", error);

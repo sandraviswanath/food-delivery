@@ -8,10 +8,7 @@ const fooditemSchema = mongoose.Schema({
   name: {
     type: String,
   },
-  restaurantId: {
-    type: mongoose.Schema.Types.ObjectId,
-  },
-
+  
   fooditems: [
     {
       foodname: {

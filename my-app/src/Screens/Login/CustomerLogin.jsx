@@ -34,14 +34,15 @@ const {setUser}=useContext(userData);
    event.preventDefault()
    try{
    const {data} =await axios.post('http://localhost:5000/customerlogin',{email,password,name})
-   console.log(data.user)
+   // console.log(data.user)
    setUser(data.user)
+   navigate(`/home2/${storeemail}`)
    }
-   catch{
-     
+   catch(error){
+     console.log(error)
    }
    // alert(` ${email} login successed..!!!`)
-   navigate(`/home2/${storeemail}`)
+ 
 
  }
  const history=useNavigate()

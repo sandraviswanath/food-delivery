@@ -31,7 +31,7 @@ const AddForm = () => {
 
 
 const handleSubmit = async (e) => {
-  
+  const storeemail=formData.email;
   e.preventDefault();
 
 try {
@@ -52,7 +52,7 @@ console.log(result);
     email: "",
     fooditems: [{ foodname: "", foodimage: "", price: "", itemrating: "" }],
   });
-  
+  alert(` ${formData} updated..!!!`); 
 } 
 
 
@@ -60,8 +60,9 @@ console.log(result);
 catch (error) {
 console.error("Error:", error);
 }
-alert(` ${formData} updated..!!!`);
-Navigate(-1)
+Navigate(`/restaurantdetails/${storeemail}`)
+// Navigate(-1)
+
 };
 
 return (

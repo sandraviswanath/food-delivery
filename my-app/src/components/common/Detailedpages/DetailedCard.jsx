@@ -12,11 +12,14 @@ import CartContext from '../../../Context/CartContext'
 
 function DetailedCard() {
   const {user}=useContext(userData);
+  
 // const{cart,setCart}=useContext(CartContext);
  const Navigate=useNavigate()
     const {email}=useParams()
+    // const {id}=useParams()
     const [first, setfirst] = useState([]);
     const [product, setProduct] = useState([]);
+  // const [user, setuser] = useState({})
     // const [cart, setCart] = useState([])
     // const [cart, setCart] = useCart()
   // const [total, settotal] = useState(0)
@@ -58,31 +61,16 @@ useEffect(()=>{
  fooditems();
 },[]);
 
-// console.log(product);
-// useEffect(()=>{
-//   const cartitems =async()=>{
-   
-//    try{
-//      const cartresponse = await axios.post('http://localhost:5000/createcart')
-             
-//    setCart(cartresponse.data)
-//    console.log(cart);
-//    }
-//    catch{
-     
-//    }
- 
-//  };
-//  cartitems();
-// },[]);
-
 
 
     const newname=email;
+    // const newid=id;
     // console.log(newname)
+    // const iddetails=first.filter((item)=>item._id===newid)
     const namedetails=first.filter((item)=>item.email===newname)
     // console.log(namedetails)
     const prodetails=product.filter((item)=>item.email===newname)
+    // const productid=product.filter((item)=>item._id===newid)
     // console.log(prodetails)
 
    
@@ -97,14 +85,15 @@ useEffect(()=>{
       try {
         const response = await axios.post('http://localhost:5000/createcart', {
           product, 
-          email, 
+          email : user.email, 
+         
         });
         console.log('Item added to cart:', response.data);
         setAddedToCart(true);
       } catch (error) {
         console.error('Error adding item to cart:', error);
       }
-      Navigate(`/cart2/${email}`);
+      Navigate(`/cart2/${user.email}`);
     };
     
     
