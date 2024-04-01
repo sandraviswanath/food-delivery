@@ -1,53 +1,27 @@
-const order = require("./orderSchema")
+const Order = require("./orderSchema");
 
-const orderdata= async (req, res) => {
-    let data = req.body.order_data
-    await data.splice(0,0,{Order_date:req.body.order_date})
-    console.log("1231242343242354",req.body.email)
-
-    //if email not exisitng in db then create: else: InsertMany()
-    let eId = await order.findOne({ 'email': req.body.email })    
-    console.log(eId)
-    if (eId===null) {
-        try {
-            console.log(data)
-            console.log("1231242343242354",req.body.email)
-            await order.create({
-                email: req.body.email,
-                order_data:[data]
-            }).then(() => {
-                res.json({ success: true })
-            })
-        } catch (error) {
-            console.log(error.message)
-            res.send("Server Error", error.message)
-
-        }
-    }
-
-    else {
-        try {
-            await order.findOneAndUpdate({email:req.body.email},
-                { $push:{order_data: data} }).then(() => {
-                    res.json({ success: true })
-                })
-        } catch (error) {
-            console.log(error.message)
-            res.send("Server Error", error.message)
-        }
-    }
-}
-
-const myorderdata =async (req, res) => {
+const orderdata = async (req, res) => {
     try {
-        console.log(req.body.email)
-        let eId = await order.findOne({ 'email': req.body.email })
-        //console.log(eId)
-        res.json({orderData:eId})
-    } catch (error) {
-        res.send("Error",error.message)
-    }
-    
+        // Extract relevant data from the request body
+        const { user, products, totalPrice } = req.body;
 
+        // Create a new order instance
+        const newOrder = new Order({
+            user,
+            products,
+            totalPrice
+        });
+
+        // Save the order to the database
+        await newOrder.save();
+
+        // Send a success response
+        res.status(201).json({ message: 'Order placed successfully' });
+    } catch (error) {
+        // Send an error response if there's an issue
+        console.error('Error placing order:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 };
-module.exports={orderdata,myorderdata};
+
+module.exports = { orderdata };

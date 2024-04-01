@@ -24,15 +24,14 @@ const fooditem = require("./fooditemSchema");
 // };
 
 const Createfooditems = async (req, res) => {
+    console.log(req.body);
     const {
         email,
-        name,
         fooditems: [foodname, foodimage, price, itemrating]
     } = req.body
 
     const fooddetails = await fooditem.create({
         email,
-        name,
         fooditems: [foodname, foodimage, price, itemrating]
     });
 
@@ -44,3 +43,4 @@ const getfooditems=async(req,res)=>{
     res.json(fooditemList)
 }
 module.exports={getfooditems,Createfooditems }
+

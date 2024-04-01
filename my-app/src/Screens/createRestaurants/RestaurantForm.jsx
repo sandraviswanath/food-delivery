@@ -72,12 +72,12 @@ const RestaurantForm = () => {
         fooditems: [{ foodname: "", foodimage: "", price: "", itemrating: "" }],
       });
       alert(` ${formData} updated..!!!`);
-      
+      Navigate(`/restaurantdetails/${storeemail}`);
     } catch (error) {
       console.error("Error:", error);
     }
-
-    Navigate(`/restaurantdetails/${storeemail}`)
+   
+   
   };
 
   return (
@@ -247,3 +247,5 @@ const RestaurantForm = () => {
 };
 
 export default RestaurantForm;
+
+

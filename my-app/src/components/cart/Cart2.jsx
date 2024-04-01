@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { userData } from '../../App';
 import { Button, Table } from 'react-bootstrap';
 import { IoMdArrowDropdown, IoMdArrowDropup, IoMdClose } from 'react-icons/io';
@@ -11,9 +11,11 @@ const Cart2 = () => {
   const [error, setError] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const [message, setMessage] = useState('');
   // const {email}=useParams();
   // console.log(email);
 const {user}=useContext(userData);
+const navigate = useNavigate();
 
   // useEffect(() => {
   //   const fetchCartItems = async () => {
@@ -135,6 +137,27 @@ const {user}=useContext(userData);
   };
   
 
+  const handleOrderNow = async () => {
+    try {
+      const orderData = {
+        userId: user.id, // Assuming you have user data available in the frontend
+        products: cartItems.map(item => ({
+          productId: item._id,
+          productName: item.foodname,
+          quantity: item.quantity,
+          price: parseFloat(item.price.replace('₹', '')) // Extract price from string and convert to number
+        })),
+        totalPrice: totalPrice
+      };
+    
+      const response = await axios.post('http://localhost:5000/orderdata', orderData);
+      // Handle success and failure accordingly
+      // Redirect to a confirmation page or display a success message
+      navigate('/order-confirmation');
+    } catch (error) {
+      console.error('Error placing order:', error);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -144,7 +167,19 @@ const {user}=useContext(userData);
     return <div>Error: {error}</div>;
   }
   console.log('cartItems:', cartItems);
+  
+
+  // const showMessage = () => {
+  //   setMessage('Your Order is placed!');
+    
+  //   // Hide the message after 3 seconds
+  //   setTimeout(() => {
+  //     setMessage('');
+  //   }, 9000);
+    
+  // };
  
+  
   return (
 
 <div>
@@ -176,13 +211,13 @@ const {user}=useContext(userData);
 
 <div>Total Price: ${totalPrice}</div>
 <div>Total Quantity: {totalQuantity}</div>
-{/* <Button onClick={handleOrderNow}>Order Now</Button> */}
+{/* <Button onClick={handleOrderNow}>Order Now</Button>
+
+      {message && <p>{message}</p>} */}
 </div>
 
   );
 };
 
+
 export default Cart2;
-
-
-

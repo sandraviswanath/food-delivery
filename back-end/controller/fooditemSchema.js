@@ -5,9 +5,6 @@ const fooditemSchema = mongoose.Schema({
     type: String,
   },
 
-  name: {
-    type: String,
-  },
   
   fooditems: [
     {

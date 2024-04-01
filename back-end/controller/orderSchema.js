@@ -2,15 +2,15 @@ const mongoose = require('mongoose')
 
 
 const orderSchema = mongoose.Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true
+    user: {
+        type: Object
+       
     },
-    order_data: {
-        type: Array,
-        required: true,
+    products: { 
+        type: Array
     },
+    totalPrice: Number,
+    orderDate: { type: Date, default: Date.now }
 
 });
 const order=mongoose.model('order',orderSchema)
