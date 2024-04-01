@@ -6,14 +6,14 @@ import { CiStar } from 'react-icons/ci'
 import { BsFillCartFill } from 'react-icons/bs'
 import { Col, Container, Row } from 'react-bootstrap'
 import { userData } from '../../../App'
-import CartContext from '../../../Context/CartContext'
+
 
 // import '../CardCollection.css'
 
 function DetailedCard() {
   const {user}=useContext(userData);
   
-// const{cart,setCart}=useContext(CartContext);
+
  const Navigate=useNavigate()
     const {email}=useParams()
     // const {id}=useParams()

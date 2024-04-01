@@ -6,7 +6,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button, Table } from 'react-bootstrap';
 import { IoMdArrowDropdown, IoMdArrowDropup, IoMdClose } from 'react-icons/io';
 import { userData } from '../../App';
-import CartContext from '../../Context/CartContext';
+
 
 
 const CartPage = () => {
@@ -21,7 +21,7 @@ const CartPage = () => {
   const {email}=useParams();
   console.log(email);
 const {user}=useContext(userData);
-// const{cart}=useContext(CartContext);
+
 
   // useEffect(()=>{
   //   const fooditems =async()=>{

@@ -65,18 +65,58 @@ const updateCart = async (req, res) => {
   }
 };
 
+
+
+// const deleteCart = async (req, res) => {
+//   try {
+//     const productId = req.params.id;
+//     const user = await customer.findOne({ email: req.params.email });
+//     const cart = await CartItem.findOne({ user: user });
+
+//     if (!cart) {
+//       return res.status(404).json({ message: "Cart not found" });
+//     }
+
+//     // Remove the product with the provided id from the cart
+//     cart.products = cart.products.filter(item => item.id !== productId);
+//     await cart.save();
+
+//     res.json({ message: 'Product deleted successfully' });
+//   } catch (error) {
+//     console.error("Error deleting product:", error);
+//     res.status(500).send("Internal Server Error");
+//   }
+// };
+
+
+
 const deleteCart = async (req, res) => {
   try {
-    const { id } = req.params;
-    const deletedItem = await CartItem.findByIdAndDelete(id);
-    if (!deletedItem) {
-      return res.status(404).send("Item not found in cart");
+    const productId = req.params.id;
+    const userEmail = req.params.email;
+
+    // Find the user based on the email
+    const user = await customer.findOne({ email: userEmail });
+
+    // Find the cart associated with the user
+    const cart = await CartItem.findOne({ user: user });
+
+    if (!cart) {
+      return res.status(404).json({ message: "Cart not found" });
     }
-    res.status(200).send("Item removed from cart");
+
+    // Remove the product with the provided id from the cart in the database
+    cart.products = cart.products.filter(item => item._id !== productId);
+    await cart.save();
+
+    // Respond with a success message
+    res.json({ message: 'Product deleted successfully' });
   } catch (error) {
-    console.error("Error removing item from cart:", error);
+    console.error("Error deleting product:", error);
     res.status(500).send("Internal Server Error");
   }
 };
+
+
 
 module.exports = { CreateCart, getCart, updateCart, deleteCart };
