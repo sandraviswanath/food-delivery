@@ -82,6 +82,7 @@ useEffect(()=>{
 
 
     const handleAddToCart = async (product) => {
+
       try {
         const response = await axios.post('http://localhost:5000/createcart', {
           product, 
@@ -90,10 +91,11 @@ useEffect(()=>{
         });
         console.log('Item added to cart:', response.data);
         setAddedToCart(true);
+        Navigate(`/cart2/${user.email}`);
       } catch (error) {
         console.error('Error adding item to cart:', error);
       }
-      Navigate(`/cart2/${user.email}`);
+      
     };
     
     

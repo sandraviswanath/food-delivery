@@ -17,21 +17,7 @@ const Cart2 = () => {
 const {user}=useContext(userData);
 const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchCartItems = async () => {
-  //     try {
-  //       const response = await axios.get(`http://localhost:5000/getcart/${user.email}`);
-  //       // const response = await axios.get('http://localhost:5000/getcart');
-  //       setCartItems(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching cart items:', error);
-  //     }
-  //   };
 
-  //   fetchCartItems();
-  // }, []);
-
- 
   
 
   useEffect(() => {
@@ -42,10 +28,21 @@ const navigate = useNavigate();
           ...product,
           quantity: product.quantity ||1 // Set default quantity to 1 if it's missing
         }));
+const updatedCartItems = cartItems.map(item =>{
+  const existingIndex = products.findIndex(product=>product._id === item._id);
+  if (existingIndex !== -1) {
+    return{...item,quantity:products[existingIndex].quantity};
+    }
+   return item;
+  });
+  const newProducts =products.filter(product => !cartItems.some(item => item._id === product._id));
 
-        setCartItems(products);
+const mergedCartItems = [...updatedCartItems,...newProducts];
 
-        calculateTotalPriceAndQuantity(products); 
+
+        setCartItems(mergedCartItems);
+
+        calculateTotalPriceAndQuantity(mergedCartItems); 
       } catch (error) {
         console.error('Error fetching cart items:', error);
         setError('Error fetching cart items. Please try again later.');
@@ -57,19 +54,9 @@ const navigate = useNavigate();
     fetchCartItems();
   }, [user.email]);
 
- 
-  // const calculateTotalPriceAndQuantity = (items) => {
-  //   let totalPrice = 0;
-  //   let totalQuantity = 0;
-  
-  //   items.forEach(item => {
-  //     totalPrice += item.price * item.quantity;
-  //     totalQuantity += item.quantity;
-  //   });
-  
-  //   setTotalPrice(totalPrice);
-  //   setTotalQuantity(totalQuantity);
-  // };
+
+
+
   const calculateTotalPriceAndQuantity = (items) => {
     let totalPrice = 0;
     let totalQuantity = 0;
@@ -125,12 +112,15 @@ const navigate = useNavigate();
   };
   
 
+ 
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/deletecart/${id}/${user.email}`);
       // After successful deletion on the server, update the cart items displayed in the UI
       const updatedCartItems = cartItems.filter(item => item._id !== id);
       setCartItems(updatedCartItems);
+      calculateTotalPriceAndQuantity(updatedCartItems); // Recalculate total price after item removal
     } catch (error) {
       console.error('Error deleting product:', error);
     }
@@ -186,7 +176,7 @@ const navigate = useNavigate();
 <h1>Cart</h1>
 <ul>
   {cartItems.map(product => (
-    <div key={product.id} style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <div key={product._id} style={{ display: 'flex', flexWrap: 'wrap' }}>
       <section id="product1" className="section-p1" style={{ width: '23%', marginTop: '-100px' }} key={product.id}>
         <div className="pro-container" style={{ display: 'flex' }}>
           <div className="pro" style={{ height: '310px' }}>
@@ -211,9 +201,9 @@ const navigate = useNavigate();
 
 <div>Total Price: ${totalPrice}</div>
 <div>Total Quantity: {totalQuantity}</div>
-{/* <Button onClick={handleOrderNow}>Order Now</Button>
+{/* <Button onClick={handleOrderNow}>Order Now</Button> */}
 
-      {message && <p>{message}</p>} */}
+      {/* {message && <p>{message}</p>}  */}
 </div>
 
   );

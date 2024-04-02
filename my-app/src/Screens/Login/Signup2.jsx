@@ -18,6 +18,7 @@ function Signup2() {
     const [email, setemail] = useState('')
     const [phone, setphone] = useState('')
     const [password, setpassword] = useState('')
+    const [error, setError] = useState('');
     const handleName=(event)=>{
       setname(event.target.value)
     }
@@ -29,15 +30,24 @@ function Signup2() {
     }
     const handlePassword =(event)=>{
       setpassword(event.target.value)
+     
     }
-    const isPasswordValid = (event)=>{
-      return password.length >=6;
-    };
+    
     const handleSubmit =async(event)=>{
       const storename=name;
       const storeemail=email;
       event.preventDefault()
       
+
+      if (!name || !email || !phone || !password) {
+        setError('All fields are required');
+        return;
+    }
+
+    if (password.length < 6) {
+      setError('Password must contain a minimum of 6 characters');
+      return;
+  }
      
         try{
           const {data} =await axios.post('http://localhost:5000/signup',{name,email,phone,password})
@@ -47,7 +57,7 @@ function Signup2() {
           navigate(`/home2/${storeemail}`)    
         }
         catch(error){
-          
+          setError(error.response.data);
         }
         
         

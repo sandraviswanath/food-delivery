@@ -25,7 +25,7 @@ import Restaurantdetails from '../Screens/Restaurantdetails'
 import Addcart from '../components/cart/Addcart'
 
 import Cart2 from '../components/cart/Cart2'
-import Chat from '../chat/Chat'
+
 import HomeCollections from '../components/Card/HomeCollections'
 import HomeDetailCard from '../components/Card/HomeDetailCard'
 import Login3 from '../Screens/Login/Login3'
@@ -68,7 +68,7 @@ function Router() {
         <Route path='/addcart' element={<><Addcart/></>}></Route>
       
         <Route path='/cart2/:email' element={<><Cart2/></>}></Route>
-        <Route path='/chat' element={<><Chat/></>}></Route>
+       
         <Route path='/log' element={<Login3/>}></Route>
         <Route path='/form1' element={<Form1/>}></Route>
 

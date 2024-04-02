@@ -1,17 +1,18 @@
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 
 
-const orderSchema = mongoose.Schema({
-    user: {
-        type: Object
+// const orderSchema = mongoose.Schema({
+//     user: {
+//         type: Object
        
-    },
-    products: { 
-        type: Array
-    },
-    totalPrice: Number,
-    orderDate: { type: Date, default: Date.now }
+//     },
+//     products: { 
+//         type: Array
+//     },
+//     totalPrice: {
+//         type: Number,
+//     }
 
-});
-const order=mongoose.model('order',orderSchema)
-module.exports=order
+// });
+// const order=mongoose.model('order',orderSchema)
+// module.exports=order

@@ -1,36 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './NavBar.css'
 import food from './food.jpg'
 import {Container, Nav, NavDropdown, Navbar} from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+
+import { userData } from '../App'
 function NavBar2() {
+  const { setUser } = useContext(userData);
     const{storename,storeemail}=useParams();
     const [first, setfirst] = useState([])
     let navigate = useNavigate();
-    const handleLogout = () => {
-      localStorage.removeItem('token')
+    
+  const handleLogout = () => {
+    // Clear user authentication state
+    setUser(null);
 
-      navigate("/")
-  }
-
-    // useEffect(()=>{
-    //   const cartitems =async()=>{
-       
-    //    try{
-    //      const signup = await axios.get('http://localhost:5000/signup')
-                 
-    //    setfirst(signup.data)
-    //    console.log(first);
-    //    }
-    //    catch{
-         
-    //    }
-     
-    //  };
-    //  cartitems();
-    // },[]);
-
+    navigate("/")
+};
 
   return (
     <div>
@@ -46,15 +33,10 @@ function NavBar2() {
             {/* <Nav.Link href="#home" className='nav-link'>{storename} */}
            
             <NavDropdown title='profile'  id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Cart</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3"><Link to={`/addrestaurant/${storeemail}`}style={{textDecoration:'none'}}> Add Restaurants</Link></NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4" onClick={handleLogout}>
-                Log Out
-              </NavDropdown.Item>
+       
+              {/* <NavDropdown.Item  > */}
+              <button onClick={handleLogout}>Logout</button>
+              {/* </NavDropdown.Item> */}
             </NavDropdown>
             
             
