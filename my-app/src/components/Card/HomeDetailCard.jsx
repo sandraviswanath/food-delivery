@@ -215,7 +215,8 @@ return (
               </div>
               
               {!addedToCart && <Link to='/signup'><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>}
-              {addedToCart && <p>Item added to cart!</p>}
+
+              {/* {addedToCart && <p>Item added to cart!</p>} */}
               <button class="order">Order now!!</button>
             </div>
           </div>

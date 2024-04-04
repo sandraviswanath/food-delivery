@@ -23,6 +23,13 @@ const navigate = useNavigate();
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
+
+        if (!user) {
+          // Redirect to login page with a message
+          navigate('/log', { state: { message: 'Please log in to view your cart' } });
+          return;
+        }
+
         const response = await axios.get(`http://localhost:5000/getcart/${user.email}`);
         const products = response.data.products.map(product=>({
           ...product,

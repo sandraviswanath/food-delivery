@@ -13,7 +13,7 @@ function Login3() {
 
    const navigate=useNavigate()
    const [show, setShow] = useState(false);
-const {setUser} = useContext(userData);
+const {user,setUser} = useContext(userData);
  
  const [email, setemail] = useState('')
  const [password, setpassword] = useState('')
@@ -87,10 +87,12 @@ const handleSubmit = async (event) => {
  
  
  
- 
 
   return (
     <div>
+    {user ? (
+      navigate(`/home2/${user.email}`)
+    ): (
         <div className="login">
          <img src={image} alt="image" className="login__bg"/>
 
@@ -125,6 +127,7 @@ const handleSubmit = async (event) => {
             </div>
          </form>
       </div>
+      )}
     </div>
   )
 }

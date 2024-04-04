@@ -42,6 +42,8 @@ function Router() {
   return (
     <div>
       <BrowserRouter>
+      
+      
       <Routes>
       <Route path='/' element={<><Banner/><HomeBannerCard/></>}></Route>
         {/* <Route path='/' element={<><Banner/><HomeCollections/></>}></Route> */}
@@ -80,7 +82,8 @@ function Router() {
 
 
       </Routes>
-      </BrowserRouter>
+     
+       </BrowserRouter>
     </div>
   )
 }

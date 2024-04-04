@@ -17,7 +17,16 @@ const CustomerLogin = require('../controller/Customerlogin')
 
 
 
+
 const router =express.Router()
+
+
+
+
+// app.get('/api/protected-route', protect, (req, res) => {
+//   // This route is protected, only accessible with a valid token
+// });
+
 
 // router.route('/deliveryItem').post(CreateItem)
 // router.route('/getitems').get(getItem)

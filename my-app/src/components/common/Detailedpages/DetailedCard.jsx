@@ -6,7 +6,7 @@ import { CiStar } from 'react-icons/ci'
 import { BsFillCartFill } from 'react-icons/bs'
 import { Col, Container, Row } from 'react-bootstrap'
 import { userData } from '../../../App'
-
+import { CiHeart } from "react-icons/ci";
 
 // import '../CardCollection.css'
 
@@ -214,12 +214,12 @@ return (
                 <span></span>
                 <h4>₹{menu.price} for one</h4>
               </div>
-              {/* {!addedToCart && <i class="fal fa-shopping-cart cart" onClick={() => addToCart(menu)}></i>}  */}
-               {/* {!addedToCart && <Link to={`/cart/${details.email}`}><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>} */}
+            
                {!addedToCart && <i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i>}
-              {/* {!addedToCart && <button onClick={()=>setCart([...cart,menu])} class="normal">Add To Cart</button>} */}
-              {/* {addedToCart && <p>Item added to cart!</p>} */}
-              <button class="order">Order now!!</button>
+             
+               
+               
+              {/* <button class="order">Order now!!</button> */}
             </div>
           </div>
         </section>

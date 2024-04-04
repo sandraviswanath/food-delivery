@@ -53,6 +53,10 @@ const RestaurantForm = () => {
         body: JSON.stringify(formData),
       });
 
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
       const result = await response.json();
       console.log(result);
       // Reset the form after successful submission
@@ -74,7 +78,7 @@ const RestaurantForm = () => {
       alert(` ${formData} updated..!!!`);
       Navigate(`/restaurantdetails/${storeemail}`);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error submitting form:", error);
     }
    
    
