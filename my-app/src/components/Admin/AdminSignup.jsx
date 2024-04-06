@@ -2,12 +2,12 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 // import add from './addbanner.webp'
-import image from './img-12.avif'
-import './Login3.css'
-import './styles.css'
+import image from './foodban.jpg'
+import './admin.css'
+import './adminstyle.css'
 import { userData } from '../../App';
 
-function Customersignup() {
+function AdminSignup() {
 
     const navigate=useNavigate()
    
@@ -18,6 +18,7 @@ function Customersignup() {
     const [email, setemail] = useState('')
     const [phone, setphone] = useState('')
     const [password, setpassword] = useState('')
+    const [error, setError] = useState('');
     const handleName=(event)=>{
       setname(event.target.value)
     }
@@ -29,30 +30,39 @@ function Customersignup() {
     }
     const handlePassword =(event)=>{
       setpassword(event.target.value)
+     
     }
-    const isPasswordValid = (event)=>{
-      return password.length >=6;
-    };
+    
     const handleSubmit =async(event)=>{
       const storename=name;
       const storeemail=email;
       event.preventDefault()
       
+
+      if (!name || !email || !phone || !password) {
+        setError('All fields are required');
+        return;
+    }
+
+    if (password.length < 6) {
+      setError('Password must contain a minimum of 6 characters');
+      return;
+  }
      
         try{
-          const {data} =await axios.post('http://localhost:5000/customersignup',{name,email,phone,password})
+          const {data} =await axios.post('http://localhost:5000/adminsignup',{name,email,phone,password})
         
-          console.log(data.user)
-          setUser(data.user)
-                  
+          console.log(data)
+          setUser(data)
+          navigate(`/home2/${storeemail}`)    
         }
-        catch{
-          
+        catch(error){
+          setError(error.response.data);
         }
         
         
         // navigate(`/home2/${storename}/${storeemail}`)
-        navigate(`/home2/${storeemail}`)
+      
   
     }
 
@@ -108,7 +118,7 @@ function Customersignup() {
         <button type="submit" class="login__button">Create</button>
 
         <div className="login__register">
-        Already have an account? <Link to="/customerlogin"style={{color: 'red',textDecoration:'none'}}>Log in</Link>
+        Already have an account? <Link to="/signup"style={{color: 'red',textDecoration:'none'}}>Log in</Link>
         </div>
      </form>
   </div>
@@ -116,4 +126,4 @@ function Customersignup() {
   )
 }
 
-export default Customersignup
+export default AdminSignup

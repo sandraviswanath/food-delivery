@@ -27,7 +27,7 @@ function NavBar2() {
         <Container>
         
           <Navbar.Brand className='food' href="#home"></Navbar.Brand>
-          <img src={food} alt="" style={{width:'80px',height:'70px'}}/>
+           <img src={food} alt="" style={{width:'80px',height:'70px'}}/>
          
           <Nav className="ms-auto">
             {/* <Nav.Link href="#home" className='nav-link'>{storename} */}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { userData } from '../../App';
 import { Button, Table } from 'react-bootstrap';
 import { IoMdArrowDropdown, IoMdArrowDropup, IoMdClose } from 'react-icons/io';
@@ -18,7 +18,7 @@ const {user}=useContext(userData);
 const navigate = useNavigate();
 
 
-  
+  const cartitems= localStorage.getItem('cartitems') ? JSON.parse(localStorage.getItem('cartitems')) :[]
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -193,8 +193,9 @@ const mergedCartItems = [...updatedCartItems,...newProducts];
             </div>
             <div className="des">
               <span></span>
-              <h4>{product.price}</h4>
-              <input type="number" value={product.quantity} onChange={(e) => updateQuantity(product._id, parseInt(e.target.value))} />
+              <h4>price:{product.price}</h4>
+              <input type="number" name="quantity" min="1" value={product.quantity} onChange={(e) => updateQuantity(product._id, parseInt(e.target.value))} />
+        
               
             </div>
             {/* <button onClick={()=>handleDelete(product._id)}>remove</button> */}
@@ -208,8 +209,9 @@ const mergedCartItems = [...updatedCartItems,...newProducts];
 
 <div>Total Price: ${totalPrice}</div>
 <div>Total Quantity: {totalQuantity}</div>
-{/* <Button onClick={handleOrderNow}>Order Now</Button> */}
-
+<div>
+<Button onClick={handleOrderNow}><Link to='/orderpage'>Order Now</Link></Button>
+</div>
       {/* {message && <p>{message}</p>}  */}
 </div>
 

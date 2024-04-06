@@ -1,0 +1,27 @@
+.main-head{
+    padding-bottom: 20px;
+    width: 100%;
+}
+.head-restaurants{
+    padding-bottom: 20px;
+    text-align: center;
+}
+.table{
+margin: 10px;
+text-align:start;
+}
+.table-head{
+    font-size: 18px;
+    font-weight: 200px;
+    padding-bottom: 10px;
+    text-align: start;
+
+}
+.table-border{
+margin: 20px;
+
+}
+.delete-icon{
+    font-size: 24px;
+    color: red;
+}

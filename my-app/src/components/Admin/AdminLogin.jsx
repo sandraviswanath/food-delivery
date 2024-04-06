@@ -1,20 +1,20 @@
 import React, { useContext, useState } from 'react'
-import './Login3.css'
-import './styles.css'
+import './admin.css'
+import './adminstyle.css'
 // import add from './addbanner.webp'
 // import foodban from './foodban.jpg'
 // import hungry from './hungry.jpg'
-import ban from './ban3.jpg'
-import image from './img-12.avif'
+
+import image from './foodban.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 import { userData } from '../../App'
 import axios from 'axios'
-function Customerlogin() {
+function AdminLogin() {
 
    const navigate=useNavigate()
    const [show, setShow] = useState(false);
-const {setUser}=useContext(userData);
-  
+
+ 
  const [email, setemail] = useState('')
  const [password, setpassword] = useState('')
  const[name, setname]=useState('')
@@ -28,35 +28,38 @@ const {setUser}=useContext(userData);
  const handleName =(event)=>{
    setname(event.target.value)
  }
- const handleSubmit =async(event)=>{
-   const storename=name;
-     const storeemail=email;
-   event.preventDefault()
-   try{
-   const {data} =await axios.post('http://localhost:5000/customerlogin',{email,password,name})
-   // console.log(data.user)
-   setUser(data.user)
-   navigate(`/home2/${storeemail}`)
-   }
-   catch(error){
-     console.log(error)
-   }
-   // alert(` ${email} login successed..!!!`)
+
+
+
+
+
+
+
+const handleSubmit = async (event) => {
+   event.preventDefault();
  
-
- }
- const history=useNavigate()
- const previous=useNavigate()
-const sample=()=>{
- history('/banner')
-
-}
-const back=()=>{
-previous(-1)
-}
+   try {
+     const response = await axios.post('http://localhost:5000/adminlogin', { email, password, name });
+     
+     // Log the response data using console.dir()
+     console.dir(response.data);
+ 
+     // Check if the response contains user data
+     
+       navigate('/admin');
+     
+   } catch (error) {
+     console.log('Login error:', error);
+     // Handle network errors or other exceptions here
+   }
+ };
+ 
+ 
+ 
 
   return (
     <div>
+    
         <div className="login">
          <img src={image} alt="image" className="login__bg"/>
 
@@ -75,24 +78,14 @@ previous(-1)
                </div>
             </div>
 
-            <div className="login__check">
-               <div className="login__check-box">
-                  <input type="checkbox" class="login__check-input" id="user-check"/>
-                  <label for="user-check" class="login__check-label">Remember me</label>
-               </div>
-
-               <a href="#" className="login__forgot">Forgot Password?</a>
-            </div>
 
             <button type="submit" class="login__button">Login</button>
 
-            <div className="login__register">
-               Don't have an account? <Link to="/customersignup"style={{color: 'red',textDecoration:'none'}}>Register</Link>
-            </div>
          </form>
       </div>
+     
     </div>
   )
 }
 
-export default Customerlogin
+export default AdminLogin

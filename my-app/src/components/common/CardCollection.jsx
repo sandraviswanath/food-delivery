@@ -9,31 +9,6 @@ function CardCollection({display}) {
   
  
   return (
-    // <div>
-     
-    // <div className='explore-card cur-po'>
-    //  <div style={{ width: '18rem'}} className='explore-card-cover'>
-    //    <img className='explore-card-image' variant="top" src={display.cover} alt={display.title}/>
-    //    <div>
-    //      <div className='delivery-time'></div>
-    //     <div className='res-row'>
-    //     <div className='res-name'>{display.title}</div>
-    //     {display.rating && (
-    //      <div className='res-rating absolute-center'>{display.rating} <CiStar className='absolute-center'style={{fontSize:'10px',marginLeft:'2px'}} />
-    //      </div>)}
-    //     </div>
-    //     <div className='res-row'>
-    //     <span className='res-cuisine-tag'>{display.subtitle}</span>
-    //     </div>
-    //     <div className='res-row'>
-        
-    //     </div>
-    //    </div>
-    //  </div>
-    // </div>
-    // </div>
-
-
     <section id="product1" style={{width:'23%'}}>
 {/* <h2>featured products</h2>
 <p>Summer Collection New Modern Design</p> */}

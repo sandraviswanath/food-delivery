@@ -195,12 +195,13 @@ return (
       </section>
 
 <h4 class="section-p1">Product </h4>
+<section style={{width:'23%',display:'flex'}}>
 {prodetails.length > 0 && prodetails.map((data) => (
-  <div key={data._id} style={{display:'flex !important'}}>
+  <div key={data._id} style={{width:'28rem'}}>
     
     {data.fooditems && data.fooditems.map((menu) => (
       menu && (
-        <section id="product1" class="section-p1" style={{ width: '23%',marginTop:'-100px' }} key={menu._id}>
+        <section id="product1" className="section-p1" style={{ width: '23%',marginTop:'-100px' }} key={menu._id}>
           <div className="pro-container" style={{ display: 'flex' }}>
             <div className="pro" style={{ height: '310px' }}>
               {menu.foodimage && <img src={menu.foodimage} alt={menu.foodname} style={{ height: '150px', width: '220px' }} />}
@@ -216,10 +217,6 @@ return (
               </div>
             
                {!addedToCart && <i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i>}
-             
-               
-               
-              {/* <button class="order">Order now!!</button> */}
             </div>
           </div>
         </section>
@@ -227,38 +224,14 @@ return (
     ))}
   </div>
 ))}
+   </section>
+
+
+
 </div>
    ))}
   </div>
-  {/* <h4 class="section-p1">Product </h4>
-  {prodetails.length > 0 && prodetails.map((data) => (
- <div>
-    {data && data.fooditems && data.fooditems.map((menu) => (
-    <section id="product1" class="section-p1" style={{ width: '23%' }}>
-     
-        <div className=" pro-container" style={{ display: 'flex' }} >
-            <div className="pro" style={{ height: '310px' }}>
-            
-                <img key={menu?._id} src={menu && menu.foodimage} alt={menu && menu.foodname} style={{ height: '150px', width: '220px' }} />
-                <div className='res-row'>
-                    <div className='res-name'>{menu && menu.foodname}</div>
-                    {menu && menu.itemrating && (
-                        <div className='res-rating absolute-center'>{menu && menu.itemrating} <CiStar className='absolute-center' style={{ fontSize: '10px', marginLeft: '2px' }} />
-                        </div>)}
-                </div>
-                <div className="des">
-                    <span></span>
-                    <h4>{menu && menu.price}</h4>
-                </div>
-                {!addedToCart && <Link to={`/cart/${menu && menu._id}`}><i class="fal fa-shopping-cart cart"></i></Link>}
-                {addedToCart && <p>Item added to cart!</p>}
-                <button onClick={handlePlaceOrder} class="order">Order now!!</button>
-            </div>
-        </div>
-    </section>
-))}
- </div>
-  ))} */}
+  
 
 
 

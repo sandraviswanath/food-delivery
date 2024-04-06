@@ -4,16 +4,18 @@ const express =require('express')
 
 const { CreateCollection, getcollection } = require('../controller/Collection')
 const { Createfood, getfood,updatefood,deletefood } = require('../controller/food')
-const {signup,getsignup} = require('../controller/signup')
+const {signup,getsignup,deleteUser} = require('../controller/signup')
 const Login = require('../controller/login')
 const getonePlace = require('../controller/getplace')
 const GetOneproduct = require('../controller/GetoneProduct')
 const { CreateCart, getCart, updateCart, deleteCart} = require('../controller/Cart')
 // const { orderdata,myorderdata } = require('../controller/order')
-const { Createfooditems,getfooditems } = require('../controller/fooditem')
-const { getCustomersignup, Customersignup } = require('../controller/CustomerSignup')
+const { Createfooditems,getfooditems, deletefooditems, updatefooditems } = require('../controller/fooditem')
+
 const token = require('../Midllewares/Token')
-const CustomerLogin = require('../controller/Customerlogin')
+
+const { getAdminsignup, Adminsignup } = require('../controller/AdminSignup')
+const AdminLogin = require('../controller/Adminlogin')
 
 
 
@@ -36,11 +38,13 @@ router.route('/collectionlist').get(getcollection)
 router.route('/getplace/:place').get(getonePlace)
 router.route('/getproduct/:id').get(GetOneproduct)
 router.route('/signup').post(signup)
-router.route('/signup').post(getsignup)
+router.route('/getsignup').get(getsignup)
+router.route('/deleteuser/:userId').delete(deleteUser)
+
 router.route('/login').post(Login)
 router.route('/food').post(Createfood)
 router.route('/foodlist').get(getfood)
-router.route('/updatefood/:id').put(updatefood)
+router.route('/updatefood/:id').patch(updatefood)
 router.route('/delete/:id').delete(deletefood)
 
 router.route('/createcart').post(CreateCart)
@@ -53,9 +57,11 @@ router.route('/deletecart/:id/:email').delete(deleteCart)
 
 router.route('/createfooditems').post(Createfooditems)
 router.route('/getfooditems').get(getfooditems)
-router.route('/getcustomersignup').get(getCustomersignup)
-router.route('/customersignup').post(Customersignup)
-router.route('/customerlogin').post(CustomerLogin)
+router.route('/user/:userId/fooditems/:foodItemId').delete(deletefooditems)
+router.route('/updatefooditems/:userId/:foodItemId').patch(updatefooditems)
+router.route('/getadminsignup').get(getAdminsignup)
+router.route('/adminsignup').post(Adminsignup)
+router.route('/adminlogin').post(AdminLogin)
 
 
 

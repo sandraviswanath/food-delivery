@@ -2,6 +2,7 @@ import React from 'react'
 import './NavBar.css'
 import food from './food.jpg'
 import {Container, Nav, Navbar} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 function NavBar() {
   return (
     <div>

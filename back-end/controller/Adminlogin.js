@@ -1,11 +1,10 @@
 const bcrypt = require('bcrypt');
 
+const Admin = require('./AdminSchema');
 
-const Customer = require('./CustomerSchema');
-
-const CustomerLogin=async(req,res) => {
+const AdminLogin=async(req,res) => {
     const {email,password}=req.body;
-    const dbemail=await Customer.findOne({email})
+    const dbemail=await Admin.findOne({email})
     if (dbemail){
 if(dbemail.email=== email && (await bcrypt.compare(password,dbemail.password))){
     console.log('login success')
@@ -25,4 +24,4 @@ else{
     // const userdetail=await User.create({Name,Email,Password:hashedPassword})
     // res.json(userdetail)
 }
-module.exports =CustomerLogin
+module.exports =AdminLogin

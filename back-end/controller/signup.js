@@ -28,7 +28,19 @@ const getsignup=async(req,res)=>{
     const signupdetails = await fooduser.find()
     res.json(signupdetails)
 }
-module.exports={signup,getsignup}
+
+// Backend route to handle user deletion
+const deleteUser= async (req, res) => {
+    try {
+        await fooduser.findByIdAndDelete(req.params.userId);
+        res.json({ message: 'User deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).json({ error: 'Server error' });
+    }
+};
+
+module.exports={signup,getsignup,deleteUser}
 
 
 

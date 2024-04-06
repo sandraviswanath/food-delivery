@@ -14,15 +14,15 @@ import AddForm from '../Screens/createRestaurants/AddForm'
 import Home2 from '../Screens/Home2'
 import NavBar2 from '../components/NavBar2'
 import RestaurantForm from '../Screens/createRestaurants/RestaurantForm'
-import Cart from '../components/cart/CartPage'
+
 import DetailedCard from '../components/common/Detailedpages/DetailedCard'
 import GetPlace from '../components/common/Detailedpages/GetPlace'
-import CartPage from '../components/cart/CartPage'
+
 
 
 import Order from '../components/order/Order'
 import Restaurantdetails from '../Screens/Restaurantdetails'
-import Addcart from '../components/cart/Addcart'
+
 
 import Cart2 from '../components/cart/Cart2'
 
@@ -32,8 +32,16 @@ import Login3 from '../Screens/Login/Login3'
 import Signup2 from '../Screens/Login/Signup2'
 import Form1 from '../Screens/createRestaurants/Form1'
 import HomeBannerCard from '../components/Card/HomeBannerCard'
-import Customerlogin from '../Screens/Login/CustomerLogin'
-import Customersignup from '../Screens/Login/Customersignup'
+import AdminLogin from '../components/Admin/AdminLogin'
+import AdminSignup from '../components/Admin/AdminSignup'
+
+import Orderpage from '../components/cart/Orderpage'
+import AdminDashboard from '../components/Admin/Admindashboard'
+import ViewRestaurant from '../components/Admin/ViewRestaurant'
+import ViewUser from '../components/Admin/ViewUser'
+
+
+
 
 
 
@@ -56,9 +64,14 @@ function Router() {
         <Route path='/addsignup' element={<><Addsignup/></>}></Route>
         <Route path='/addlogin' element={<><Addlogin/></>}></Route>
         
-        <Route path='/cart/:email' element={<><CartPage/></>}></Route>
+      
         
-        
+        <Route path='/adminlogin' element={<><AdminLogin/></>}></Route>
+        <Route path='/adminsignup' element={<><AdminSignup/></>}></Route>
+        <Route path='/admin' element={<><AdminDashboard/></>}></Route>
+        <Route path='/restaurantview' element={<><ViewRestaurant/></>}></Route>
+        <Route path='/userview' element={<><ViewUser/></>}></Route>
+
         <Route path='/addform' element={<><AddForm/></>}></Route>
         <Route path='/restaurantform' element={<><RestaurantForm/></>}></Route>
         <Route path='/restaurantdetails/:email' element={<><Restaurantdetails/></>}></Route>
@@ -67,7 +80,7 @@ function Router() {
         <Route path='/place' element={<><GetPlace/></>}></Route>
         
         <Route path='/order' element={<><Order/></>}></Route>
-        <Route path='/addcart' element={<><Addcart/></>}></Route>
+        <Route path='/orderpage' element={<><Orderpage/></>}></Route>
       
         <Route path='/cart2/:email' element={<><Cart2/></>}></Route>
        

@@ -15,7 +15,7 @@ function Banner() {
     <div className='banner-image'>
       <Navbar>
         <Container>
-        <Navbar.Brand className='food-title' href="#home">Food</Navbar.Brand>
+        <Navbar.Brand className='food-title' href="#home"><Link to='/adminlogin' style={{textDecoration:'none'}}>Food</Link></Navbar.Brand>
         
           <Nav className="ms-auto banner-nav">
           
