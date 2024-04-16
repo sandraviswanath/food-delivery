@@ -5,3 +5,34 @@
     font-weight: 600;
     /* font-family: Okra, Helvetica, sans-serif; */
 }
+.navdropDown-items{
+    color: black;
+    font-size: 14px;
+    font-weight: 500px;
+   
+}
+.navdropDown-items:hover{
+    color: #dc3545;
+    
+}
+.navdropdownitems-logout{
+    /* color: black;
+   background: none;
+    border: 1px solid;
+    border-radius: 2px; */
+    padding: 8px;
+   
+    background-color: white;
+    color: #9c9c9c;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    /* margin:10px 10px 10px 0px; */
+    font-size: 14px;
+    font-weight: 500;
+    
+}
+.navdropdownitems-logout:hover{
+    color: black;
+    border: 1px solid #dc3545;
+  
+}

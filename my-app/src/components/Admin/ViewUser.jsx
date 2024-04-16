@@ -6,12 +6,12 @@ import './AdminDashboard.css'
 import AdminDashboard from './Admindashboard';
 function ViewUser() {
     
- const [User, setUser] = useState([])
- const [users, setUsers] = useState([]);
+ const [User,setUser] = useState([]);
+
     useEffect(() => {
         const handleItems = async () => {
           try {
-            const response = await axios.get('http://localhost:5000/getsignup');
+            const response = await axios.get('http://localhost:5000/getallsignup');
             setUser(response.data);
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -23,9 +23,12 @@ function ViewUser() {
 
       const handleDeleteUser = async (userId) => {
         try {
+         
             await axios.delete(`http://localhost:5000/deleteuser/${userId}`);
-            setUsers(users.filter(user => user._id !== userId));
-        } catch (error) {
+            setUser(User.filter(user => (user._id != userId)));
+           
+        }
+         catch (error) {
             console.error('Error deleting user:', error);
         }
     };
@@ -47,9 +50,10 @@ function ViewUser() {
     </tr>
 </thead>
 <tbody>
+
 {User.map(display =>(
-    <tr className='table'>
-        {/* <button onClick={mycontext.id}></button> */}
+    <tr className='table' key={display._id}>
+        
        
         <td>{display._id}</td>
         <td>{display.name}</td>
@@ -60,6 +64,21 @@ function ViewUser() {
     </tr>
     
     ))}
+    {/* {User ? (
+    User.map(display => (
+        <tr className='table' key={display._id}>
+            <td>{display._id}</td>
+            <td>{display.name}</td>
+            <td>{display.email}</td>
+            <td><MdDelete className='delete-icon' onClick={() => handleDeleteUser(display._id)} /></td>
+        </tr>
+    ))
+) : (
+    <tr>
+        <td colSpan="4">Loading...</td>
+    </tr>
+)} */}
+  
 </tbody>
     </table>
     <div className='normal-btn'>

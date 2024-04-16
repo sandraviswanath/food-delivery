@@ -1,4 +1,4 @@
-// const deliveryItem = require("./deliveryItemSchema");
+// const deliveryItem = require("../model/deliveryItemSchema");
 
 
 // const CreateItem=async(req,res)=>{

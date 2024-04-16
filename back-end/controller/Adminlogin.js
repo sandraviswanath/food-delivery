@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
+const Admin = require('../model/AdminSchema');
 
-const Admin = require('./AdminSchema');
+
 
 const AdminLogin=async(req,res) => {
     const {email,password}=req.body;

@@ -21,7 +21,18 @@ function Restaurantdetails() {
     itemrating: "",
   });
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
+const handleShow = (menu) =>{
+  setShow(true);
+  setSelectedProduct(menu);
+  setUpdatedFoodItem({
+    foodname: menu.foodname,
+    foodimage: menu.foodimage,
+    price: menu.price,
+    itemrating: menu.itemrating
+  })
+}
+
   useEffect(() => {
     const handleitems = async () => {
       try {
@@ -65,13 +76,12 @@ function Restaurantdetails() {
 
   const handleUpdateFoodItem = async (userId, foodItemId) => {
     try {
-      await axios.patch(
+      await axios.put(
         `http://localhost:5000/updatefooditems/${userId}/${foodItemId}`,
         updatedFoodItem
       );
+setShow(false);
 
-      // Optionally, you can fetch the updated list of food items and update the state to reflect the changes.
-      // This step depends on how you manage state in your application.
     } catch (error) {
       console.error("Error updating food item:", error);
     }
@@ -86,15 +96,16 @@ function Restaurantdetails() {
   return (
     <section>
       <h4
-        className="section-p1"
-        style={{ fontSize: "40px", marginBottom: "-90px" }}
+        className="section-p2"
+        style={{ fontSize: "40px", marginBottom: "-70px" }}
       >
         My Restaurant
       </h4>
       <RestaurantDisplay />
-      <h4 className="section-p1" style={{ marginTop: "-70px" }}>
+      <h4 className="section-p2" style={{ marginTop: "-40px" }}>
         Food items
       </h4>
+      <div style={{display:'flex'}}>
       {prodetails.length > 0 &&
         prodetails.map((data) => (
           <div key={data._id}>
@@ -104,13 +115,13 @@ function Restaurantdetails() {
                   menu && (
                     <section
                       id="product1"
-                      className="section-p1"
-                      style={{ width: "23%", marginTop: "-100px" }}
+                      // className="section-p2"
+                      // style={{ width: "23%", marginTop: "-100px" }}
                       key={menu._id}
                     >
                       <div
                         className="pro-container"
-                        style={{ display: "flex" }}
+                        // style={{ display: "flex" }}
                       >
                         <div className="pro" style={{ height: "310px" }}>
                           {menu.foodimage && (
@@ -139,7 +150,7 @@ function Restaurantdetails() {
                             <span></span>
                             <h4>Price:{menu.price}</h4>
                           </div>
-                          <div className="des">
+                          <div className="des" >
                             <span
                               className="remove"
                               onClick={() =>
@@ -148,7 +159,8 @@ function Restaurantdetails() {
                             >
                               Remove
                             </span>
-                            <span className='edit' onClick={ ()=> {handleShow(); setSelectedProduct(menu) }}>Edit</span>
+                            {/* <span className='edit' onClick={ ()=> {handleShow(); setSelectedProduct(menu) }}>Edit</span> */}
+                            <span className='edit' onClick={ ()=> {handleShow(menu) }}>Edit</span>
                           </div>
                           {/* <div>
                            
@@ -268,6 +280,7 @@ function Restaurantdetails() {
               )}
           </div>
         ))}
+        </div>
     </section>
   );
 }

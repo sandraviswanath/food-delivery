@@ -1,6 +1,6 @@
 
 
-const fooditem = require("./fooditemSchema");
+const fooditem = require("../model/fooditemSchema");
 
 
 const Createfooditems = async (req, res) => {

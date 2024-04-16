@@ -7,10 +7,13 @@ import { Link } from 'react-router-dom';
 import { CiLocationOn } from "react-icons/ci";
 import axios from 'axios';
 
+
+
 function HomeBannerCard() {
   
   const [first, setFirst] = useState([])
  const [second, setsecond] = useState([])
+
 
   useEffect(() => {
       const handleItems = async () => {
@@ -42,15 +45,18 @@ function HomeBannerCard() {
      };
      fooditems();
     },[]);
+
+  
+
   return (
-    
-    
+   
 
 <div style={{marginTop:'2%',marginLeft:'2%',marginRight:'2%'}}> 
 <h2>Explore Restaurants</h2>
 <div className="gallery" style={{marginTop:'2%',marginLeft:'2%',marginRight:'2%'}}>
 
  {first.map(display => (
+
   
   <div>
    
@@ -80,6 +86,9 @@ function HomeBannerCard() {
 ))} 
 
 </div>
+
+
+
 </div>      
 
 

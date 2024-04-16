@@ -1,4 +1,4 @@
-// const Collection = require("./CollectionSchema");
+// const Collection = require("../model/CollectionSchema");
 
 
 // const CreateCollection = async (req, res) => {
@@ -65,7 +65,7 @@
 
 
 
-// const Collection = require("./CollectionSchema");
+// const Collection = require("../model/CollectionSchema");
 
 
 // const CreateCollection = async (req, res) => {
@@ -113,7 +113,7 @@
 
 
 
-const Collection = require("./CollectionSchema");
+const Collection = require("../model/CollectionSchema");
 
 // const CreateCollection = async (req, res) => {
 //     const {

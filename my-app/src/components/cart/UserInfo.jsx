@@ -1,22 +1,66 @@
+
 import React, { useState } from 'react';
+import './UserInfo.css'
 
 const UserInfo = ({ onSubmit }) => {
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [phone, setPhone] = useState('');
+  const [userData, setUserData] = useState({
+    name: '',
+    address: '',
+    email: ''
+  });
+
+  const handleChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ name, address });
+    onSubmit(userData);
   };
 
   return (
-    <div>
-      <h2>Delivery Address</h2>
+    <div style={{paddingTop:'20px'}}>
+      <h2 className='headof'>User Information</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
-        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Address" />
-        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="phone" />
+        <div style={{paddingBottom:'10px'}}>
+          <label htmlFor="name">Name:</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            value={userData.name} 
+            onChange={handleChange} 
+            required 
+            style={{marginLeft:'20px'}}
+          />
+        </div>
+        <div style={{paddingBottom:'10px'}}>
+          <label htmlFor="address">Address:</label>
+          <input 
+            type="text" 
+            id="address" 
+            name="address" 
+            value={userData.address} 
+            onChange={handleChange} 
+            required 
+            style={{marginLeft:'5px'}}
+          />
+        </div>
+        <div style={{paddingBottom:'10px'}}>
+          <label htmlFor="email">Email:</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            value={userData.email} 
+            onChange={handleChange} 
+            required 
+            style={{marginLeft:'27px'}}
+          />
+        </div>
         <button type="submit">Submit</button>
       </form>
     </div>
@@ -24,3 +68,5 @@ const UserInfo = ({ onSubmit }) => {
 };
 
 export default UserInfo;
+
+

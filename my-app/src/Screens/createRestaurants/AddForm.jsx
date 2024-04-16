@@ -291,15 +291,17 @@ const AddForm = () => {
          </div>
        ))}
         
-        <div className="add-menu-item">
-         <Button type="button" onClick={handleAddMenu}>
+        <div style={{display:'flex',gap:'20px'}}>
+         
+         <Button type="button" className="add-menu-item" onClick={handleAddMenu}>
            Add Menu Item
           </Button>
+          
+         
+          <Button type="submit" className="form-submit">Submit</Button>
+          
       </div> 
         
-      <div className="form-submit">
-      <Button type="submit">Submit</Button>
-    </div>
      </Form>
       </div>
  

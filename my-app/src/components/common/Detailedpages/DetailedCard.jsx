@@ -7,6 +7,8 @@ import { BsFillCartFill } from 'react-icons/bs'
 import { Col, Container, Row } from 'react-bootstrap'
 import { userData } from '../../../App'
 import { CiHeart } from "react-icons/ci";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 // import '../CardCollection.css'
 
@@ -25,6 +27,15 @@ function DetailedCard() {
   // const [total, settotal] = useState(0)
     const [order, setOrder] = useState([]);
     const [addedToCart, setAddedToCart] = useState(false);
+
+    const [currentIcon, setCurrentIcon] = useState('icon1');
+    const [wishlist, setWishlist] = useState(false);
+
+    // const toggleIcon = () => {
+    //   // Ternary operator to switch between 'icon1' and 'icon2'
+    //   setCurrentIcon(currentIcon === 'icon1' ? 'icon2' : 'icon1');
+    // };
+
     useEffect(()=>{
     const restaurantitems =async()=>{
      
@@ -98,46 +109,24 @@ useEffect(()=>{
       
     };
     
-    
-        
-    
-//   return (
-//     <div>
-//         {namedetails.map((details)=>(
-//       <section id="prodetails" class="section-p1">
-//     <div class="single-pro-image">
-//         <img src={details.cover} width="100%" id="mainImg"alt=""/>
-        
-//     </div>
-//     <div class="single-pro-details">
+    const handleAddToWishlist = async (product) => {
+      // setCurrentIcon(currentIcon === 'icon1' ? 'icon2' : 'icon1');
 
-// <h4>{details.title}</h4>
-// <h6>{details.subtitle}</h6>
-// <h6 style={{color:'rgb(105, 105, 105)'}}>{details.place}</h6>
-// <p style={{color:'rgb(105, 105, 105)'}}>{details.time}</p>
-// <h2>{details.price}</h2>
-// <select >
-//     <option>Select Size</option>
-//     {[...Array(10).keys()].map((x,i)=>{
-//                 return <option value={i+1}>{i+1}</option>
-//             })}
-//     {/* <option>1</option>
-//     <option>2</option>
-//     <option>X</option>
-//     <option>XXL</option> */}
-// </select>
-// <input type="number" value="1"/>
-// {!addedToCart && <button onClick={handleAddToCart} class="normal">Add To Cart</button>}
-// {addedToCart && <p>Item added to cart!</p>}
-// <h4>Product </h4>
-// {details.fooditems.map((menu)=>(
-// <span>{menu.foodname}</span>
-// ))}
-//     </div>
-// </section>
-// ))}  
-//     </div>
-//   )
+      try {
+        const response = await axios.post('http://localhost:5000/wishlist', {
+          product, 
+          email : user.email, 
+         
+        });
+        console.log('Item added to wishlist:', response.data);
+        setWishlist(true);
+        // Navigate(`/cart2/${user.email}`);
+      } catch (error) {
+        console.error('Error adding item to wishlist:', error);
+      }
+      
+    };
+    
 
 
 
@@ -197,12 +186,12 @@ return (
 <h4 class="section-p1">Product </h4>
 <section style={{width:'23%',display:'flex'}}>
 {prodetails.length > 0 && prodetails.map((data) => (
-  <div key={data._id} style={{width:'28rem'}}>
+  <div key={data._id}>
     
     {data.fooditems && data.fooditems.map((menu) => (
       menu && (
-        <section id="product1" className="section-p1" style={{ width: '23%',marginTop:'-100px' }} key={menu._id}>
-          <div className="pro-container" style={{ display: 'flex' }}>
+        <section id="product1" className="section-p1" key={menu._id}>
+       
             <div className="pro" style={{ height: '310px' }}>
               {menu.foodimage && <img src={menu.foodimage} alt={menu.foodname} style={{ height: '150px', width: '220px' }} />}
               <div className='res-row'>
@@ -215,10 +204,12 @@ return (
                 <span></span>
                 <h4>₹{menu.price} for one</h4>
               </div>
-            
+            <div>
                {!addedToCart && <i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i>}
+               {currentIcon === 'icon1' ? <FaRegHeart onClick={() => handleAddToWishlist(menu)} className='heart-icon'/> : <FaHeart className='heart-icon2'/>}
+               </div>
             </div>
-          </div>
+         
         </section>
       )
     ))}

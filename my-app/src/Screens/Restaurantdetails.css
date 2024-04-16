@@ -26,8 +26,37 @@
       color: white;
   }
   .remove{
-    
+    padding: 8px;
+   
+    background-color: white;
+    color: #9c9c9c;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    /* margin:10px 10px 10px 0px; */
+    font-size: 14px;
+  }
+  .remove:hover{
+    color: black;
+    border: 1px solid black;
+
   }
   .edit{
     float: right;
+    padding: 8px;
+   
+    background-color: white;
+    color: #9c9c9c;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    /* margin:10px 10px 10px 0px; */
+    font-size: 14px;
   }
+  .edit:hover{
+    color: black;
+    border: 1px solid black;
+  }
+
+  .section-p2 {
+      padding: 40px 40px;
+      
+    }

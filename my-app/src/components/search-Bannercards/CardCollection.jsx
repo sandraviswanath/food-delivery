@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CiStar } from 'react-icons/ci'
 import './CardCollection.css'
 import { Card, Row } from 'react-bootstrap'
 import { BsFillCartFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
+
 function CardCollection({display}) {
-  
  
   return (
     <section id="product1" style={{width:'23%'}}>
@@ -22,6 +22,8 @@ function CardCollection({display}) {
         {display.rating && (
          <div className='res-rating absolute-center'>{display.rating} <CiStar className='absolute-center'style={{fontSize:'10px',marginLeft:'2px'}} />
          </div>)}
+         
+        
          </div>
          <div className="des">
          <span>{display.subtitle}</span>

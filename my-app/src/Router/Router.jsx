@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Banner from '../Screens/Banner'
 import Home from '../Screens/Home'
 
-import CollectionCard from '../components/common/CollectionCard'
+import CollectionCard from '../components/search-Bannercards/CollectionCard'
 import Signup from '../Screens/Signup'
 
 import Login2 from '../Screens/Login2'
@@ -16,7 +16,7 @@ import NavBar2 from '../components/NavBar2'
 import RestaurantForm from '../Screens/createRestaurants/RestaurantForm'
 
 import DetailedCard from '../components/common/Detailedpages/DetailedCard'
-import GetPlace from '../components/common/Detailedpages/GetPlace'
+
 
 
 
@@ -39,6 +39,12 @@ import Orderpage from '../components/cart/Orderpage'
 import AdminDashboard from '../components/Admin/Admindashboard'
 import ViewRestaurant from '../components/Admin/ViewRestaurant'
 import ViewUser from '../components/Admin/ViewUser'
+import WishList from '../components/Wishlist/WishList'
+import Profile from '../components/profile/Profile'
+import ExploreSection from '../components/search-Bannercards/ExploreSection'
+import Delivery from '../components/search-Bannercards/Delivery'
+import Searchview from '../components/search-Bannercards/Searchview'
+
 
 
 
@@ -54,10 +60,19 @@ function Router() {
       
       <Routes>
       <Route path='/' element={<><Banner/><HomeBannerCard/></>}></Route>
+
+      
+
+  
         {/* <Route path='/' element={<><Banner/><HomeCollections/></>}></Route> */}
         <Route path='/homedetails/:email' element={<><HomeDetailCard/></>}></Route>
         <Route path='/home' element={<><Home/></>}></Route>
-        <Route path='/home2/:storeemail' element={<><NavBar2/><Home2/></>}></Route>
+        {/* <Route path='/home2/:storeemail' element={<><NavBar2/><Home2/></>}></Route> */}
+
+
+        <Route path='/home2/:storeemail' element={<><NavBar2/><Searchview/></>}></Route>
+       
+
         <Route path='/login' element={<><Login2/></>}></Route>
         <Route path='/signup' element={<><Signup2/></>}></Route>
         <Route path='/addrestaurant/:email' element={<><AddRestaurant/></>}></Route>
@@ -77,16 +92,27 @@ function Router() {
         <Route path='/restaurantdetails/:email' element={<><Restaurantdetails/></>}></Route>
         
         <Route path='/detailed/:email' element={<><DetailedCard/></>}></Route>
-        <Route path='/place' element={<><GetPlace/></>}></Route>
+  
         
-        <Route path='/order' element={<><Order/></>}></Route>
+        <Route path='/order/:email' element={<><Order/></>}></Route>
         <Route path='/orderpage' element={<><Orderpage/></>}></Route>
+
       
         <Route path='/cart2/:email' element={<><Cart2/></>}></Route>
+        <Route path='/wishlist/:email' element={<><WishList/></>}></Route>
+        <Route path='/profile/:email' element={<><Profile/></>}></Route>
+       
        
         <Route path='/log' element={<Login3/>}></Route>
         <Route path='/form1' element={<Form1/>}></Route>
+        <Route path='*' element={
+        <div style={{paddingTop:'100px'}}>
+          <h1 style={{fontSize:'68px',textAlign:'center'}}>Ooops....error 404</h1>
+          <p style={{fontSize:'24px',textAlign:'center'}}>page not found!!!!</p>
+          </div>
+        }>
 
+          </Route>
 
 
 

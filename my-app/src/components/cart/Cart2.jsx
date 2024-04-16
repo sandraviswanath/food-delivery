@@ -1,9 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { userData } from '../../App';
 import { Button, Table } from 'react-bootstrap';
 import { IoMdArrowDropdown, IoMdArrowDropup, IoMdClose } from 'react-icons/io';
+import './Cart.css'
+
+
+
 
 const Cart2 = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -35,21 +39,30 @@ const navigate = useNavigate();
           ...product,
           quantity: product.quantity ||1 // Set default quantity to 1 if it's missing
         }));
-const updatedCartItems = cartItems.map(item =>{
-  const existingIndex = products.findIndex(product=>product._id === item._id);
-  if (existingIndex !== -1) {
-    return{...item,quantity:products[existingIndex].quantity};
-    }
-   return item;
-  });
-  const newProducts =products.filter(product => !cartItems.some(item => item._id === product._id));
+// const updatedCartItems = cartItems.map(item =>{
+//   const existingIndex = products.findIndex(product=>product._id === item._id);
+//   if (existingIndex !== -1) {
+//     return{...item,quantity:products[existingIndex].quantity};
+//     }
+//    return item;
+//   });
+//   const newProducts =products.filter(product => !cartItems.some(item => item._id === product._id));
 
-const mergedCartItems = [...updatedCartItems,...newProducts];
+// const mergedCartItems = [...updatedCartItems,...newProducts];
 
 
-        setCartItems(mergedCartItems);
+//         setCartItems(mergedCartItems);
 
-        calculateTotalPriceAndQuantity(mergedCartItems); 
+//         calculateTotalPriceAndQuantity(mergedCartItems); 
+
+
+
+
+
+setCartItems(products);
+calculateTotalPriceAndQuantity(products);
+
+
       } catch (error) {
         console.error('Error fetching cart items:', error);
         setError('Error fetching cart items. Please try again later.');
@@ -58,8 +71,12 @@ const mergedCartItems = [...updatedCartItems,...newProducts];
       }
     };
 
+  //   fetchCartItems();
+  // }, [user.email]);
+  if (user && user.email) { // Check if user and user.email are not null before calling fetchCartItems
     fetchCartItems();
-  }, [user.email]);
+  }
+}, [user]);
 
 
 
@@ -109,7 +126,7 @@ const mergedCartItems = [...updatedCartItems,...newProducts];
   const updateQuantity = (productId, newQuantity) => {
     // Update the quantity of the product in the cartItems state
     const updatedCartItems = cartItems.map(item => {
-      if (item._id === productId) { // Update to item._id
+      if (item._id === productId) { 
         return { ...item, quantity: newQuantity };
       }
       return item;
@@ -148,9 +165,11 @@ const mergedCartItems = [...updatedCartItems,...newProducts];
       };
     
       const response = await axios.post('http://localhost:5000/orderdata', orderData);
-      // Handle success and failure accordingly
-      // Redirect to a confirmation page or display a success message
-      navigate('/order-confirmation');
+      setCartItems([]); // Clear cart after placing the order
+      setTotalPrice(0);
+      setTotalQuantity(0);
+
+      navigate('/orderpage');
     } catch (error) {
       console.error('Error placing order:', error);
     }
@@ -179,9 +198,11 @@ const mergedCartItems = [...updatedCartItems,...newProducts];
   
   return (
 
-<div>
-<h1>Cart</h1>
-<ul>
+<div className='main-head-cart'>
+<h1 style={{padding:'25px'}}>Cart</h1>
+<div className='sub-div' >
+
+<ul style={{display:'flex',paddingTop:'40px'}}>
   {cartItems.map(product => (
     <div key={product._id} style={{ display: 'flex', flexWrap: 'wrap' }}>
       <section id="product1" className="section-p1" style={{ width: '23%', marginTop: '-100px' }} key={product.id}>
@@ -209,10 +230,18 @@ const mergedCartItems = [...updatedCartItems,...newProducts];
 
 <div>Total Price: ${totalPrice}</div>
 <div>Total Quantity: {totalQuantity}</div>
+
 <div>
-<Button onClick={handleOrderNow}><Link to='/orderpage'>Order Now</Link></Button>
+{/* <Button className='ordernow-btn'><Link to='/orderpage' style={{textDecoration:'none'}}>Order Now</Link></Button> */}
+<Button className='ordernow-btn' onClick={handleOrderNow}>
+order now
+
+</Button>
+
 </div>
       {/* {message && <p>{message}</p>}  */}
+</div>
+
 </div>
 
   );

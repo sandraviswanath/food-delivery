@@ -1,6 +1,7 @@
 const bcrypt=require('bcrypt');
+const Admin = require('../model/AdminSchema');
 
-const Admin = require('./AdminSchema');
+
 const Adminsignup = async(req,res)=>{
     const {name,email,password,phone}=req.body;
     const existinguser = await Admin.findOne({email});

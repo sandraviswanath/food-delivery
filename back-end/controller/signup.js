@@ -1,7 +1,7 @@
 const bcrypt=require('bcrypt');
 
 
-const fooduser = require('./userSchema');
+const fooduser = require('../model/userSchema');
 const signup = async(req,res)=>{
     const {name,email,password,phone}=req.body;
     const existinguser = await fooduser.findOne({email});
@@ -24,9 +24,14 @@ res.json(userdetails)
 }
 
 
-const getsignup=async(req,res)=>{
-    const signupdetails = await fooduser.find()
-    res.json(signupdetails)
+const getsignup = async (req, res) => {
+    const { email } = req.params;
+    const signupdetails = await fooduser.findOne({ email });
+    res.json(signupdetails);
+}
+const getallSignup= async (req, res) => {
+    const userList = await fooduser.find()
+    res.json(userList)
 }
 
 // Backend route to handle user deletion
@@ -40,7 +45,7 @@ const deleteUser= async (req, res) => {
     }
 };
 
-module.exports={signup,getsignup,deleteUser}
+module.exports={signup,getsignup,deleteUser,getallSignup}
 
 
 

@@ -1,6 +1,6 @@
 
 const bcrypt=require('bcrypt');
-const user = require('./userSchema');
+const user = require('../model/userSchema');
 
 const CreateUser =async(req,res)=>{
     const {name,email,password}=req.body;

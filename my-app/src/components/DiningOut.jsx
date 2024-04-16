@@ -1,7 +1,7 @@
 import React from 'react'
 import './Diningout.css'
 import Collection from './common/Collection'
-import CollectionCard from './common/CollectionCard'
+import CollectionCard from './search-Bannercards/CollectionCard'
 import DeliveryItem from './DeliveryItem'
 
 

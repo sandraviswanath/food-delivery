@@ -1,5 +1,5 @@
 // const Collection = require("./CollectionSchema")
-const food = require("./foodSchema")
+const food = require("../model/foodSchema")
 
 
 const getonePlace=async(req,res)=>{

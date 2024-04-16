@@ -1,5 +1,5 @@
 
-const food = require("./foodSchema");
+const food = require("../model/foodSchema");
 
 const Createfood = async (req, res) => {
     const {
@@ -95,4 +95,16 @@ const deletefood = async (req, res) => {
     }
 };
 
-module.exports={getfood,Createfood,deletefood,updatefood}
+
+const searchfood = async (req, res) => {
+    try {
+        const query = req.query.q; // Get the search query from the request URL query parameter
+        const results = await food.find({ $text: { $search: query } }); // Perform a text search using MongoDB's text index
+        res.json(results);
+    } catch (error) {
+        console.error('Error searching for food:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+module.exports={getfood,Createfood,deletefood,updatefood,searchfood}

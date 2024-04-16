@@ -1,19 +1,20 @@
 const express = require("express");
-const CartItem = require("../model/CartSchema");
+
 
 const FoodItem = require("../model/fooditemSchema");
 
 const customer = require("../model/userSchema");
+const Wishlist = require("../model/WishlistSchema");
 
 const router = express.Router();
 
-const CreateCart = async (req, res) => {
+const CreateWishlist = async (req, res) => {
   try {
     const { email, product } = req.body;
     const user = await customer.findOne({ email: email });
-    let cart = await CartItem.findOne({ user: user });
+    let cart = await Wishlist.findOne({ user: user });
     if (cart) {
-      cart = await CartItem.updateOne(
+      cart = await Wishlist.updateOne(
         { user: user },
         {
           $push: {
@@ -23,7 +24,7 @@ const CreateCart = async (req, res) => {
         }
       );
     } else {
-      cart = CartItem.create({
+      cart = Wishlist.create({
         user: user,
         products: [product],
       });
@@ -35,10 +36,10 @@ const CreateCart = async (req, res) => {
   }
 };
 
-const getCart = async (req, res) => {
+const getWishlist = async (req, res) => {
   try {
     const user = await customer.findOne({ email: req.params.email  });
-    const cartItems = await CartItem.findOne({ user:user });
+    const cartItems = await Wishlist.findOne({ user:user });
     res.status(200).send(cartItems);
   } catch (error) {
     console.error("Error fetching cart items:", error);
@@ -46,11 +47,11 @@ const getCart = async (req, res) => {
   }
 };
 
-const updateCart = async (req, res) => {
+const updateWishlist = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const updatedItem = await CartItem.findByIdAndUpdate(
+    const updatedItem = await Wishlist.findByIdAndUpdate(
       id,
       { quantity },
       { new: true }
@@ -66,31 +67,7 @@ const updateCart = async (req, res) => {
 };
 
 
-
-// const deleteCart = async (req, res) => {
-//   try {
-//     const productId = req.params.id;
-//     const user = await customer.findOne({ email: req.params.email });
-//     const cart = await CartItem.findOne({ user: user });
-
-//     if (!cart) {
-//       return res.status(404).json({ message: "Cart not found" });
-//     }
-
-//     // Remove the product with the provided id from the cart
-//     cart.products = cart.products.filter(item => item.id !== productId);
-//     await cart.save();
-
-//     res.json({ message: 'Product deleted successfully' });
-//   } catch (error) {
-//     console.error("Error deleting product:", error);
-//     res.status(500).send("Internal Server Error");
-//   }
-// };
-
-
-
-const deleteCart = async (req, res) => {
+const deleteWishlist = async (req, res) => {
   try {
     const productId = req.params.id;
     const userEmail = req.params.email;
@@ -99,7 +76,7 @@ const deleteCart = async (req, res) => {
     const user = await customer.findOne({ email: userEmail });
 
     // Find the cart associated with the user
-    const cart = await CartItem.findOne({ user: user });
+    const cart = await Wishlist.findOne({ user: user });
 
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
@@ -134,4 +111,4 @@ const deleteCart = async (req, res) => {
 //   }
 // };
 
-module.exports = { CreateCart, getCart, updateCart, deleteCart};
+module.exports = { CreateWishlist, getWishlist, updateWishlist, deleteWishlist};

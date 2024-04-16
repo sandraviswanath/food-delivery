@@ -16,11 +16,22 @@
 .add-form-title{
     font-size: 24px;
 }
-/* .add-menu-item{
+.add-menu-item{
+   
+    /* margin-right: 50px; */
+    background-color: #dc3545;
+    color: #f8f8f8;
+    border: none;
+    
 
-} */
+}
+
+
 .form-submit{
-    /* float: right; */
+    /* margin-right: 50px; */
+    background-color: #dc3545;
+    color: #f8f8f8;
+    border: none;
    
 }
 .form-submit-butn{

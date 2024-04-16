@@ -3,8 +3,8 @@ const express =require('express')
 // const getItem = require('../controller/DeliveryItem')
 
 const { CreateCollection, getcollection } = require('../controller/Collection')
-const { Createfood, getfood,updatefood,deletefood } = require('../controller/food')
-const {signup,getsignup,deleteUser} = require('../controller/signup')
+const { Createfood, getfood,updatefood,deletefood, searchfood } = require('../controller/food')
+const {signup,getsignup,deleteUser, getallSignup} = require('../controller/signup')
 const Login = require('../controller/login')
 const getonePlace = require('../controller/getplace')
 const GetOneproduct = require('../controller/GetoneProduct')
@@ -16,6 +16,8 @@ const token = require('../Midllewares/Token')
 
 const { getAdminsignup, Adminsignup } = require('../controller/AdminSignup')
 const AdminLogin = require('../controller/Adminlogin')
+const { Createorder, getorder } = require('../controller/order')
+const { CreateWishlist, getWishlist, deleteWishlist } = require('../controller/Wishlist')
 
 
 
@@ -38,14 +40,17 @@ router.route('/collectionlist').get(getcollection)
 router.route('/getplace/:place').get(getonePlace)
 router.route('/getproduct/:id').get(GetOneproduct)
 router.route('/signup').post(signup)
-router.route('/getsignup').get(getsignup)
+router.route('/getsignup/:email').get(getsignup)
+router.route('/getallsignup').get(getallSignup)
 router.route('/deleteuser/:userId').delete(deleteUser)
+
 
 router.route('/login').post(Login)
 router.route('/food').post(Createfood)
 router.route('/foodlist').get(getfood)
 router.route('/updatefood/:id').patch(updatefood)
 router.route('/delete/:id').delete(deletefood)
+router.route('/food/search').get(searchfood);
 
 router.route('/createcart').post(CreateCart)
 router.route('/getcart/:email').get(getCart)
@@ -54,14 +59,22 @@ router.route('/updatecart/:id').patch(updateCart)
 router.route('/deletecart/:id/:email').delete(deleteCart)
 
 // router.route('/orderdata').post(orderdata)
+router.route('/createorder').post(Createorder)
+router.route('/getorder/:email').get(getorder)
+
+
+router.route('/wishlist').post(CreateWishlist)
+router.route('/getwishlist/:email').get(getWishlist)
+router.route('/deletewishlist/:id/:email').delete(deleteWishlist)
 
 router.route('/createfooditems').post(Createfooditems)
 router.route('/getfooditems').get(getfooditems)
 router.route('/user/:userId/fooditems/:foodItemId').delete(deletefooditems)
-router.route('/updatefooditems/:userId/:foodItemId').patch(updatefooditems)
+router.route('/updatefooditems/:userId/:foodItemId').put(updatefooditems)
 router.route('/getadminsignup').get(getAdminsignup)
 router.route('/adminsignup').post(Adminsignup)
 router.route('/adminlogin').post(AdminLogin)
+
 
 
 

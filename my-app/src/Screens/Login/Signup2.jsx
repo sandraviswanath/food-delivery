@@ -118,7 +118,7 @@ function Signup2() {
         <button type="submit" class="login__button">Create</button>
 
         <div className="login__register">
-        Already have an account? <Link to="/signup"style={{color: 'red',textDecoration:'none'}}>Log in</Link>
+        Already have an account? <Link to="/log"style={{color: 'red',textDecoration:'none'}}>Log in</Link>
         </div>
      </form>
   </div>

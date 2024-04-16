@@ -1,10 +1,10 @@
 import React from 'react'
 import './delivery.css'
-import Filters from './common/Filters'
+import Filters from '../Filter/Filters'
 import { CiSliderHorizontal } from "react-icons/ci";
-import DeliveryCollections from './DeliveryCollections';
+import DeliveryCollections from '../DeliveryCollections';
 import ExploreSection from './ExploreSection';
-import restaurants from './Restaurants';
+import restaurants from '../Restaurants';
 function Delivery() {
   const deliveryFilters=[
     {
@@ -44,7 +44,7 @@ const restaurantList= restaurants;
       <div className='max-width'>
         <Filters filterList={deliveryFilters}/>
       </div>
-      <DeliveryCollections/>
+      {/* <DeliveryCollections/> */}
       <ExploreSection list={restaurantList} collectionName=''/>
     </div>
   )

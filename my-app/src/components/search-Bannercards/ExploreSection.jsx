@@ -1,7 +1,8 @@
 import React from 'react'
 import './ExploreSection.css'
-import ExploreCard from './ExploreCard'
-import CollectionCard from './common/CollectionCard'
+import ExploreCard from '../ExploreCard'
+import CollectionCard from './CollectionCard'
+
 
 
 function ExploreSection({list,collectionName}) {

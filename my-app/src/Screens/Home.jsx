@@ -4,9 +4,9 @@ import Footer from '../components/Footer'
 import TabOptions from '../components/TabOptions'
 
 import NightLife from '../components/NightLife'
-import Delivery from '../components/Delivery'
+import Delivery from '../components/search-Bannercards/Delivery'
 import DiningOut from '../components/DiningOut'
-import Header from '../components/Header'
+import Header from '../components/search-Bannercards/Header'
 
 
 

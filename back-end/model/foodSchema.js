@@ -32,10 +32,12 @@ const foodSchema = mongoose.Schema({
    place:{
     type:String,
     required: true,
+    index: true,
    },
    subtitle: {
     type:String,
     required: true,
+    index: true,
 },
 fooditems: [
     {

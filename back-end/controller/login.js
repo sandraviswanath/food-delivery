@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 
-const fooduser = require('./userSchema');
+const fooduser = require('../model/userSchema');
 
 // const Login=async(req,res) => {
 //     const {email,password}=req.body;
