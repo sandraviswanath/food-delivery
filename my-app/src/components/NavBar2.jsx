@@ -19,7 +19,7 @@ function NavBar2() {
     navigate("/")
 };
 
-
+const userEmail = user ? user.email : "";
   return (
     <div>
       
@@ -34,9 +34,9 @@ function NavBar2() {
             {/* <Nav.Link href="#home" className='nav-link'>{storename} */}
            
             <NavDropdown title='profile'  id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1"><Link to={`/profile/${user.email}`} style={{textDecoration:'none'}} className='navdropDown-items'>Account</Link></NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.1"><Link to={`/wishlist/${user.email}`} style={{textDecoration:'none'}} className='navdropDown-items'>WishList</Link></NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2"><Link to={`/cart2/${user.email}`} style={{textDecoration:'none'}} className='navdropDown-items'>Cart</Link></NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.1"><Link to={`/profile/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Account</Link></NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.1"><Link to={`/wishlist/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>WishList</Link></NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2"><Link to={`/cart2/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Cart</Link></NavDropdown.Item>
             <NavDropdown.Divider />
               <NavDropdown.Item style={{textDecoration:'none'}} >
                

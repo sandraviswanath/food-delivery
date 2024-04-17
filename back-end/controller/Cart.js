@@ -67,28 +67,6 @@ const updateCart = async (req, res) => {
 
 
 
-// const deleteCart = async (req, res) => {
-//   try {
-//     const productId = req.params.id;
-//     const user = await customer.findOne({ email: req.params.email });
-//     const cart = await CartItem.findOne({ user: user });
-
-//     if (!cart) {
-//       return res.status(404).json({ message: "Cart not found" });
-//     }
-
-//     // Remove the product with the provided id from the cart
-//     cart.products = cart.products.filter(item => item.id !== productId);
-//     await cart.save();
-
-//     res.json({ message: 'Product deleted successfully' });
-//   } catch (error) {
-//     console.error("Error deleting product:", error);
-//     res.status(500).send("Internal Server Error");
-//   }
-// };
-
-
 
 const deleteCart = async (req, res) => {
   try {

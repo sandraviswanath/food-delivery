@@ -47,9 +47,20 @@ function Searchview() {
   return (
     <div>
       <Input value={placeFilter} onChange={handlePlaceFilterChange} onSubmit={handleSubmit} />
+
+
+      <div className='max-width explore-section'>
+        <div className='collection-title'></div>
+     <div className='explore-grid'>
+     
+        <List display={filteredProperties}/>
+     
+     </div>
+    </div>
       <List properties={filteredProperties} />
     </div>
   );
 }
 
 export default Searchview;
+

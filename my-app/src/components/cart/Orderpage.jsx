@@ -75,7 +75,7 @@ function Orderpage() {
   
     //   fetchCartItems();
     // }, [user.email]);
-    if (user && user.email) { // Check if user and user.email are not null before calling fetchCartItems
+    if (user && user.email) { 
       fetchCartItems();
     }
   }, [user]);
@@ -113,17 +113,9 @@ function Orderpage() {
    
 
    
-    useEffect(() => {
-      // Initialize total price and total quantity when component mounts
-      setTotalPrice(totalPrice || 0);
-      setTotalQuantity(totalQuantity || 0);
-    }, []);
+   
  
-    // Function to handle removing items from the cart
-    // const removeFromCart = (itemId) => {
-    //     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
-    //     setCartItem(updatedCartItems);
-    // };
+    
 
     // Function to handle user info submission
     const handleUserInfoSubmit = (data) => {
@@ -157,44 +149,42 @@ function Orderpage() {
       
       // };
 
-      // const placeOrder = async () => {
-      //   try {
-      //     // Validate user info before placing the order
-      //     if (!userInfo || !userInfo.email) {
-      //       // Handle the case where email is missing from user info
-      //       console.error('Email is required');
-      //       return;
-      //     }
+      const placeOrder = async () => {
+        try {
+          // Validate user info before placing the order
+          if (!userInfo || !userInfo.email) {
+            // Handle the case where email is missing from user info
+            console.error('Email is required');
+            return;
+          }
       
-      //     // Prepare the order data to send to the backend
-      //     const orderData = {
-      //       userInfo: userInfo,
-      //       cartItems: cartItems,
-      //       totalPrice: totalPrice,
-      //       paymentMethod: paymentMethod
-      //     };
+          // Prepare the order data to send to the backend
+          const orderData = {
+            userInfo: userInfo,
+            cartItems: cartItems,
+            totalPrice: totalPrice,
+            paymentMethod: paymentMethod
+          };
       
-      //     // Send the order data to the backend
-      //     const response = await axios.post('http://localhost:5000/createorder', orderData);
+          // Send the order data to the backend
+          const response = await axios.post('http://localhost:5000/createorder', orderData);
       
-      //     // Log the response from the backend
-      //     console.log('Order placed successfully:', response.data);
+          // Log the response from the backend
+          console.log('Order placed successfully:', response.data);
       
-      //     // Redirect the user to the order confirmation page
-      //     // setShowMessage(true);
-      //     window.alert('This is the message!');
-      //     navigate('/createorder');
+          // Redirect the user to the order confirmation page
+          // setShowMessage(true);
+          window.alert('This is the message!');
+          navigate('/createorder');
 
-      //   } catch (error) {
-      //     console.error('Error placing order:', error);
-      //   }
-      // };
+        } catch (error) {
+          console.error('Error placing order:', error);
+        }
+      };
       
         console.log('Order Summary:', { cartItems, userInfo, paymentMethod });
     
-  // const handleClick = () => {
-  //       alert('Your Order is placed!');
-  //     };
+
       const handleClick = () => {
         setShowMessage(true);
         
@@ -214,14 +204,16 @@ function Orderpage() {
     
     </div>
 
-{/* <OrderSummary cartItems={cartItems} totalPrice={totalPrice} totalQuantity={totalQuantity} /> */}
-            
-            {/* <Button onClick={handleClick}> place Order</Button> */}
-            {/* <button onClick={placeOrder} >Place Order</button> */}
-            <button onClick={handleClick}>Place Order</button>
-      {showMessage && <p>Your Order is placed!</p>}
+
+            <button onClick={placeOrder} >Place Order</button>
+            {/* <button onClick={handleClick}>Place Order</button>
+      {showMessage && <p>Your Order is placed!</p>} */}
         </div>
     );
 }
 
 export default Orderpage;
+
+
+
+

@@ -7,7 +7,7 @@ import AdminDashboard from './Admindashboard';
 function ViewRestaurant() {
     
  const [restaurant, setRestaurant] = useState([])
- const [restaurants, setRestaurants] = useState([])
+ 
     useEffect(() => {
         const handleItems = async () => {
           try {
@@ -24,7 +24,7 @@ function ViewRestaurant() {
       const handleDeleteRestaurant = async (userId) => {
         try {
             await axios.delete(`http://localhost:5000/delete/${userId}`);
-            setRestaurants(restaurants.filter(user => user._id !== userId));
+            setRestaurant(restaurant.filter(user => user._id !== userId));
         } catch (error) {
             console.error('Error deleting user:', error);
         }

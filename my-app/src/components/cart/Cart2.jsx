@@ -164,7 +164,7 @@ calculateTotalPriceAndQuantity(products);
         totalPrice: totalPrice
       };
     
-      const response = await axios.post('http://localhost:5000/orderdata', orderData);
+      const response = await axios.post('http://localhost:5000/createorder', orderData);
       setCartItems([]); // Clear cart after placing the order
       setTotalPrice(0);
       setTotalQuantity(0);
@@ -249,3 +249,7 @@ order now
 
 
 export default Cart2;
+
+
+
+

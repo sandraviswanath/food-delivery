@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./RestaurantForm.css";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const RestaurantForm = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +20,8 @@ const RestaurantForm = () => {
     rating: "",
     fooditems: [{ foodname: "", foodimage: "", price: "", itemrating: "" }],
   });
+
+const navigate = useNavigate();
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -39,7 +41,7 @@ const RestaurantForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    const storeemail=formData.email;
+    // const storeemail=formData.email;
     e.preventDefault();
    
     try {
@@ -75,8 +77,8 @@ const RestaurantForm = () => {
         rating: "",
         fooditems: [{ foodname: "", foodimage: "", price: "", itemrating: "" }],
       });
-      alert(` ${formData} updated..!!!`);
-      Navigate(`/restaurantdetails/${storeemail}`);
+      alert(` Restaurant details updated..!!!`);
+      navigate(`/restaurantdetails/${formData.email}`);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -242,7 +244,7 @@ const RestaurantForm = () => {
         </div>
 
         <div className="form-submit">
-          <Button type="submit"style={{backgroundColor:'#dc3545'}} className="form-submit-butn"><Link to=""style={{color: 'white',textDecoration:'none'}}>submit</Link></Button>
+          <Button type="submit"style={{backgroundColor:'#dc3545'}} className="form-submit-butn">submit</Button>
         </div>
       </Form>
     </div>

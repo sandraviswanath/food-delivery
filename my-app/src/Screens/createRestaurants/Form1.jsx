@@ -17,10 +17,7 @@ function Form1() {
     place: '',
     rating: '',
     subtitle: '',
-    foodname: '',
-    foodimage: '',
-    price: '',
-    itemrating: ''
+    
   });
 
   const [foodList, setFoodList] = useState([]);
@@ -59,10 +56,7 @@ function Form1() {
         place: '',
         rating: '',
         subtitle: '',
-        foodname: '',
-        foodimage: '',
-        price: '',
-        itemrating: ''
+        
       });
       loadFoodList();
       // Refresh food list after adding new item
@@ -100,12 +94,7 @@ function Form1() {
         place: formData.place,
         rating: formData.rating,
         subtitle: formData.subtitle,
-        fooditems: [
-          formData.foodname,
-          formData.foodimage,
-          formData.price,
-          formData.itemrating
-        ]
+      
       };
   
       
@@ -126,10 +115,7 @@ function Form1() {
         place: '',
         rating: '',
         subtitle: '',
-        foodname: '',
-        foodimage: '',
-        price: '',
-        itemrating: ''
+    
       });
       loadFoodList(); // Refresh food list after updating item
     } catch (error) {

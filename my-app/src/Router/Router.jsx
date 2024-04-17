@@ -4,9 +4,9 @@ import Banner from '../Screens/Banner'
 import Home from '../Screens/Home'
 
 import CollectionCard from '../components/search-Bannercards/CollectionCard'
-import Signup from '../Screens/Signup'
 
-import Login2 from '../Screens/Login2'
+
+
 import AddRestaurant from '../Screens/AddRestaurant'
 import Addsignup from '../Screens/Login/Addsignup'
 import Addlogin from '../Screens/Login/Addlogin'
@@ -73,7 +73,7 @@ function Router() {
         <Route path='/home2/:storeemail' element={<><NavBar2/><Searchview/></>}></Route>
        
 
-        <Route path='/login' element={<><Login2/></>}></Route>
+       
         <Route path='/signup' element={<><Signup2/></>}></Route>
         <Route path='/addrestaurant/:email' element={<><AddRestaurant/></>}></Route>
         <Route path='/addsignup' element={<><Addsignup/></>}></Route>
@@ -113,12 +113,6 @@ function Router() {
         }>
 
           </Route>
-
-
-
-
-     
-
 
       </Routes>
      
