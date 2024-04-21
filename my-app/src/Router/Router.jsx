@@ -99,8 +99,8 @@ function Router() {
   
         
         <Route path='/order/:email' element={<><NavBar2/><Order/></>}></Route>
-        <Route path='/orderpage' element={<><Orderpage/></>}></Route>
-        <Route path='/orderconfirmation' element={<OrderConfirmation/>}></Route>
+        <Route path='/orderpage' element={<><NavBar2/><Orderpage/></>}></Route>
+        <Route path='/orderconfirmation' element={<><NavBar2/><OrderConfirmation/></>}></Route>
 
       
         <Route path='/cart2/:email' element={<><NavBar2/><Cart2/></>}></Route>

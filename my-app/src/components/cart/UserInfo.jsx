@@ -24,8 +24,8 @@ const UserInfo = ({ onSubmit }) => {
   return (
     <div style={{paddingTop:'20px'}}>
       <h2 className='headof'>User Information</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{paddingBottom:'10px'}}>
+      <form onSubmit={handleSubmit}style={{paddingTop:'30px'}}>
+        <div style={{paddingBottom:'20px'}}>
           <label htmlFor="name">Name:</label>
           <input 
             type="text" 
@@ -34,10 +34,10 @@ const UserInfo = ({ onSubmit }) => {
             value={userData.name} 
             onChange={handleChange} 
             required 
-            style={{marginLeft:'20px'}}
+            style={{marginLeft:'20px',width:'350px',height:'40px'}}
           />
         </div>
-        <div style={{paddingBottom:'10px'}}>
+        <div style={{paddingBottom:'20px'}}>
           <label htmlFor="address">Address:</label>
           <input 
             type="text" 
@@ -46,10 +46,10 @@ const UserInfo = ({ onSubmit }) => {
             value={userData.address} 
             onChange={handleChange} 
             required 
-            style={{marginLeft:'5px'}}
+            style={{marginLeft:'5px',width:'350px',height:'40px'}}
           />
         </div>
-        <div style={{paddingBottom:'10px'}}>
+        <div style={{paddingBottom:'20px'}}>
           <label htmlFor="email">Email:</label>
           <input 
             type="email" 
@@ -58,7 +58,7 @@ const UserInfo = ({ onSubmit }) => {
             value={userData.email} 
             onChange={handleChange} 
             required 
-            style={{marginLeft:'27px'}}
+            style={{marginLeft:'27px',width:'350px',height:'40px'}}
           />
         </div>
         <button type="submit" className='userinfo-submit'>Submit</button>

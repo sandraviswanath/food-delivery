@@ -111,7 +111,7 @@ useEffect(() => {
       calculateTotalPriceAndQuantity(mergedCartItems);
     } catch (error) {
       console.error('Error fetching cart items:', error);
-      setError('your Cart is Empty!!.');
+      // setError('your Cart is Empty!!.');
     } finally {
       setLoading(false);
     }
@@ -197,7 +197,7 @@ useEffect(() => {
 {cartItems.length === 0 ? (
           <div style={{textAlign:'center'}}>
             <BsCartX style={{fontSize:'200px',color:'gray'}}/>
-            <p style={{fontSize:'38px'}}>Your cart is empty</p>
+            <p style={{fontSize:'28px'}}>Your cart is empty</p>
           </div>
         ) : (
           
@@ -247,7 +247,7 @@ useEffect(() => {
 
 <div>
 {/* <Button className='ordernow-btn'><Link to='/orderpage' style={{textDecoration:'none'}}>Order Now</Link></Button> */}
-<Button className='ordernow-btn' onClick={()=> navigate('/orderpage',{ state: {
+<Button variant="light" className='ordernow-btn' onClick={()=> navigate('/orderpage',{ state: {
         cartItems: cartItems,
         totalPrice: totalPrice,
         totalQuantity: totalQuantity

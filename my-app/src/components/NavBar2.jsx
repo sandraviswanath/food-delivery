@@ -34,15 +34,15 @@ const userEmail = user ? user.email : "";
             {/* <Nav.Link href="#home" className='nav-link'>{storename} */}
            
             <NavDropdown title='profile'  id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1"><Link to={`/profile/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Account</Link></NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.1"><Link to={`/wishlist/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>WishList</Link></NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2"><Link to={`/cart2/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Cart</Link></NavDropdown.Item>
+            <NavDropdown.Item><Link to={`/profile/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Account</Link></NavDropdown.Item>
+            <NavDropdown.Item><Link to={`/wishlist/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>WishList</Link></NavDropdown.Item>
+            <NavDropdown.Item><Link to={`/cart2/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Cart</Link></NavDropdown.Item>
             <NavDropdown.Divider />
-              <NavDropdown.Item style={{textDecoration:'none'}} >
+              
                
               <button onClick={handleLogout} className='navdropdownitems-logout'>Logout</button>
-              {/* <button className='navdropdownitems-logout'>Logout</button> */}
-              </NavDropdown.Item>
+             
+             
             </NavDropdown>
             
             

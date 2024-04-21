@@ -124,6 +124,7 @@ console.log(paymentMethod);
       };
     return (
        <div>
+       <h1 style={{textAlign:'center',fontSize:'36px'}}>Order Details</h1>
         <div className='main-order-div'>
            <div className='order-user-div'>
             <UserInfo onSubmit={handleUserInfoSubmit} />
@@ -136,11 +137,11 @@ console.log(paymentMethod);
       <p>Total Price: ${state?.totalPrice}</p>
       
       <div style={{display:'flex'}}>{state?.cartItems.map(display =>(
-        <>
-        <img src={display.foodimage} style={{width:'100px'}}/>
-        <p>{display.foodname}</p>
-        <p>{display.quantity}</p>
-        </>
+        <div style={{marginLeft:'20px'}}>
+        <img src={display.foodimage} style={{width:'100px',height:'80px'}}/>
+        <p>Item: {display.foodname}</p>
+        <p>Quantity: {display.quantity}</p>
+        </div>
       ))} </div>
       {/* <button onClick={handleAllDeleteAndPlaceOrder} className='place-order' >Place Order</button> */}
       <button onClick={() => { handleAllDeleteAndPlaceOrder(state._id); placeOrder(); }} className='place-order' >Place Order</button>

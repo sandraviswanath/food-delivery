@@ -44,9 +44,8 @@ function Profile() {
        
         </p>
         <Link to={`/cart2/${setUser.email}`} style={{textDecoration:'none'}}> <button style={{backgroundColor:'white',color:'red',border:'1px solid red',borderRadius:'50%',marginRight:'7px',marginTop:'5px',height:'40px',width:'110px'}}>cart</button></Link>
+        <Link to={`/wishlist/${setUser.email}`} style={{textDecoration:'none'}} ><button style={{backgroundColor:'white',color:'red',border:'1px solid red',borderRadius:'50%',marginRight:'7px',marginTop:'5px',height:'40px',width:'155px'}}>Wishlist</button></Link>
 
-       <Link to={`/wishlist/${setUser.email}`} style={{textDecoration:'none'}} ><button style={{backgroundColor:'white',color:'red',border:'1px solid red',borderRadius:'50%',marginRight:'7px',marginTop:'5px',height:'40px',width:'155px'}}>Wishlist</button></Link>
-       <Link to={`/order/${setUser.email}`} style={{textDecoration:'none'}} ><button style={{backgroundColor:'white',color:'red',border:'1px solid red',borderRadius:'50%',marginRight:'7px',marginTop:'5px',height:'40px',width:'155px'}}>order</button></Link>
         </Col>
       </Row>
       

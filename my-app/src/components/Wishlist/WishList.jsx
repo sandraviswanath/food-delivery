@@ -129,7 +129,7 @@ const mergedWishlistItems = [...updatedWishlistItems,...newProducts];
 {wishlistItems.length === 0 ? (
         <div style={{textAlign:'center'}}>
           <FaHeart style={{ fontSize: '200px', color: 'gray' }} />
-          <p style={{fontSize:'38px'}}>Your wishlist is empty</p>
+          <p style={{fontSize:'28px'}}>Your wishlist is empty</p>
         </div>
       ) : (
 
@@ -152,8 +152,8 @@ const mergedWishlistItems = [...updatedWishlistItems,...newProducts];
             </div>
             {/* <button onClick={()=>handleDelete(product._id)}>remove</button> */}
             <div>
-            <Button className='wish-remove' onClick={() => handleDelete(product._id)}>Remove</Button>
-            <Button className='wish-addcart' onClick={() => handleAddToCart(product)}>addToCart</Button>
+            <Button variant="light" className='wish-remove' onClick={() => handleDelete(product._id)}>Remove</Button>
+            <Button variant="light" className='wish-addcart' onClick={() => handleAddToCart(product)}>addToCart</Button>
             </div>
           </div>
         </div>

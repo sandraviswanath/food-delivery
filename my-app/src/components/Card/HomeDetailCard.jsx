@@ -107,47 +107,6 @@ const newname=email;
       }
     };
     
-    
-        
-    
-//   return (
-//     <div>
-//         {namedetails.map((details)=>(
-//       <section id="prodetails" class="section-p1">
-//     <div class="single-pro-image">
-//         <img src={details.cover} width="100%" id="mainImg"alt=""/>
-        
-//     </div>
-//     <div class="single-pro-details">
-
-// <h4>{details.title}</h4>
-// <h6>{details.subtitle}</h6>
-// <h6 style={{color:'rgb(105, 105, 105)'}}>{details.place}</h6>
-// <p style={{color:'rgb(105, 105, 105)'}}>{details.time}</p>
-// <h2>{details.price}</h2>
-// <select >
-//     <option>Select Size</option>
-//     {[...Array(10).keys()].map((x,i)=>{
-//                 return <option value={i+1}>{i+1}</option>
-//             })}
-//     {/* <option>1</option>
-//     <option>2</option>
-//     <option>X</option>
-//     <option>XXL</option> */}
-// </select>
-// <input type="number" value="1"/>
-// {!addedToCart && <button onClick={handleAddToCart} class="normal">Add To Cart</button>}
-// {addedToCart && <p>Item added to cart!</p>}
-// <h4>Product </h4>
-// {details.fooditems.map((menu)=>(
-// <span>{menu.foodname}</span>
-// ))}
-//     </div>
-// </section>
-// ))}  
-//     </div>
-//   )
-
 
 
 return (
@@ -183,24 +142,17 @@ return (
               <a href={details.phone} className='phone'>Call</a>
               <h2>{details.price}</h2>
               </div>
-              )}
-               
-             
-              
-              
-         
-         
-        
+              )}        
       </section>
 
 <h4 class="section-p1">Product </h4>
+<Link to='/signup'>
 {prodetails.length > 0 && prodetails.map((data) => (
-  <div key={data._id} style={{display:'flex !important',flexWrap:'wrap'}}>
-    
+  <div key={data._id} style={{display:'flex',flexWrap:'wrap'}}>
     {data.fooditems && data.fooditems.map((menu) => (
       menu && (
-        <section id="product1" class="section-p1" style={{ width: '23%',marginTop:'-100px' }} key={menu._id}>
-          <div className="pro-container" style={{ display: 'flex' }}>
+        <section id="product1" class="section-p1"  key={menu._id}>
+         <div className="pro-container"> 
             <div className="pro" style={{ height: '310px' }}>
               {menu.foodimage && <img src={menu.foodimage} alt={menu.foodname} style={{ height: '150px', width: '220px' }} />}
               <div className='res-row'>
@@ -214,24 +166,21 @@ return (
                 <h4>{menu.price}</h4>
               </div>
               
-              {!addedToCart && <Link to='/signup'><i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i></Link>}
-
-              {/* {addedToCart && <p>Item added to cart!</p>} */}
+             <i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i>
+                    
+             
               <button class="order">Order now!!</button>
             </div>
-          </div>
-        </section>
+           </div>
+         </section> 
       )
     ))}
+    
   </div>
+  
 ))}
-{/* {second.filter(helo=> helo.email === details.email)
-.map(hai => (
-  <div>
-    <p>{hai.foodname}</p>
-    </div>
-))
-} */}
+</Link>
+
 </div>
    ))}
   </div>
