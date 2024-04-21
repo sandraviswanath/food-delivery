@@ -27,6 +27,7 @@ const AdminDashboard = () => {
           
             <Nav.Link className='banner-nav-text' href="#features"><Link to="/restaurantview"className='banner-nav-text'> Restaurants</Link></Nav.Link>
             <Nav.Link className='banner-nav-text' href="#pricing"><Link to="/userview"className='banner-nav-text'>Users</Link></Nav.Link>
+            <Nav.Link className='banner-nav-text' href="#pricing"><Link to="/orderview"className='banner-nav-text'>Orders</Link></Nav.Link>
             <Nav.Link className='banner-nav-text' href="#pricing" onClick={handleLogout}>LogOut</Nav.Link>
           </Nav>
         </Container>

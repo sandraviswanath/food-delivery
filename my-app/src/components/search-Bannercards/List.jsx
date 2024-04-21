@@ -4,32 +4,10 @@ import { CiLocationOn, CiHeart, CiStar } from "react-icons/ci";
 
 const List = ({ properties }) => {
   return (
-    // <div className="gallery">
-    //   {properties.map(display => (
-    //     <div>
-    //       <Link to={`/detailed/${display.email}`} style={{textDecoration:'none'}}>
-    //         <div key={display.id} className="image-item">
-    //           <img src={display.cover} alt={data.title} />
-    //           <p>{display.title}</p>
-    //           <p style={{ color: '#707070' }}></p>
-    //           <p style={{ color: 'black' }}>
-    //             {display.price} <br></br>
-    //             {data.subtitle}
-    //           </p>
-    //           <div style={{ display: 'flex' }}>
-    //             <p style={{ color: '#707070' }}><CiLocationOn /></p>
-    //             <p style={{ color: 'red', marginLeft: '20%', fontSize: '18px' }}><CiHeart /></p>
-    //           </div>
-    //         </div>
-    //       </Link>
-    //     </div>
-    //   ))}
-    // </div>
+    
+   
+ <div style={{marginTop:'2%',marginLeft:'2%',marginRight:'2%'}}> 
 
-
-
-<div style={{marginTop:'2%',marginLeft:'2%',marginRight:'2%'}}> 
-{/* <h2>Explore Restaurants</h2> */}
 <div className="gallery" style={{marginTop:'2%',marginLeft:'2%',marginRight:'2%'}}>
 
 {properties && properties.map(display => (
@@ -63,15 +41,15 @@ const List = ({ properties }) => {
 
 
 
-</div>      
+</div>       
 
     
-// {/* <div style={{display:'flex'}}>
+//  <div style={{display:'flex'}}>
 //     {properties.map(display => (
 //     <section id="product1" style={{width:'23%'}}>
   
     
-//     <div className=" pro-container" >
+//     <div className=" pro-container max-width" >
 //        <Link to={`/detailed/${display.email}`} style={{textDecoration:'none'}}>
 //         <div className="pro"style={{height:'310px'}}>
 //             <img src={display.cover} alt={display.title} style={{height:'150px',width:'220px'}}/>
@@ -96,9 +74,15 @@ const List = ({ properties }) => {
     
 //     </section>
    
-//      ))}
-//       </div> */}
+//   ))} 
+//       </div>
+      
   );
+
 };
 
 export default List;
+
+
+
+

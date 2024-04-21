@@ -26,7 +26,7 @@ function Home2() {
 
 const getCorrectScreen =(tab)=>{
 switch (tab){
-    case "Delivery": return <Delivery/>;
+    // case "Delivery": return <Delivery/>;
     case "Dining Out": return <DiningOut/>;
     case "Noghtlife": return <NightLife/>;
     default : return <Delivery/>;

@@ -8,3 +8,4 @@ const userSchema =mongoose.Schema({
 const fooduser = mongoose.model('fooduser',userSchema);
 
 module.exports=fooduser;
+

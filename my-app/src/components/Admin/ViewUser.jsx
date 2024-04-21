@@ -38,7 +38,7 @@ function ViewUser() {
     <AdminDashboard/>
          <div className="main-head section-p1">
          <h3 className='head-restaurants'>Users List</h3>
-    <table width="100%" className='table-border shadow-lg p-3 mb-5 bg-white rounded'>
+    <table width="100%" className='table-border'>
    
 <thead>
     <tr className='table'>

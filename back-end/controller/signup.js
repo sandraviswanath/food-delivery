@@ -45,39 +45,37 @@ const deleteUser= async (req, res) => {
     }
 };
 
+
+// const updateUser = async (req, res) => {
+//     const { email } = req.params;
+//     const { password } = req.body;
+
+//     try {
+//         // Find the user by email
+//         const user = await fooduser.findOne({ email });
+
+//         if (!user) {
+//             return res.status(404).json({ error: 'User not found' });
+//         }
+
+//         // Update the password
+//         user.password = password;
+//         await user.save();
+
+//         // Send success response
+//         res.status(200).json({ message: 'Password updated successfully' });
+//     } catch (error) {
+//         console.error('Error updating password:', error);
+//         res.status(500).json({ error: 'Internal server error' });
+//     }
+
+
+  
+// };
+
+
 module.exports={signup,getsignup,deleteUser,getallSignup}
 
 
 
 
-
-// const signup = async (req, res) => {
-//     const { name, course, email, password } = req.body;
-    
-//     // Check if any required fields are empty
-//     if (!name || !email || !password) {
-//         res.send("All fields are required");
-//         return;
-//     }
-    
-//     // Check if password length is less than 6 characters
-//     if (password.length < 6) {
-//         res.send("Password must contain a minimum of 6 characters");
-//         return;
-//     }
-
-//     // Generate salt and hash password
-//     const salt = await bcrypt.genSalt(10);
-//     const hashedPassword = await bcrypt.hash(password, salt);
-    
-//     // Create user with hashed password
-//     const studentDetails = await student.create({
-//         name,
-//         email,
-//         password: hashedPassword
-//     });
-
-//     res.json(studentDetails);
-// }
-
-// module.exports = signup;

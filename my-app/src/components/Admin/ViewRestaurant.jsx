@@ -35,9 +35,9 @@ function ViewRestaurant() {
     <AdminDashboard/>
          <div className="main-head section-p1">
          <h3 className='head-restaurants'>Restaurants List</h3>
-    <table width="100%" className='table-border shadow-lg p-3 mb-5 bg-white rounded'>
+    <table width="100%" className='table-border '>
    
-<thead>
+<thead style={{padding:'20px'}}>
     <tr className='table'>
        <td className='table-head'>Restaurant Id</td>
         <td className='table-head'>Image</td>
@@ -46,7 +46,7 @@ function ViewRestaurant() {
         
     </tr>
 </thead>
-<tbody>
+<tbody style={{padding:'20px'}}>
 {restaurant.map(display =>(
     <tr className='table'>
         {/* <button onClick={mycontext.id}></button> */}

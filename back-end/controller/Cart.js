@@ -98,18 +98,20 @@ const deleteCart = async (req, res) => {
 
 
 
-// const deleteAll= async (req, res) => {
-//   try {
-//   const userId = req.params.userId;
+const deleteAll= async (req, res) => {
+  try {
+  const userId = req.params.userId;
 
  
-//     // Delete all cart items associated with the user
-//     const deleteuser=await CartItem.deleteMany({ userId: userId });
-//     res.status(200).json({ message: 'All data deleted successfully!' });
-//   } catch (error) {
-//     console.error('Error deleting all data:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// };
+    // Delete all cart items associated with the user
+    const deleteuser=await CartItem.deleteMany({ userId: userId });
+    res.status(200).json({ message: 'All data deleted successfully!' });
+  } catch (error) {
+    console.error('Error deleting all data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
-module.exports = { CreateCart, getCart, updateCart, deleteCart};
+
+
+module.exports = { CreateCart, getCart, updateCart, deleteCart,deleteAll};

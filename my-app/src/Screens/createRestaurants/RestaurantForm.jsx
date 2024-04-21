@@ -243,9 +243,8 @@ const navigate = useNavigate();
         </div>
         </div>
 
-        <div className="form-submit">
           <Button type="submit"style={{backgroundColor:'#dc3545'}} className="form-submit-butn">submit</Button>
-        </div>
+       
       </Form>
     </div>
     </div>

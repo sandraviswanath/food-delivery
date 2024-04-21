@@ -1,4 +1,5 @@
 .main-head{
+   
     padding-bottom: 20px;
     width: 100%;
 }
@@ -24,5 +25,14 @@ padding: 20px;
 }
 .delete-icon{
     font-size: 24px;
+    color: #dc3545;
+}
+.banner-nav-text{
+    color: black;
+}
+.banner-nav-text :hover{
+    color: #dc3545;
+}
+.food-title{
     color: #dc3545;
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { userData } from '../../App';
 import { Button, Table } from 'react-bootstrap';
-
+import { FaHeart } from "react-icons/fa"; 
 import './WishList.css'
 
 
@@ -16,6 +16,7 @@ const WishList = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [addedToCart, setAddedToCart] = useState(false);
+ 
   
   // const {email}=useParams();
   // console.log(email);
@@ -89,6 +90,8 @@ const mergedWishlistItems = [...updatedWishlistItems,...newProducts];
   const handleAddToCart = async (product) => {
 
     try {
+      await axios.delete(`http://localhost:5000/deletewishlist/${product._id}/${user.email}`);
+
       const response = await axios.post('http://localhost:5000/createcart', {
         product, 
         email : user.email, 
@@ -96,12 +99,16 @@ const mergedWishlistItems = [...updatedWishlistItems,...newProducts];
       });
       console.log('Item added to cart:', response.data);
       setAddedToCart(true);
+      
       navigate(`/cart2/${user?.email}`);
     } catch (error) {
       console.error('Error adding item to cart:', error);
     }
     
   };
+
+
+  
  
   if (loading) {
     return <div>Loading...</div>;
@@ -111,27 +118,25 @@ const mergedWishlistItems = [...updatedWishlistItems,...newProducts];
     return <div>Error: {error}</div>;
   }
   console.log('wishlist Items:', wishlistItems);
-  
-
-  // const showMessage = () => {
-  //   setMessage('Your Order is placed!');
-    
-  //   // Hide the message after 3 seconds
-  //   setTimeout(() => {
-  //     setMessage('');
-  //   }, 9000);
-    
-  // };
+ 
  
   
   return (
 
 <div>
 <h1 style={{padding:'25px'}}>Wish List</h1>
-<ul style={{display:'flex',paddingTop:'40px'}}>
+
+{wishlistItems.length === 0 ? (
+        <div style={{textAlign:'center'}}>
+          <FaHeart style={{ fontSize: '200px', color: 'gray' }} />
+          <p style={{fontSize:'38px'}}>Your wishlist is empty</p>
+        </div>
+      ) : (
+
+<ul style={{display:'flex',paddingTop:'40px', flexWrap: 'wrap', justifyContent:'center' }}>
   {wishlistItems.map(product => (
-    <div key={product._id} style={{ display: 'flex', flexWrap: 'wrap' }}>
-      <section id="product1" className="section-p1" style={{ width: '23%', marginTop: '-100px' }} key={product.id}>
+    <div key={product._id} style={{ display: 'flex',marginTop:'20px'}}>
+      <section id="product1" className="section-p4" style={{ width: '23%', marginTop: '-100px' }} key={product.id}>
         <div className="pro-container" style={{ display: 'flex' }}>
           <div className="pro" style={{ height: '310px' }}>
             <img src={product.foodimage} alt={product.foodname} style={{ height: '150px', width: '220px' }} />
@@ -156,7 +161,7 @@ const mergedWishlistItems = [...updatedWishlistItems,...newProducts];
     </div>
   ))}
 </ul>
-
+  )}
 
       {/* {message && <p>{message}</p>}  */}
 </div>

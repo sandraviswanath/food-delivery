@@ -148,6 +148,7 @@ const Order = () => {
         }
         const response = await axios.get(`http://localhost:5000/getorder/${user.email}`);
         setOrderedItems(response.data);
+        console.log(orderedItems,'orderedItems')
       } catch (error) {
         console.error('Error fetching ordered items:', error);
         setError('Error fetching ordered items. Please try again later.');
@@ -175,12 +176,18 @@ const Order = () => {
       <ul>
         {orderedItems.map(product => (
           <div key={product._id}>
-            <img src={product.foodimage} alt={product.foodname} style={{ height: '150px', width: '220px' }} />
+           
+        
+            
+            {/* {product.cartItems.map(cartitem =>(
+              <div>{cartitem.foodname}</div>
+            ))} */}
+            {/* <img src={product} alt={product.name} style={{ height: '150px', width: '220px' }} /> */}
             <div className='res-row'>
-              <div className='res-name'>{product.foodname}</div>
+              <div className='res-name'>{product.name}</div>
             </div>
             <div className="des">
-              <span></span>
+              <span>Quantity: {product.quantity}</span>
               <h4>Price: {product.price}</h4>
             </div>
           </div>

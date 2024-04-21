@@ -195,7 +195,7 @@ return (
 
 <h4 class="section-p1">Product </h4>
 {prodetails.length > 0 && prodetails.map((data) => (
-  <div key={data._id} style={{display:'flex !important'}}>
+  <div key={data._id} style={{display:'flex !important',flexWrap:'wrap'}}>
     
     {data.fooditems && data.fooditems.map((menu) => (
       menu && (

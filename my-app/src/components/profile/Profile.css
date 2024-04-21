@@ -1,12 +1,13 @@
 .profile-div{
-    background-color: #cfcfcf;
+    /* background-color: #cfcfcf; */
     /* background-color:#9c9c9c; */
   
     /* width:100%;
     height: 100%; */
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+   
+  /* justify-content: center;
+  text-align: center;  */
+  /* padding: 20px; */
 }
 .User-name{
   font-size: 40px;

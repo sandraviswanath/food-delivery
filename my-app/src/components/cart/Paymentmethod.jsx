@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Modal } from 'react-bootstrap';
+import './Paymentmethod.css'
 
 const Paymentmethod = ({ onSelect }) => {
   const [paymentMethod, setPaymentMethod] = useState('');
@@ -53,9 +54,9 @@ const Paymentmethod = ({ onSelect }) => {
           />
           <label htmlFor="debit_card">Cash on Delivery</label>
         </div>
-        <Button variant="primary" onClick={() => setShow(true)}>
+        <button onClick={() => setShow(true)} className='online-payment-btn'>
           Online payment
-        </Button>
+        </button>
         <Modal show={show} onHide={handleModalClose}>
           <Modal.Header closeButton>
             <Modal.Title>Enter UPI ID</Modal.Title>
@@ -72,7 +73,7 @@ const Paymentmethod = ({ onSelect }) => {
                   required
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" className='place-order'>
                 Submit
               </Button>
             </Form>

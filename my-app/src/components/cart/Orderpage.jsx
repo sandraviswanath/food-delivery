@@ -9,205 +9,146 @@ import { userData } from '../../App';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { CartContext } from './Cart2';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Orderpage.css'
 
 
 function Orderpage() {
-    // const [cartItem, setCartItem] = useState([]);
-    const [userInfo, setUserInfo] = useState({});
-    const [paymentMethod, setPaymentMethod] = useState('');
-    // const { cartItems, totalPrice, totalQuantity } = props.location.state || {};
-    const [cartItems, setCartItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [totalQuantity, setTotalQuantity] = useState(0);
-    const [message, setMessage] = useState('');
-    const [showMessage, setShowMessage] = useState(false);
 
-
-    // const {email}=useParams();
-    // console.log(email);
+  const{state} = useLocation();
   const {user}=useContext(userData);
   const navigate = useNavigate();
-  
-  
+  console.log(state,'state');
 
-  
-    useEffect(() => {
-      const fetchCartItems = async () => {
-        try {
-  
-          if (!user) {
-            // Redirect to login page with a message
-            navigate('/log', { state: { message: 'Please log in to view your cart' } });
-            return;
-          }
-  
-          const response = await axios.get(`http://localhost:5000/getcart/${user.email}`);
-          const products = response.data.products.map(product=>({
-            ...product,
-            quantity: product.quantity ||1 // Set default quantity to 1 if it's missing
-          }));
-  const updatedCartItems = cartItems.map(item =>{
-    const existingIndex = products.findIndex(product=>product._id === item._id);
-    if (existingIndex !== -1) {
-      return{...item,quantity:products[existingIndex].quantity};
-      }
-     return item;
-    });
-    const newProducts =products.filter(product => !cartItems.some(item => item._id === product._id));
-  
-  const mergedCartItems = [...updatedCartItems,...newProducts];
-  
-  
-          setCartItems(mergedCartItems);
-  
-          calculateTotalPriceAndQuantity(mergedCartItems); 
-        } catch (error) {
-          console.error('Error fetching cart items:', error);
-          setError('Error fetching cart items. Please try again later.');
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-    //   fetchCartItems();
-    // }, [user.email]);
-    if (user && user.email) { 
-      fetchCartItems();
-    }
-  }, [user]);
-  
-  
-  
-  
-    const calculateTotalPriceAndQuantity = (items) => {
-      let totalPrice = 0;
-      let totalQuantity = 0;
-    
-      items.forEach(item => {
-        // Extract the numerical value from the price string and convert it to a number
-        const itemPrice = parseFloat(item.price.replace('₹', ''));
-        totalPrice += itemPrice * item.quantity;
-        totalQuantity += item.quantity;
-      });
-    
-      // Update state variables with calculated values
-      setTotalPrice(totalPrice);
-      setTotalQuantity(totalQuantity);
-    };
-    
-    const updateQuantity = (productId, newQuantity) => {
-      // Update the quantity of the product in the cartItems state
-      const updatedCartItems = cartItems.map(item => {
-        if (item._id === productId) { // Update to item._id
-          return { ...item, quantity: newQuantity };
-        }
-        return item;
-      });
-      setCartItems(updatedCartItems);
-      calculateTotalPriceAndQuantity(updatedCartItems); 
-    };
-   
-
-   
-   
  
-    
+  
+console.log(user,'user');
+console.log(user.email,'email');
+
+    const [userInfo, setUserInfo] = useState({});
+    const [paymentMethod, setPaymentMethod] = useState('');
+   
+   
+    const [alldelete, setAlldelete] = useState([])
+
+const [order, setOrder] = useState("")
+    // const {email}=useParams();
+    // console.log(email);
+
+  
+  
+
+
+  const handleAllDeleteAndPlaceOrder = async (id) => {
+    if (!paymentMethod) {
+      alert("Please select a payment method before placing the order.");
+      return;
+    }
+  
+    try {
+      if (!user || !user.email) {
+        console.error("User email is missing or undefined");
+        return;
+      }
+  
+      await axios.delete(`http://localhost:5000/deleteall/${user.email}`);
+  
+      const updatedCartItems = alldelete.filter((item) => item._id !== id);
+      setAlldelete(updatedCartItems);
+     
+    } catch (error) {
+      console.error("Error deleting products:", error);
+    }
+  };
 
     // Function to handle user info submission
     const handleUserInfoSubmit = (data) => {
         setUserInfo(data);
     };
-
+console.log(userInfo,'userinfo');
     // Function to handle payment method selection
     const handlePaymentMethodSelect = (method) => {
         setPaymentMethod(method);
     };
-
+console.log(paymentMethod);
     // Function to place the order
    
-      // const placeOrder  = async () => {
-      //   try {
-      //     const orderData = {
-      //       userInfo: userInfo,
-      //       cartItems: cartItems,
-      //       totalPrice: totalPrice, // Extract price from string and convert to number
-      //       paymentMethod: paymentMethod
-      //       }
-            
-      //     const response = await axios.post('http://localhost:5000/createorder', orderData);
-      //     console.log('Order placed successfully:', response.data);
-       
-          
-      //     // navigate('/createorder');
-      //   } catch (error) {
-      //     console.error('Error placing order:', error);
-      //   }
       
-      // };
+   
+
 
       const placeOrder = async () => {
         try {
-          // Validate user info before placing the order
-          if (!userInfo || !userInfo.email) {
-            // Handle the case where email is missing from user info
-            console.error('Email is required');
-            return;
-          }
-      
           // Prepare the order data to send to the backend
           const orderData = {
             userInfo: userInfo,
-            cartItems: cartItems,
-            totalPrice: totalPrice,
-            paymentMethod: paymentMethod
+            cartItems: state.cartItems.map(item => ({
+              _id: item._id,
+              name: item.foodname,
+              image: item.foodimge,
+              price: item.price,
+              quantity: item.quantity
+            })),
+            totalPrice: state.totalPrice,
+            paymentMethod: paymentMethod,
+            email: userInfo.email
           };
       
-          // Send the order data to the backend
-          const response = await axios.post('http://localhost:5000/createorder', orderData);
+          // Log the order data for debugging
+          console.log("Order data:", orderData);
+      
+          // Send the request to the server
+          const response = await axios.post(
+            "http://localhost:5000/createorder",
+            orderData
+          );
       
           // Log the response from the backend
-          console.log('Order placed successfully:', response.data);
+          console.log("Order placed successfully:", response.data);
       
-          // Redirect the user to the order confirmation page
-          // setShowMessage(true);
-          window.alert('This is the message!');
-          navigate('/createorder');
-
+          // Clear the cart items from local storage
+          localStorage.removeItem("cartItems");
+      
+          // Set the order ID using the state variable
+          setOrder(response.data._id);
+      
+          // Navigate to the order confirmation page
+          navigate("/orderconfirmation");
         } catch (error) {
-          console.error('Error placing order:', error);
+          console.error("Error placing order:", error);
+      
+          // Display an error message to the user
+          toast.error("Failed to place order. Please try again.");
         }
       };
-      
-        console.log('Order Summary:', { cartItems, userInfo, paymentMethod });
-    
-
-      const handleClick = () => {
-        setShowMessage(true);
-        
-      };
     return (
-        <div style={{margin:'5% 35% 5% 35%',border:'1px solid red',padding:'10px'}}>
-           
+       <div>
+        <div className='main-order-div'>
+           <div className='order-user-div'>
             <UserInfo onSubmit={handleUserInfoSubmit} />
+            </div>
+            <div className='order-payment-div'>
             <Paymentmethod onSelect={handlePaymentMethodSelect} />
-            
-
-<div style={{paddingTop:'20px'}}>
+           
        <h2 className='headof'>Order Summary</h2>
-       <p>Total Items: {totalQuantity}</p>
-      <p>Total Price: ${totalPrice}</p>
+       <p>Total Items: {state?.totalQuantity}</p>
+      <p>Total Price: ${state?.totalPrice}</p>
+      
+      <div style={{display:'flex'}}>{state?.cartItems.map(display =>(
+        <>
+        <img src={display.foodimage} style={{width:'100px'}}/>
+        <p>{display.foodname}</p>
+        <p>{display.quantity}</p>
+        </>
+      ))} </div>
+      {/* <button onClick={handleAllDeleteAndPlaceOrder} className='place-order' >Place Order</button> */}
+      <button onClick={() => { handleAllDeleteAndPlaceOrder(state._id); placeOrder(); }} className='place-order' >Place Order</button>
+      </div>
 
-    
     </div>
-
-
-            <button onClick={placeOrder} >Place Order</button>
-            {/* <button onClick={handleClick}>Place Order</button>
-      {showMessage && <p>Your Order is placed!</p>} */}
+          
+         
         </div>
     );
 }

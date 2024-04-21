@@ -61,7 +61,7 @@ const UserInfo = ({ onSubmit }) => {
             style={{marginLeft:'27px'}}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className='userinfo-submit'>Submit</button>
       </form>
     </div>
   );

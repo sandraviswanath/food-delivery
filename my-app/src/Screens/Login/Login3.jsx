@@ -30,36 +30,6 @@ const {user,setUser} = useContext(userData);
  }
 
 
-// const handleSubmit =async(event)=>{
-//    const storename=name;
-//      const storeemail=email;
-//    event.preventDefault()
-//    try{
-//    const {data} =await axios.post('http://localhost:5000/login',{email,password,name});
-   
-//    console.log(data.user);
-//    setUser(data.user);
-//    navigate(`/home2/${data.user.email}`)
-//    }
-//    catch(error){
-//      console.log(error)
-//    }
-//    // alert(` ${email} login successed..!!!`)
- 
-
-//  }
-//  const history=useNavigate()
-//  const previous=useNavigate()
-// const sample=()=>{
-//  history('/banner')
-
-// }
-// const back=()=>{
-// previous(-1)
-// }
-
-
-
 
 const handleSubmit = async (event) => {
    event.preventDefault();
@@ -117,7 +87,7 @@ const handleSubmit = async (event) => {
                   <label for="user-check" class="login__check-label">Remember me</label>
                </div>
 
-               <a href="#" className="login__forgot">Forgot Password?</a>
+               <a href="" className="login__forgot"><Link to={`/forgotpassword`} style={{textDecoration:'none',color:'white'}}>Forgot Password?</Link></a>
             </div>
 
             <button type="submit" class="login__button">Login</button>

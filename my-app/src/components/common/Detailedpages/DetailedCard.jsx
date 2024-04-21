@@ -9,6 +9,8 @@ import { userData } from '../../../App'
 import { CiHeart } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 // import '../CardCollection.css'
 
@@ -102,10 +104,11 @@ useEffect(()=>{
         });
         console.log('Item added to cart:', response.data);
         setAddedToCart(true);
-        Navigate(`/cart2/${user.email}`);
+        // Navigate(`/cart2/${user.email}`);
       } catch (error) {
         console.error('Error adding item to cart:', error);
       }
+      toast("Added to Cart!");
       
     };
     
@@ -124,6 +127,7 @@ useEffect(()=>{
       } catch (error) {
         console.error('Error adding item to wishlist:', error);
       }
+      toast("Added to wishlist!");
       
     };
     
@@ -205,8 +209,10 @@ return (
                 <h4>₹{menu.price} for one</h4>
               </div>
             <div>
-               {!addedToCart && <i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i>}
+               {/* {!addedToCart && <i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i>} */}
+              <i class="fal fa-shopping-cart cart"onClick={() => handleAddToCart(menu)} ></i>
                {currentIcon === 'icon1' ? <FaRegHeart onClick={() => handleAddToWishlist(menu)} className='heart-icon'/> : <FaHeart className='heart-icon2'/>}
+               <ToastContainer />
                </div>
             </div>
          
