@@ -2,7 +2,6 @@ const express =require('express')
 // const CreateItem = require('../controller/DeliveryItem')
 // const getItem = require('../controller/DeliveryItem')
 
-const { CreateCollection, getcollection } = require('../controller/Collection')
 const { Createfood, getfood,updatefood,deletefood, searchfood } = require('../controller/food')
 const {signup,getsignup,deleteUser, getallSignup} = require('../controller/signup')
 const Login = require('../controller/login')
@@ -36,8 +35,7 @@ const router =express.Router()
 // router.route('/deliveryItem').post(CreateItem)
 // router.route('/getitems').get(getItem)
 
-router.route('/collection').post(CreateCollection)
-router.route('/collectionlist').get(getcollection)
+
 router.route('/getplace/:place').get(getonePlace)
 router.route('/getproduct/:id').get(GetOneproduct)
 router.route('/signup').post(signup)

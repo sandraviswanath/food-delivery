@@ -95,14 +95,14 @@ const Forgotpassword = () => { // Assuming userId is passed as props or retrieve
     };
 
     return (
-        <div>
-            <h1>Forgot Password</h1>
+        <div style={{textAlign:'center',paddingTop:'70px'}}>
+            <h1 style={{paddingBottom:'20px',fontSize:'28px'}}>Forgot Password</h1>
             <form onSubmit={handleSubmit}>
             <label htmlFor="password">Enter email:</label>
             <input type="email" id="password" name="email" value={email} onChange={handleChangeEmail} /><br /><br />
                 <label htmlFor="password">New Password:</label>
                 <input type="password" id="password" name="password" value={password} onChange={handleChange} /><br /><br />
-                <button type="submit">Update Password</button>
+                <button type="submit" style={{backgroundColor:'#dc3545',color:'white',border:'none',borderRadius:'5px',padding:'5px'}}>Update Password</button>
             </form>
             {message && <div>{message}</div>}
         </div>
