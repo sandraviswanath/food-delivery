@@ -105,7 +105,7 @@ setShow(false);
       <h4 className="section-p2" style={{ marginTop: "-40px" }}>
         Food items
       </h4>
-      <div style={{display:'flex'}}>
+      <div style={{display:'flex',flexWrap:'wrap'}}>
       {prodetails.length > 0 &&
         prodetails.map((data) => (
           <div key={data._id}>
@@ -123,7 +123,7 @@ setShow(false);
                         className="pro-container"
                         // style={{ display: "flex" }}
                       >
-                        <div className="pro" style={{ height: "310px" }}>
+                        <div className="pro" style={{ height: "310px",margin:'20px' }}>
                           {menu.foodimage && (
                             <img
                               src={menu.foodimage}

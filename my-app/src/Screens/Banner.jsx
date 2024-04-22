@@ -12,49 +12,53 @@ import { CiLocationOn } from 'react-icons/ci';
 
 function Banner() {
   const { storeemail } = useParams();
-
+  const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
  
-  // const handleSearchInputChange = (event) => {
-  //   const query = event.target.value.toLowerCase();
-  //   setSearchQuery(query);
-  //   const filtered = restaurants.filter((restaurant) =>
-  //     restaurant.subtitle.toLowerCase().includes(query)
-  //   );
-  //   setFilteredRestaurants(filtered);
-  // };
-
-
-
-
 
   useEffect(() => {
-    const fetchRestaurants = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/foodlist');
-        setFilteredRestaurants(response.data);
-      } catch (error) {
-        console.error('Error fetching restaurants:', error);
-      }
-    };
-
     fetchRestaurants();
-  }, [filteredRestaurants]);
+
+  }, []);
+  const fetchRestaurants = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/foodlist');
+      setRestaurants(response.data);
+      setFilteredRestaurants(response.data)
+     
+    } catch (error) {
+      console.error('Error fetching restaurants:', error);
+     
+    }
+  }
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
+   
   };
 
-  useEffect(() => {
+
     // Filter restaurants based on search query
-    const filtered = filteredRestaurants.filter((restaurant) =>
+   
+    const filtered =() => {if(!searchQuery){
+
+      setFilteredRestaurants(restaurants);
+    }else{
+      const filteredRestaurants = restaurants.filter(restaurant =>
       restaurant.place.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setFilteredRestaurants(filtered);
-  }, [searchQuery, filteredRestaurants]);
-
+    setFilteredRestaurants(filteredRestaurants);
+    }
+  
+  }
+ 
+const handleSubmit = (event) => {
+  event.preventDefault();
+  filtered();
+}
   return (
 <div>
     <div className="banner-image">
@@ -104,7 +108,7 @@ function Banner() {
               </div>
               <div className="location-search-seperator-banner"></div>
               <div className="header-searchbar-banner">
-                <IoIosSearch className="absolute-center search-icon" />
+              <IoIosSearch className="absolute-center search-icon"type='submit' />
                 {/* <input
                   placeholder="Search for restaurant or a dish"
                   className="search-input-banner"
@@ -112,6 +116,7 @@ function Banner() {
                   onChange={handleInputChange}
                   // onChange={handleSearchInputChange}
                 /> */}
+<form onSubmit={handleSubmit}>
 
 <input
         type="text"
@@ -121,6 +126,7 @@ function Banner() {
         className="search-input-banner"
         // style={{ height: '50px', border:'none' ,width:'400px',backgroundColor:'transparent'}}
       />
+      </form>
               </div>
             </div>
           </div>
@@ -149,7 +155,6 @@ function Banner() {
   <div>
    
     
-
    <Link to={`/homedetails/${display.email}`} style={{textDecoration:'none'}}>
   
 

@@ -34,9 +34,9 @@ const userEmail = user ? user.email : "";
             {/* <Nav.Link href="#home" className='nav-link'>{storename} */}
            
             <NavDropdown title='profile'  id="basic-nav-dropdown">
-            <NavDropdown.Item><Link to={`/profile/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Account</Link></NavDropdown.Item>
-            <NavDropdown.Item><Link to={`/wishlist/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>WishList</Link></NavDropdown.Item>
-            <NavDropdown.Item><Link to={`/cart2/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Cart</Link></NavDropdown.Item>
+            <NavDropdown.Item style={{background:'none'}}><Link to={`/profile/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Account</Link></NavDropdown.Item>
+            <NavDropdown.Item style={{background:'none'}}><Link to={`/wishlist/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>WishList</Link></NavDropdown.Item>
+            <NavDropdown.Item style={{background:'none'}}><Link to={`/cart2/${userEmail}`} style={{textDecoration:'none'}} className='navdropDown-items'>Cart</Link></NavDropdown.Item>
             <NavDropdown.Divider />
               
                
