@@ -46,7 +46,7 @@ const handleSubmit = async (event) => {
  
      // Check if the response contains user data
      
-       navigate('/admin');
+       navigate('/restaurantview');
      
    } catch (error) {
      console.log('Login error:', error);
