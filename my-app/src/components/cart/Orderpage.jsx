@@ -40,8 +40,30 @@ const [order, setOrder] = useState("")
   
 
 
+  // const handleAllDeleteAndPlaceOrder = async (id) => {
+  //   if (!paymentMethod) {
+  //     alert("Please select a payment method before placing the order.");
+  //     return;
+  //   }
+  
+  //   try {
+  //     if (!user || !user.email) {
+  //       console.error("User email is missing or undefined");
+  //       return;
+  //     }
+  
+  //     await axios.delete(`http://localhost:5000/deleteall/${user.email}`);
+  
+  //     const updatedCartItems = alldelete.filter((item) => item._id !== id);
+  //     setAlldelete(updatedCartItems);
+     
+  //   } catch (error) {
+  //     console.error("Error deleting products:", error);
+  //   }
+  // };
+
   const handleAllDeleteAndPlaceOrder = async (id) => {
-    if (!paymentMethod) {
+    if (!paymentMethod && paymentMethod !== 'cash_on_delivery') {
       alert("Please select a payment method before placing the order.");
       return;
     }
@@ -56,11 +78,15 @@ const [order, setOrder] = useState("")
   
       const updatedCartItems = alldelete.filter((item) => item._id !== id);
       setAlldelete(updatedCartItems);
-     
+  
+      if (paymentMethod === 'cash_on_delivery') {
+        await placeOrder();
+      }
     } catch (error) {
       console.error("Error deleting products:", error);
     }
   };
+  
 
     // Function to handle user info submission
     const handleUserInfoSubmit = (data) => {

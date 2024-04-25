@@ -27,59 +27,6 @@ const navigate = useNavigate();
 
   const cartitems= localStorage.getItem('cartitems') ? JSON.parse(localStorage.getItem('cartitems')) :[]
 
-//   useEffect(() => {
-//     const fetchCartItems = async () => {
-//       try {
-
-//         if (!user) {
-//           // Redirect to login page with a message
-//           navigate('/log', { state: { message: 'Please log in to view your cart' } });
-//           return;
-//         }
-
-//         const response = await axios.get(`http://localhost:5000/getcart/${user.email}`);
-//         const products = response.data.products.map(product=>({
-//           ...product,
-//           quantity: product.quantity ||1 // Set default quantity to 1 if it's missing
-//         }));
-// const updatedCartItems = cartItems.map(item =>{
-//   const existingIndex = products.findIndex(product=>product._id === item._id);
-//   if (existingIndex !== -1) {
-//     return{...item,quantity:products[existingIndex].quantity};
-//     }
-//    return item;
-//   });
-//   const newProducts =products.filter(product => !cartItems.some(item => item._id === product._id));
-
-// const mergedCartItems = [...updatedCartItems,...newProducts];
-
-
-//         setCartItems(mergedCartItems);
-
-//         calculateTotalPriceAndQuantity(mergedCartItems); 
-
-
-
-
-
-// setCartItems(products);
-// calculateTotalPriceAndQuantity(products);
-
-
-//       } catch (error) {
-//         console.error('Error fetching cart items:', error);
-//         setError('Error fetching cart items. Please try again later.');
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//   //   fetchCartItems();
-//   // }, [user.email]);
-//   if (user && user.email) { // Check if user and user.email are not null before calling fetchCartItems
-//     fetchCartItems();
-//   }
-// }, [user]);
 
 useEffect(() => {
   const fetchCartItems = async () => {
@@ -96,19 +43,31 @@ useEffect(() => {
         quantity: product.quantity || 1 // Set default quantity to 1 if it's missing
       }));
 
-      const updatedCartItems = cartItems.map(item => {
-        const existingIndex = products.findIndex(product => product._id === item._id);
-        if (existingIndex !== -1) {
-          return { ...item, quantity: products[existingIndex].quantity };
+      // const updatedCartItems = cartItems.map(item => {
+      //   const existingIndex = products.findIndex(product => product._id === item._id);
+      //   if (existingIndex !== -1) {
+      //     return { ...item, quantity: products[existingIndex].quantity };
+      //   }
+      //   return item;
+      // });
+
+      // const newProducts = products.filter(product => !cartItems.some(item => item._id === product._id));
+      // const mergedCartItems = [...updatedCartItems, ...newProducts];
+
+      // setCartItems(mergedCartItems);
+      // calculateTotalPriceAndQuantity(mergedCartItems);
+
+
+
+      const uniqueProducts = [];
+      products.forEach(product => {
+        if (!uniqueProducts.some(item => item._id === product._id)) {
+          uniqueProducts.push(product);
         }
-        return item;
       });
 
-      const newProducts = products.filter(product => !cartItems.some(item => item._id === product._id));
-      const mergedCartItems = [...updatedCartItems, ...newProducts];
-
-      setCartItems(mergedCartItems);
-      calculateTotalPriceAndQuantity(mergedCartItems);
+      setCartItems(uniqueProducts);
+      calculateTotalPriceAndQuantity(uniqueProducts);
     } catch (error) {
       console.error('Error fetching cart items:', error);
       // setError('your Cart is Empty!!.');

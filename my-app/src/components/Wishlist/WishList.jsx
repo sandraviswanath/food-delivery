@@ -38,25 +38,26 @@ const navigate = useNavigate();
         }
 
         const response = await axios.get(`http://localhost:5000/getwishlist/${user.email}`);
-        const products = response.data.products.map(product=>({
-          ...product,
-          quantity: product.quantity ||1 // Set default quantity to 1 if it's missing
-        }));
-const updatedWishlistItems = wishlistItems.map(item =>{
-  const existingIndex = products.findIndex(product=>product._id === item._id);
-  if (existingIndex !== -1) {
-    return{...item,quantity:products[existingIndex].quantity};
-    }
-   return item;
-  });
-  const newProducts =products.filter(product => !wishlistItems.some(item => item._id === product._id));
+//         const products = response.data.products.map(product=>({
+//           ...product,
+//           quantity: product.quantity ||1 // Set default quantity to 1 if it's missing
+//         }));
+// const updatedWishlistItems = wishlistItems.map(item =>{
+//   const existingIndex = products.findIndex(product=>product._id === item._id);
+//   if (existingIndex !== -1) {
+//     return{...item,quantity:products[existingIndex].quantity};
+//     }
+//    return item;
+//   });
+//   const newProducts =products.filter(product => !wishlistItems.some(item => item._id === product._id));
 
-const mergedWishlistItems = [...updatedWishlistItems,...newProducts];
+// const mergedWishlistItems = [...updatedWishlistItems,...newProducts];
 
 
-        setWishlistItems(mergedWishlistItems);
+//         setWishlistItems(mergedWishlistItems);
 
-      
+const uniqueWishlistItems = removeDuplicates(response.data.products, '_id');
+setWishlistItems(uniqueWishlistItems);
       } catch (error) {
         console.error('Error fetching wishlist items:', error);
         setError('Error fetching wishlist items. Please try again later.');
@@ -72,15 +73,21 @@ const mergedWishlistItems = [...updatedWishlistItems,...newProducts];
   }
 }, [user]);
 
-
+const removeDuplicates = (items, key) => {
+  return items.filter((item, index, self) =>
+    index === self.findIndex((t) => (
+      t[key] === item[key]
+    ))
+  );
+};
 
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/deletewishlist/${id}/${user.email}`);
       // After successful deletion on the server, update the cart items displayed in the UI
-      const updatedCartItems = wishlistItems.filter(item => item._id !== id);
-      setWishlistItems(updatedCartItems);
+      const updatedWishlistedItems = wishlistItems.filter(item => item._id !== id);
+      setWishlistItems(updatedWishlistedItems);
       
     } catch (error) {
       console.error('Error deleting product:', error);

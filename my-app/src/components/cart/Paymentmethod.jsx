@@ -13,7 +13,13 @@ const Paymentmethod = ({ onSelect }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(paymentMethod === 'debit_card') {
+      setShow(true);
+   
+  } else {
     onSelect(paymentMethod);
+  
+  }
   };
 
   const handleUpiidChange = (e) => {
@@ -47,16 +53,30 @@ const Paymentmethod = ({ onSelect }) => {
         <div>
           <input 
             type="radio" 
-            id="debit_card" 
-            value="debit_card" 
-            checked={paymentMethod === 'debit_card'} 
+            id="cash_on_delivery" 
+            value="cash_on_delivery" 
+            checked={paymentMethod === 'cash_on_delivery'} 
             onChange={handleChange} 
           />
-          <label htmlFor="debit_card">Cash on Delivery</label>
+          <label htmlFor="cash_on_delivery">Cash on Delivery</label>
         </div>
-        <button onClick={() => setShow(true)} className='online-payment-btn'>
+        <div>
+          <input
+            type="radio"
+            id="debit_card"
+            value="debit_card"
+            checked={paymentMethod === 'debit_card'}
+            onChange={handleChange}
+          />
+          <label htmlFor="debit_card">Online Payment</label>
+        </div>
+        {/* <button onClick={() => setShow(true)} className='online-payment-btn'>
           Online payment
+        </button> */}
+         <button type="submit" className='place-order'>
+          Place Order
         </button>
+        </form>
         <Modal show={show} onHide={handleModalClose}>
           <Modal.Header closeButton>
             <Modal.Title>Enter UPI ID</Modal.Title>
@@ -79,7 +99,7 @@ const Paymentmethod = ({ onSelect }) => {
             </Form>
           </Modal.Body>
         </Modal>
-      </form>
+    
     </div>
   );
 };

@@ -11,6 +11,8 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+  import { IoLocationOutline } from "react-icons/io5";
+  import { MdOutlineLocalPhone } from "react-icons/md";
 
 // import '../CardCollection.css'
 
@@ -23,20 +25,14 @@ function DetailedCard() {
     // const {id}=useParams()
     const [first, setfirst] = useState([]);
     const [product, setProduct] = useState([]);
-  // const [user, setuser] = useState({})
-    // const [cart, setCart] = useState([])
-    // const [cart, setCart] = useCart()
-  // const [total, settotal] = useState(0)
+ 
     const [order, setOrder] = useState([]);
     const [addedToCart, setAddedToCart] = useState(false);
 
     const [currentIcon, setCurrentIcon] = useState('icon1');
     const [wishlist, setWishlist] = useState(false);
 
-    // const toggleIcon = () => {
-    //   // Ternary operator to switch between 'icon1' and 'icon2'
-    //   setCurrentIcon(currentIcon === 'icon1' ? 'icon2' : 'icon1');
-    // };
+    
 
     useEffect(()=>{
     const restaurantitems =async()=>{
@@ -77,22 +73,11 @@ useEffect(()=>{
 
 
     const newname=email;
-    // const newid=id;
-    // console.log(newname)
-    // const iddetails=first.filter((item)=>item._id===newid)
+
     const namedetails=first.filter((item)=>item.email===newname)
     // console.log(namedetails)
     const prodetails=product.filter((item)=>item.email===newname)
-    // const productid=product.filter((item)=>item._id===newid)
-    // console.log(prodetails)
-
    
-    // const addToCart = (menu) => {
-    //   setfirst([...first, menu]);
-    //   settotal((prevTotal) => prevTotal + menu.price);
-    //   Navigate("/cart");
-    // };
-
 
     const handleAddToCart = async (product) => {
 
@@ -103,13 +88,16 @@ useEffect(()=>{
          
         });
         console.log('Item added to cart:', response.data);
-        setAddedToCart(true);
+        // setAddedToCart(true);
+        setAddedToCart((prev) => ({ ...prev, [product._id]: true }));
         // Navigate(`/cart2/${user.email}`);
       } catch (error) {
         console.error('Error adding item to cart:', error);
       }
-      toast("Added to Cart!");
-      
+      // toast("Added to Cart!");
+      if (!addedToCart[product._id]) {
+        toast("Added to Cart!");
+      }
     };
     
     const handleAddToWishlist = async (product) => {
@@ -122,12 +110,16 @@ useEffect(()=>{
          
         });
         console.log('Item added to wishlist:', response.data);
-        setWishlist(true);
+        // setWishlist(true);
+        setWishlist((prev) => ({ ...prev, [product._id]: true }));
         // Navigate(`/cart2/${user.email}`);
       } catch (error) {
         console.error('Error adding item to wishlist:', error);
       }
-      toast("Added to wishlist!");
+      // toast("Added to wishlist!");
+      if (!wishlist[product._id]) {
+        toast("Added to Wishlist!");
+      }
       
     };
     
@@ -163,27 +155,13 @@ return (
               <h6>{details.subtitle}</h6>
               <h6 style={{color:'rgb(105, 105, 105)'}}>{details.place}</h6>
               <p style={{color:'rgb(105, 105, 105)'}}>{details.time}</p>
-              <a href={details.location} className='direcion'>Directions</a>
-              <a href={details.phone} className='phone'>Call</a>
+              <a href={details.location} className='direcion'><IoLocationOutline style={{fontSize:'15px',color:'#dc3545'}}/>Directions</a>
+              {/* <a href={details.phone} className='phone'>Call</a> */}
+              <a href="tel:{details.phone}"className='phone'><MdOutlineLocalPhone style={{fontSize:'15px',color:'#dc3545'}}/> {details.phone}</a> 
               <h2>{details.price}</h2>
               </div>
               )}
                
-               
-             
-              {/* <select>
-                <option>Select Size</option>
-                {[...Array(10).keys()].map((x, i) => {
-                  return <option value={i+1} key={i}>{i+1}</option>
-                })}
-              </select> */}
-              {/* <input type="number" value="1"/> */}
-              {/* {!addedToCart && <button onClick={handleAddToCart} class="normal">Add To Cart</button>}
-              {addedToCart && <p>Item added to cart!</p>} */}
-              
-              
-         
-         
         
       </section>
 
