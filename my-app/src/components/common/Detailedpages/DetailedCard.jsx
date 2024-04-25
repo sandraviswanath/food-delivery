@@ -75,7 +75,7 @@ useEffect(()=>{
     const newname=email;
 
     const namedetails=first.filter((item)=>item.email===newname)
-    // console.log(namedetails)
+
     const prodetails=product.filter((item)=>item.email===newname)
    
 
@@ -87,7 +87,7 @@ useEffect(()=>{
           email : user.email, 
          
         });
-        console.log('Item added to cart:', response.data);
+     
         // setAddedToCart(true);
         setAddedToCart((prev) => ({ ...prev, [product._id]: true }));
         // Navigate(`/cart2/${user.email}`);
@@ -109,7 +109,7 @@ useEffect(()=>{
           email : user.email, 
          
         });
-        console.log('Item added to wishlist:', response.data);
+       
         // setWishlist(true);
         setWishlist((prev) => ({ ...prev, [product._id]: true }));
         // Navigate(`/cart2/${user.email}`);

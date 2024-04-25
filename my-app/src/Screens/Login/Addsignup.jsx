@@ -53,7 +53,7 @@ function Addsignup() {
 
       try{
       const display =await axios.post('http://localhost:5000/signup',{name,email,password,phone})
-      console.log(display.data)
+    
       }catch{
         
       }

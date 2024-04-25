@@ -60,7 +60,7 @@ const navigate = useNavigate();
       }
 
       const result = await response.json();
-      console.log(result);
+    
       // Reset the form after successful submission
       setFormData({
         address: "",

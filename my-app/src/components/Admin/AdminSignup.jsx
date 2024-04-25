@@ -52,7 +52,7 @@ function AdminSignup() {
         try{
           const {data} =await axios.post('http://localhost:5000/adminsignup',{name,email,phone,password})
         
-          console.log(data)
+      
           setUser(data)
           navigate(`/home2/${storeemail}`)    
         }

@@ -52,7 +52,7 @@ const handleShow = (menu) =>{
   // const food = namedetails[0];
 
   const prodetails = first.filter((item) => item.email === newname);
-  console.log(prodetails);
+ 
 
   const handleDeleteFoodItem = async (userId, foodItemId) => {
     try {

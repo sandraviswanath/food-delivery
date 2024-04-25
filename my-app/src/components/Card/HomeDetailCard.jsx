@@ -62,7 +62,7 @@ useEffect(()=>{
      const cartresponse = await axios.post('http://localhost:5000/createcart')
              
    setCart(cartresponse.data)
-   console.log(cart);
+
    }
    catch{
      

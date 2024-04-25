@@ -14,6 +14,9 @@ const updateUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
+        if (!password) {
+            return res.status(400).json({ error: 'New password is required' });
+        }
 
         // Update the password
         user.password = password;

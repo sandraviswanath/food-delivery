@@ -15,7 +15,7 @@ import HomeBannerCard from './HomeBannerCard'
        const response = await axios.get('http://localhost:5000/foodlist')
                
      setfirst(response.data)
-     console.log(first);
+  
      }
      catch{
        

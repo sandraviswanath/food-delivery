@@ -27,7 +27,7 @@ function Addlogin() {
     event.preventDefault()
     try{
     const display =await axios.post('http://localhost:5000/login',{email,password})
-    console.log(display.data)
+ 
     }catch{
       
     }

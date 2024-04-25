@@ -19,12 +19,7 @@ function Orderpage() {
   const{state} = useLocation();
   const {user}=useContext(userData);
   const navigate = useNavigate();
-  console.log(state,'state');
-
  
-  
-console.log(user,'user');
-console.log(user.email,'email');
 
     const [userInfo, setUserInfo] = useState({});
     const [paymentMethod, setPaymentMethod] = useState('');
@@ -92,17 +87,15 @@ const [order, setOrder] = useState("")
     const handleUserInfoSubmit = (data) => {
         setUserInfo(data);
     };
-console.log(userInfo,'userinfo');
+
     // Function to handle payment method selection
     const handlePaymentMethodSelect = (method) => {
         setPaymentMethod(method);
     };
-console.log(paymentMethod);
-    // Function to place the order
+
+   
    
       
-   
-
 
       const placeOrder = async () => {
         try {
@@ -121,8 +114,8 @@ console.log(paymentMethod);
             email: userInfo.email
           };
       
-          // Log the order data for debugging
-          console.log("Order data:", orderData);
+          // // Log the order data for debugging
+          // console.log("Order data:", orderData);
       
           // Send the request to the server
           const response = await axios.post(
@@ -130,8 +123,7 @@ console.log(paymentMethod);
             orderData
           );
       
-          // Log the response from the backend
-          console.log("Order placed successfully:", response.data);
+         
       
           // Clear the cart items from local storage
           localStorage.removeItem("cartItems");
