@@ -43,10 +43,14 @@ const handleSubmit = async (event) => {
      
      // Log the response data using console.dir()
      console.dir(response.data);
+     console.log(response.data);
  
      // Check if the response contains user data
      
-       navigate('/restaurantview');
+      //  navigate('/restaurantview');
+      // navigate(`/dashboard/${id}`);
+      navigate(`/dashboard/${response.data.id}`);
+     
      
    } catch (error) {
      console.log('Login error:', error);
@@ -55,7 +59,7 @@ const handleSubmit = async (event) => {
  };
  
  
- 
+
 
   return (
     <div>

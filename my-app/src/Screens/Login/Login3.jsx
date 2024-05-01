@@ -23,7 +23,9 @@ const {user,setUser} = useContext(userData);
    setemail(event.target.value)
  }
  const handlePassword =(event)=>{
-   setpassword(event.target.value)
+  //  setpassword(event.target.value)
+  const trimmedPassword = event.target.value.trim();
+  setpassword(trimmedPassword);
  }
  const handleName =(event)=>{
    setname(event.target.value)

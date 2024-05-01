@@ -21,13 +21,16 @@ const Forgotpassword = () => { // Assuming userId is passed as props or retrieve
         setEmail(e.target.value);
     };
     const handleChange = (e) => {
-        setPassword(e.target.value);
+        // setPassword(e.target.value);
+        const trimmedPassword = e.target.value.trim();
+        setPassword(trimmedPassword);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.patch(`http://localhost:5000/updateuser/${email}`,{ password });
+          
+            const response = await axios.patch(`http://localhost:5000/updateuser/${email}`,{ password});
             if (response.status === 200) {
                 setMessage('Password updated successfully');
             } else {
@@ -44,7 +47,7 @@ const Forgotpassword = () => { // Assuming userId is passed as props or retrieve
             <h1 style={{paddingBottom:'20px',fontSize:'28px'}}>Forgot Password</h1>
             <form onSubmit={handleSubmit}>
             <label htmlFor="password">Enter email:</label>
-            <input type="email" id="password" name="email" value={email} onChange={handleChangeEmail} /><br /><br />
+            <input type="email" id="email" name="email" value={email} onChange={handleChangeEmail} /><br /><br />
                 <label htmlFor="password">New Password:</label>
                 <input type="password" id="password" name="password" value={password} onChange={handleChange} /><br /><br />
                 <button type="submit" style={{backgroundColor:'#dc3545',color:'white',border:'none',borderRadius:'5px',padding:'5px'}}>Update Password</button>

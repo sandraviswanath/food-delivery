@@ -157,7 +157,7 @@ return (
               <p style={{color:'rgb(105, 105, 105)'}}>{details.time}</p>
               <a href={details.location} className='direcion'><IoLocationOutline style={{fontSize:'15px',color:'#dc3545'}}/>Directions</a>
               {/* <a href={details.phone} className='phone'>Call</a> */}
-              <a href="tel:{details.phone}"className='phone'><MdOutlineLocalPhone style={{fontSize:'15px',color:'#dc3545'}}/> {details.phone}</a> 
+              <a href={`tel:${details.phone}`}className='phone'><MdOutlineLocalPhone style={{fontSize:'15px',color:'#dc3545'}}/> {details.phone}</a> 
               <h2>{details.price}</h2>
               </div>
               )}

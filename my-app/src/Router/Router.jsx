@@ -47,6 +47,7 @@ import Searchview from '../components/search-Bannercards/Searchview'
 import OrderConfirmation from '../components/cart/OrderConfirmation'
 import Forgotpassword from '../Screens/Login/Forgotpassword'
 import ViewOrder from '../components/Admin/Vieworder'
+import DashboardStats from '../components/Admin/DashboardStats'
 
 
 
@@ -86,10 +87,12 @@ function Router() {
         
         <Route path='/adminlogin' element={<><AdminLogin/></>}></Route>
         <Route path='/adminsignup' element={<><AdminSignup/></>}></Route>
-        <Route path='/admin' element={<><AdminDashboard/></>}></Route>
+        {/* <Route path='/admin' element={<><AdminDashboard/></>}></Route> */}
         <Route path='/restaurantview' element={<><ViewRestaurant/></>}></Route>
         <Route path='/userview' element={<><ViewUser/></>}></Route>
         <Route path='/orderview' element={<><ViewOrder/></>}></Route>
+        <Route path='/dashboard/:id' element={<>< DashboardStats/></>}></Route>
+       
 
         <Route path='/addform' element={<><AddForm/></>}></Route>
         <Route path='/restaurantform' element={<><RestaurantForm/></>}></Route>

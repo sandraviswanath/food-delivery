@@ -9,7 +9,8 @@ const AdminLogin=async(req,res) => {
     if (dbemail){
 if(dbemail.email=== email && (await bcrypt.compare(password,dbemail.password))){
     console.log('login success')
-    res.json('login success')
+    // res.json('login success')
+    res.json({ id: dbemail._id, message: 'login success' });
 }
 else{
     console.log('login failed');
