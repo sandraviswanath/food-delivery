@@ -24,7 +24,7 @@ const [first, setfirst] = useState([])
     const response = await axios.get('http://localhost:5000/getitems')
             
   setfirst(response.data)
-  console.log(first);
+ 
   }
   catch{
 

@@ -35,6 +35,7 @@ function Searchview() {
   };
 
   const filterPropertiesByPlace = (filterValue) => {
+    if (!filterValue) return;
     const filtered = properties.filter(property =>
       property.subtitle.toLowerCase().includes(filterValue.toLowerCase())
     );
@@ -61,9 +62,11 @@ function Searchview() {
 
 
     <div>
+          {filteredProperties.length === 0 && <p>No matching Restaurants or dishes found.</p>}
     <Input value={placeFilter} onChange={handlePlaceFilterChange} onSubmit={handleSubmit} />
-    
+ 
           <List properties={filteredProperties} />
+        
     
   </div>
   );

@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom'
 function AddRestaurant() {
   const{email}=useParams();
   const eemail=email;
-  console.log(eemail)
+ 
   return (
     <div className='add-restaurant'>
       <Navbar>

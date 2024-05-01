@@ -115,12 +115,11 @@ const DashboardStats = () => {
     fetchCounts();
   }, []);
 
-  // You can check admin authentication here
-  // For simplicity, assuming the admin is authenticated if restaurantCount is greater than 0
+  
   const isAdminAuthenticated = () => restaurantCount > 0;
 
   if (!isAdminAuthenticated()) {
-    return null; // Or you can render a message like "Access denied" or redirect to a login page
+    return null; 
   }
 
   return (

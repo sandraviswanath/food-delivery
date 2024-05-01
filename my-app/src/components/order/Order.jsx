@@ -148,7 +148,7 @@ const Order = () => {
         }
         const response = await axios.get(`http://localhost:5000/getorder/${user.email}`);
         setOrderedItems(response.data);
-        console.log(orderedItems,'orderedItems')
+       
       } catch (error) {
         console.error('Error fetching ordered items:', error);
         setError('Error fetching ordered items. Please try again later.');

@@ -30,25 +30,12 @@ function AdminLogin() {
  }
 
 
-
-
-
-
-
 const handleSubmit = async (event) => {
    event.preventDefault();
  
    try {
      const response = await axios.post('http://localhost:5000/adminlogin', { email, password, name });
      
-     // Log the response data using console.dir()
-     console.dir(response.data);
-     console.log(response.data);
- 
-     // Check if the response contains user data
-     
-      //  navigate('/restaurantview');
-      // navigate(`/dashboard/${id}`);
       navigate(`/dashboard/${response.data.id}`);
      
      

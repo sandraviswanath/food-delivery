@@ -200,7 +200,6 @@ const AddForm = () => {
         },
       });
 
-      console.log(response.data);
       setFormData({
         email: "",
         fooditems: [{ foodname: "", foodimage: "", price: "", itemrating: "" }],

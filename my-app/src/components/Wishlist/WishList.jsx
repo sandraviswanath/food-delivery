@@ -21,7 +21,7 @@ const WishList = () => {
   // const {email}=useParams();
   // console.log(email);
 const {user}=useContext(userData);
-console.log(user)
+
 const navigate = useNavigate();
 
 
@@ -104,7 +104,7 @@ const removeDuplicates = (items, key) => {
         email : user.email, 
        
       });
-      console.log('Item added to cart:', response.data);
+      // console.log('Item added to cart:', response.data);
       setAddedToCart(true);
       
       navigate(`/cart2/${user?.email}`);
@@ -124,7 +124,7 @@ const removeDuplicates = (items, key) => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  console.log('wishlist Items:', wishlistItems);
+  // console.log('wishlist Items:', wishlistItems);
  
  
   

@@ -148,7 +148,7 @@ const handleSubmit = (event) => {
     <div style={{marginTop:'2%',marginLeft:'2%',marginRight:'2%'}}> 
 <h2>Explore Restaurants</h2>
 <div className="gallery" style={{marginTop:'2%',marginLeft:'2%',marginRight:'2%'}}>
-
+{filteredRestaurants.length === 0 && <p>No matching place found.</p>}
  {filteredRestaurants.map(display => (
 
   

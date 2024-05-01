@@ -45,7 +45,7 @@ const handleSubmit = async (event) => {
      // Check if the response contains user data
      if (response.data.user) {
        setUser(response.data.user);
-       console.log('User data in useContext:', response.data.user);
+      //  console.log('User data in useContext:', response.data.user);
        navigate(`/home2/${response.data.user.email}`);
      } else {
        console.log('Login failed:', response.data);

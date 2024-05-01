@@ -43,21 +43,7 @@ useEffect(() => {
         quantity: product.quantity || 1 // Set default quantity to 1 if it's missing
       }));
 
-      // const updatedCartItems = cartItems.map(item => {
-      //   const existingIndex = products.findIndex(product => product._id === item._id);
-      //   if (existingIndex !== -1) {
-      //     return { ...item, quantity: products[existingIndex].quantity };
-      //   }
-      //   return item;
-      // });
-
-      // const newProducts = products.filter(product => !cartItems.some(item => item._id === product._id));
-      // const mergedCartItems = [...updatedCartItems, ...newProducts];
-
-      // setCartItems(mergedCartItems);
-      // calculateTotalPriceAndQuantity(mergedCartItems);
-
-
+     
 
       const uniqueProducts = [];
       products.forEach(product => {
@@ -99,9 +85,7 @@ useEffect(() => {
     setTotalQuantity(totalQuantity);
 
   };
-  console.log(totalQuantity);
-  console.log(totalPrice);
-
+ 
  
   const updateQuantity = (productId, newQuantity) => {
     // Update the quantity of the product in the cartItems state
@@ -141,10 +125,7 @@ useEffect(() => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  console.log('cartItems:', cartItems);
-  
-
-  
+ 
  
   return (
 
